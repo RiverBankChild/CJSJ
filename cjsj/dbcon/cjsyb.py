@@ -1,17 +1,20 @@
 '''
-Created on 2019年4月30日
+Created on 2019年5月1日
 # -*- coding:utf-8 -*-
 @author: Administrator
 '''
 import pymysql
-import pymysql.cursors
 import jqdatasdk as jq
+import time
  
 #jqdata认证
 jq.auth('13401179853','king179853')
 
+#定义当前日期
+d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
+print(d)
 #调用jqdata获取数据
-df=jq.get_all_securities(date='2019-04-30');
+df=jq.get_all_securities(date=d );
 
 #数据整理
 df.drop(columns=['start_date', 'end_date','type','name'],axis=1,inplace=True);
