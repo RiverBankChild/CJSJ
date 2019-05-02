@@ -39,12 +39,14 @@ connect = pymysql.Connect(
 cursor = connect.cursor()
 
 # 插入数据
+total=0;
 for i in range(len(list)):
     sql = "INSERT INTO dmb (dm,name) VALUES ( '%s', '%s')"
     data = (list[i][0],list[i][1])
     cursor.execute(sql % data)
     connect.commit()
-    print('成功插入', cursor.rowcount, '条数据')
+    total=total+cursor.rowcount
+print('成功获取', total, '支股票')
 
 # 关闭连接
 cursor.close()

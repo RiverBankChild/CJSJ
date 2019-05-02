@@ -39,12 +39,16 @@ connect = pymysql.Connect(
 cursor = connect.cursor()
 
 # 插入数据
+total=0;
 for i in range(len(list)):
-    sql = "INSERT INTO dmb (dm,name) VALUES ( '%s', '%s')"
-    data = (list[i][0],list[i][1])
+    #TIMESTAMP(8)　| YYYYMMDD
+    sql = " create table IF NOT EXISTS %s(date varchar(16) primary key ,open Float(5,2) default  0.00,close Float(5,2) default  0.00,high Float(5,2) default  0.00,low Float(5,2) default  0.00,volume Float(14,2) default  0.00);"
+    data = ('TB'+list[i][0])
     cursor.execute(sql % data)
     connect.commit()
-    print('成功插入', cursor.rowcount, '条数据')
+    print(data+'创建成功')
+    total=total+cursor.rowcount
+print('成功创建', total, '张表')
 
 # 关闭连接
 cursor.close()
