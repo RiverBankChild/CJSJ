@@ -7,6 +7,8 @@ pip install pymysql -i http://pypi.douban.com/simple/ --trusted-host pypi.douban
 
 
 
-create table dmb (dm varchar(8) primary key ,name varchar(8) default'未知名称');
-create table IF NOT EXISTS tb+dm (date varchar(16) primary key default '未知',open Float(5,2) default  0.00,close Float(5,2) default  0.00,high Float(5,2) default  0.00,low Float(5,2) default  0.00,volume Float(14,2) default  0.00);
-数据获取到330450
+create table dmb (id int primary key auto_increment,dm varchar(8) unique ,name varchar(8) default'未知名称');
+create table IF NOT EXISTS tb+dm (id int primary key auto_increment,date varchar(16) unique default '未知',open Float(5,2) default  0.00,close Float(5,2) default  0.00,high Float(5,2) default  0.00,low Float(5,2) default  0.00,volume Float(14,2) default  0.00);
+create table jgb(id int primary key auto_increment,name varchar(8) default'未知名称',dm varchar(8) unique default'未知代码', jgb Float(10,2) default 0);
+
+数据获取到0

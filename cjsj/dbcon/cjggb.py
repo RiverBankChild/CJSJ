@@ -42,7 +42,7 @@ cursor = connect.cursor()
 total=0;
 for i in range(len(list)):
     #TIMESTAMP(8)　| YYYYMMDD
-    sql = " create table IF NOT EXISTS %s(date varchar(16) primary key ,open Float(5,2) default  0.00,close Float(5,2) default  0.00,high Float(5,2) default  0.00,low Float(5,2) default  0.00,volume Float(14,2) default  0.00);"
+    sql = " create table IF NOT EXISTS %s(id int primary key auto_increment,date varchar(16) unique ,open Float(5,2) default  0.00,close Float(5,2) default  0.00,high Float(5,2) default  0.00,low Float(5,2) default  0.00,volume Float(14,2) default  0.00);"
     data = ('TB'+list[i][0])
     cursor.execute(sql % data)
     connect.commit()
