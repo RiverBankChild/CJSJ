@@ -32,11 +32,12 @@ cursor = connect.cursor()
 #数据整理
 df.reset_index(inplace=True,drop=False)
 df.rename(columns={'index':'dm'},inplace=True)
-for i in range(0, len(df)):
+
+for i in range(789, len(df)):
     df1=jq.get_price(df.iloc[i]['dm'],  end_date=d, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
     df1.reset_index(inplace=True,drop=False)
     list=df1.values.tolist()
-    
+
     #插入数据 
     for j in range(len(list)):
         sql = "INSERT INTO %s (date,open,close,high,low,volume) VALUES ( '%s', %.2f ,%.2f ,%.2f ,%.2f,%.2f  )"
