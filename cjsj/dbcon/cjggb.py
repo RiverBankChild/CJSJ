@@ -47,7 +47,7 @@ for i in range(len(list)):
     cursor.execute(sql % data)
     connect.commit()
     print(data+'创建成功')
-    total=total+cursor.rowcount
+    total=total+1
 print('成功创建', total, '张表')
 
 # 关闭连接

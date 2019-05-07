@@ -33,7 +33,7 @@ cursor = connect.cursor()
 df.reset_index(inplace=True,drop=False)
 df.rename(columns={'index':'dm'},inplace=True)
 
-for i in range(789, len(df)):
+for i in range(3055, len(df)):#len(df)
     df1=jq.get_price(df.iloc[i]['dm'],  end_date=d, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
     df1.reset_index(inplace=True,drop=False)
     list=df1.values.tolist()
