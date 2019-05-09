@@ -56,7 +56,7 @@ print('上证指数历史数据更新完成，共更新了',total,'条数据')
 df2=jq.get_all_securities(date=d );
 df2.reset_index(inplace=True,drop=False)
 df2.rename(columns={'index':'dm'},inplace=True)
-#更新股票数据
+#更新股票数据 更新日期2019-5-9
 for i in range(0, len(df2)):#len(df)
     df1=jq.get_price(df2.iloc[i]['dm'], start_date='2019-04-20',end_date=d, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')#[total-total-total:]
     df1.reset_index(inplace=True,drop=False)
