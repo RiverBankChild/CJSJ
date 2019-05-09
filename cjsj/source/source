@@ -20,6 +20,3 @@ create table dmb (id int primary key auto_increment,dm varchar(8) unique ,name v
 create table IF NOT EXISTS tb+dm (id int primary key auto_increment,date varchar(16) unique default '未知',open Float(5,2) default  0.00,close Float(5,2) default  0.00,high Float(5,2) default  0.00,low Float(5,2) default  0.00,volume Float(14,2) default  0.00);
 create table jgb(id int primary key auto_increment,name varchar(8) default'未知名称',dm varchar(8) unique default'未知代码', jgb Float(10,2) default 0);
 create table szzs (id int primary key auto_increment,date varchar(16) unique default '未知',open Float(7,2) default  0.00,close Float(7,2) default  0.00,high Float(7,2) default  0.00,low Float(7,2) default  0.00,volume Float(16,2) default  0.00);
-
-
-000001.XSHG  上证指数代码
