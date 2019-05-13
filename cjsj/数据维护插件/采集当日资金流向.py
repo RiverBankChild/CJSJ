@@ -28,8 +28,13 @@ sql = "SELECT dm FROM dmb order by id "
 cursor.execute(sql)
 for row in cursor.fetchall():
     dmb_list.append(row)
+for i in range(0,len(dmb_list)):    
+    if dmb_list[i][0].startwith('6'):
+        dmb_list[i][0]=dmb_list[i][0]+'.XSHG'
+    else:
+        dmb_list[i][0]=dmb_list[i][0]+'.XSHE'
 for o in range(0,len(dmb_list)):
-    zjl_df=jq.get_money_flow([dmb_list[o][0]]+'.XSHE', start_date='2015-01-01', end_date='2019-05-15', fields=['date','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
+    zjl_df=jq.get_money_flow([dmb_list[o][0]], start_date='2015-01-01', end_date='2019-05-15', fields=['date','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
     print(zjl_df)
     zjl_list=zjl_df.values.tolist()
     total=0;
