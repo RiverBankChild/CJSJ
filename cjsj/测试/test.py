@@ -81,44 +81,31 @@ print("所有数据插入完成")
 '''
 
 
-'''
+
 #获取十大流通股东
+dm_list=[]
+rq_list=['2015-03-31','2015-06-30','2015-09-30','2015-12-31',
+         '2016-03-31','2016-06-30','2016-09-30','2016-12-31',
+         '2017-03-31','2017-06-30','2017-09-30','2017-12-31',
+         '2018-03-31','2018-06-30','2018-09-30','2018-12-31',
+         '2019-03-31']
+sql = "SELECT dm FROM dmb order by id "
+cursor.execute(sql)
+for row in cursor.fetchall():
+    dm_list.append(row) 
 from jqdatasdk import finance
-df3=finance.run_query(jq.query(
-finance.STK_SHAREHOLDER_FLOATING_TOP10.code,
-finance.STK_SHAREHOLDER_FLOATING_TOP10.shareholder_rank,
-finance.STK_SHAREHOLDER_FLOATING_TOP10.share_ratio
-).filter(
-finance.STK_SHAREHOLDER_FLOATING_TOP10.code=='600815.XSHG',
-finance.STK_SHAREHOLDER_FLOATING_TOP10.end_date>='2019-03-31',))
+for x in range(0,len(dm_list)):
+    df3=finance.run_query(jq.query(
+    finance.STK_SHAREHOLDER_FLOATING_TOP10.code,
+    finance.STK_SHAREHOLDER_FLOATING_TOP10.shareholder_rank,
+    finance.STK_SHAREHOLDER_FLOATING_TOP10.share_ratio
+    ).filter(
+    finance.STK_SHAREHOLDER_FLOATING_TOP10.code==dm_list[x][0]+'.XSHE',
+    finance.STK_SHAREHOLDER_FLOATING_TOP10.end_date=='2015-03-31'#03-31 #06-30 #09-30 #12-31   
+))
 print(df3)
-'''
 
-'''
-#数据整理
-df.drop(columns=['start_date', 'end_date','type','name'],axis=1,inplace=True);
-df.rename(columns={'display_name':'name'},inplace=True)
-df.reset_index(inplace=True,drop=False)
-df.rename(columns={'index':'dm'},inplace=True)
-for i in range(0, len(df)):
-    df.iloc[i]['dm']=df.iloc[i]['dm'][:6] 
-list=df.values.tolist()
 
-'''
-
-'''
-# 插入数据
-total=0;
-for i in range(len(list)):
-    #TIMESTAMP(8)　| YYYYMMDD
-    sql = " create table IF NOT EXISTS %s(id int primary key auto_increment,date varchar(16) unique ,open Float(5,2) default  0.00,close Float(5,2) default  0.00,high Float(5,2) default  0.00,low Float(5,2) default  0.00,volume Float(14,2) default  0.00);"
-    data = ('TB'+list[i][0])
-    cursor.execute(sql % data)
-    connect.commit()
-    print(data+'创建成功')
-    total=total+1
-print('成功创建', total, '张表')
-'''
 
 
 # 关闭连接
