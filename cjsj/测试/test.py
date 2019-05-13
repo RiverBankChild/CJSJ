@@ -71,6 +71,7 @@ for o in range(0,len(dmb_list)):
             data_zjl=('TB'+dmb_list[o][0],zjl_list[p][1],zjl_list[p][2],zjl_list[p][3],zjl_list[p][4],zjl_list[p][0])
             cursor.execute(sql % data_zjl)
         except Exception as e:
+            print(e)
             connect.rollback()  # 事务回滚
         else:
             connect.commit()  # 事务提交
