@@ -7,6 +7,7 @@ import pymysql
 import jqdatasdk as jq
 import time
 from _datetime import datetime
+from jqdatasdk import finance
  
 #认证
 jq.auth('13401179853','king179853')
@@ -25,6 +26,7 @@ connect = pymysql.Connect(
     charset='utf8'
 )
 cursor = connect.cursor()
+
 
 #获取现有代码表
 dm_old_list=[]
@@ -98,6 +100,18 @@ sql = "SELECT date FROM rqb order by id "
 cursor.execute(sql)
 for c in cursor.fetchall():
     date_old_list.append(c)
+
+#获取报告期数据
+rq_list=['2015-03-31','2015-06-30','2015-09-30','2015-12-31',
+         '2016-03-31','2016-06-30','2016-09-30','2016-12-31',
+         '2017-03-31','2017-06-30','2017-09-30','2017-12-31',
+         '2018-03-31','2018-06-30','2018-09-30','2018-12-31',
+         '2019-03-31','2019-06-30']
+rq_int_list=[20150331,20150630,20150930,20151231,
+         20160331,20160630,20160930,20161231,
+         20170331,20170630,20170930,20171231,
+         20180331,20180630,20180930,20181231,
+         20190331,20190630]
     
 #对比新老代码表和日期表
 date_insert_list=[]
@@ -136,28 +150,143 @@ for o in range(len(dm_delete_list)):
     cursor.execute(sql)
     connect.commit()
     total=total+cursor.rowcount
+    print('成功删除', 'TB'+dm_delete_list[o][0])
 print('成功删除', total, '张股票表')
 
 #2.插入新上市的表
-#更新股票数据 更新日期2019-5-10
-for i in range(0, len(df2)):#len(df)
-    df1=jq.get_price(df2.iloc[i]['dm'], start_date='2019-05-09',end_date=d, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')#[total-total-total:]
-    df1.reset_index(inplace=True,drop=False)
-    list3=df1.values.tolist()
-    #插入数据 
-    for j in range(len(list3)):
+total=0
+for p in range(0, len(dm_insert_list)):
+    sql = "create table IF NOT EXISTS s% (\
+    id int primary key auto_increment,\
+    dm varchar(8)  default '未知代码',\
+    date varchar(16)  default '未知日期',\
+    open Float(7,2) default  0.00,\
+    close Float(7,2) default  0.00,\
+    high Float(7,2) default  0.00,\
+    low Float(7,2) default  0.00,\
+    cjl Float(14,2) default  0.00,\
+    ltsz   Float(14,2) default  0.00,\
+    syl    Float(10,2)  default  0.00,\
+    ys     Float(14,2) default  0.00,\
+    jlr    Float(14,2) default  0.00,\
+    cdd    Float(14,2) default  0.00,\
+    dd    Float(14,2) default  0.00,\
+    zd    Float(14,2) default  0.00,\
+    xd    Float(14,2) default  0.00,\
+    lt_1  Float(5,2) default  0.00,\
+    lt_2  Float(5,2) default  0.00,\
+    lt_3  Float(5,2) default  0.00,\
+    lt_4  Float(5,2) default  0.00,\
+    lt_5  Float(5,2) default  0.00,\
+    lt_6  Float(5,2) default  0.00,\
+    lt_7  Float(5,2) default  0.00,\
+    lt_8  Float(5,2) default  0.00,\
+    lt_9  Float(5,2) default  0.00,\
+    lt_10  Float(5,2) default  0.00\
+    );"       
+    data = ('TB'+dm_insert_list[p][0])
+    cursor.execute(sql % data)
+    connect.commit()
+    total=total+cursor.rowcount
+    print('成功创建','TB'+dm_insert_list[p][0])
+print('成功创建',total,'张表')
+
+#3.向新增加的表中插入数据
+dm_insert_sh_list=[]
+for s in range(len(dm_insert_list)):
+    if dm_insert_list[s][0].startswith('6'):
+        t=dm_insert_list[s][0]+'.XSHG'
+    else:
+        t=dm_insert_list[s][0]+'.XSHE'        
+    dm_insert_sh_list.append(t)  
+for q in range(0, len(dm_insert_list)):
+    #获取收盘价
+    insert_df=jq.get_price(dm_insert_sh_list[q],  end_date=d, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
+    insert_df.reset_index(inplace=True,drop=False)
+    insert_list=insert_df.values.tolist()
+    for s in range(len(insert_list)):
+        sql = "INSERT INTO %s (date,open,close,high,low,volume) VALUES ( '%s', %.2f ,%.2f ,%.2f ,%.2f,%.2f  )" 
+        date = datetime.date(datetime.fromtimestamp(insert_list[s][0].timestamp()))       
+        data = ('TB'+dm_insert_list[q][0],date,insert_list[s][1],insert_list[s][2],insert_list[s][3],insert_list[s][4],insert_list[s][5])
+        cursor.execute(sql % data)
+        connect.commit()
+    print('TB',dm_insert_sh_list[q][:6]+'收盘价数据获取完成')
+    
+    #获取市值
+    for u in range(len(date_new_list)):
+        df_volandincome = jq.get_fundamentals(jq.query(
+        jq.valuation.code, 
+        jq.valuation.circulating_market_cap, 
+        jq.valuation.pe_ratio, 
+        jq.income.total_operating_revenue,
+        jq.income.np_parent_company_owners 
+        ).filter(
+        jq.valuation.code == dm_insert_sh_list[q]
+        ), date=date_new_list[u])
+        volandincome_list=df_volandincome.values.tolist()
+        total=0;
+        for v in range(0,len(volandincome_list)):
+            try:
+                sql = "update %s set dm='%s'  , ltsz=%.2f ,  syl=%.2f  ,  ys=%.2f  ,  jlr=%.2f  where date='%s'"
+                data=('TB'+volandincome_list[v][0][:6],volandincome_list[v][0][:6],volandincome_list[v][1],volandincome_list[v][2],volandincome_list[v][3],volandincome_list[v][4],date_list[u][0])
+                cursor.execute(sql % data)
+            except Exception as e:
+                connect.rollback()  # 事务回滚
+            else:
+                connect.commit()  # 事务提交
+                total=total+cursor.rowcount
+    print('TB',dm_insert_sh_list[q][:6]+'流通市值数据获取完成')
+    
+    #获取资金流向
+    zjl_df=jq.get_money_flow(dm_insert_sh_list[q], start_date='2015-01-01', end_date='2019-05-10', fields=['date','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
+    zjl_list=zjl_df.values.tolist()
+    total=0;
+    for p in range(0,len(zjl_list)):
         try:
-            sql = "INSERT INTO %s (date,open,close,high,low,volume) VALUES ( '%s', %.2f ,%.2f ,%.2f ,%.2f,%.2f  )"
-            date = datetime.date(datetime.fromtimestamp(list3[j][0].timestamp()))        
-            data = ('TB'+df2.iloc[i]['dm'][:6],date,list3[j][1],list3[j][2],list3[j][3],list3[j][4],list3[j][5])
+            sql = "update %s set  cdd=%.2f ,  dd=%.2f  ,  zd=%.2f  ,  xd=%.2f  where date='%s'"
+            data=('TB'+dm_insert_list[q][0],zjl_list[p][1],zjl_list[p][2],zjl_list[p][3],zjl_list[p][4],datetime.date(datetime.fromtimestamp(zjl_list[p][0].timestamp())))
             cursor.execute(sql % data)
         except Exception as e:
+            print(e)
             connect.rollback()  # 事务回滚
-            continue
         else:
-            connect.commit()# 事务提交
-    print(df2.iloc[i]['dm'][:6]+'数据更新完成')
-print('所有数据更新完成')
+            connect.commit()  # 事务提交
+            total=total+cursor.rowcount
+    print('TB',dm_insert_sh_list[q][:6]+'资金流数据获取完成')
+    
+    #获取流通股东   
+    date_int_list=[]
+    sql2 = "SELECT date FROM rqb order by id "
+    cursor.execute(sql2)
+    for row in cursor.fetchall():
+        p=int(row[0].replace('-','').replace('\'', ''))        
+        date_int_list.append(p) 
+    for x in range(len(rq_list)): 
+        ltgd_df=finance.run_query(jq.query(
+        finance.STK_SHAREHOLDER_FLOATING_TOP10.code,
+        finance.STK_SHAREHOLDER_FLOATING_TOP10.shareholder_rank,
+        finance.STK_SHAREHOLDER_FLOATING_TOP10.share_ratio
+        ).filter(
+        finance.STK_SHAREHOLDER_FLOATING_TOP10.code==dm_insert_sh_list[q],
+        finance.STK_SHAREHOLDER_FLOATING_TOP10.end_date==rq_list[x]  
+        ))
+        total=0;
+        for z in range(len(date_int_list)):
+            if date_int_list[z]>rq_int_list[x] and date_int_list[z]<=rq_int_list[x+1]:
+                try:
+                    sql = "update %s set lt_1='%s'  , lt_2='%s'  ,lt_3='%s'  ,lt_4='%s'  ,lt_5='%s'  ,lt_6='%s'  ,lt_7='%s'  ,lt_8='%s'  ,lt_9='%s'  ,lt_10='%s'    where date='%s'"
+                    data=('TB'+dm_insert_list[q][0],ltgd_df.iloc[0]['share_ratio'],ltgd_df.iloc[1]['share_ratio'],ltgd_df.iloc[2]['share_ratio'],ltgd_df.iloc[3]['share_ratio'],ltgd_df.iloc[4]['share_ratio'],ltgd_df.iloc[5]['share_ratio'],ltgd_df.iloc[6]['share_ratio'],ltgd_df.iloc[7]['share_ratio'],ltgd_df.iloc[8]['share_ratio'],ltgd_df.iloc[9]['share_ratio'],date_list[z])
+                    cursor.execute(sql % data)
+                except Exception as e:
+                    print(e)
+                    connect.rollback()  # 事务回滚
+                else:
+                    connect.commit()  # 事务提交
+                    total=total+cursor.rowcount
+    print('TB',dm_insert_sh_list[q][:6]+'流通股东数据获取完成')   
+print('新表所有数据插入完毕')   
+
+#更新所有老表数据      
 
 # 关闭连接
 cursor.close()

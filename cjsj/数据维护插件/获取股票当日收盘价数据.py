@@ -14,8 +14,6 @@ jq.auth('13401179853','king179853')
 #定义当前日期
 d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
 print(d)
-#调用jqdata获取数据
-df=jq.get_all_securities(date=d );
 
 #建立连接
 connect = pymysql.Connect(
@@ -27,6 +25,8 @@ connect = pymysql.Connect(
     charset='utf8'
 )
 
+#调用jqdata获取数据
+df=jq.get_all_securities(date=d );
 # 获取游标
 cursor = connect.cursor()
 #数据整理
