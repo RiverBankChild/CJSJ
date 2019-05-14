@@ -13,9 +13,20 @@ jq.auth('13401179853','king179853')
 #定义当前日期
 d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
 print(d)
+
+#建立连接获取游标
+connect = pymysql.Connect(
+    host='localhost',
+    port=3306,
+    user='root',
+    passwd='123456',
+    db='xg',
+    charset='utf8'
+)
+cursor = connect.cursor()
+
 #调用jqdata获取数据
 df=jq.get_all_securities(date=d );
-
 #数据整理
 df.drop(columns=['start_date', 'end_date','type','name'],axis=1,inplace=True);
 df.rename(columns={'display_name':'name'},inplace=True)
@@ -25,18 +36,6 @@ for i in range(0, len(df)):
     df.iloc[i]['dm']=df.iloc[i]['dm'][:6] 
 list=df.values.tolist()
 
-#建立连接
-connect = pymysql.Connect(
-    host='localhost',
-    port=3306,
-    user='root',
-    passwd='123456',
-    db='xg',
-    charset='utf8'
-)
-
-# 获取游标
-cursor = connect.cursor()
 
 # 插入数据
 total=0;
