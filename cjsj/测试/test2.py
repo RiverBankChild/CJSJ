@@ -5,49 +5,24 @@ Created on 2019年5月1日
 '''
 import pymysql
 import jqdatasdk as jq
-import time
- 
-#jqdata认证
-jq.auth('13401179853','king179853')
+from jqdatasdk import finance
 
-#定义当前日期
-d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
-print(d)
-#调用jqdata获取数据
-df=jq.get_all_securities(date=d );
 
-#数据整理
-df.drop(columns=['start_date', 'end_date','type','name'],axis=1,inplace=True);
-df.rename(columns={'display_name':'name'},inplace=True)
-df.reset_index(inplace=True,drop=False)
-df.rename(columns={'index':'dm'},inplace=True)
-for i in range(0, len(df)):
-    df.iloc[i]['dm']=df.iloc[i]['dm']#[:6] 
-list=df.values.tolist()
+#获取报告期数据
+re=[]
+rq_list=['2015-03-31','2015-06-30','2015-09-30','2015-12-31',
+         '2016-03-31','2016-06-30','2016-09-30','2016-12-31',
+         '2017-03-31','2017-06-30','2017-09-30','2017-12-31',
+         '2018-03-31','2018-06-30','2018-09-30','2018-12-31',
+         '2019-03-31']
+rq_int_list=[20150331,20150630,20150930,20151231,
+         20160331,20160630,20160930,20161231,
+         20170331,20170630,20170930,20171231,
+         20180331,20180630,20180930,20181231,
+         20190331]
 
-#建立连接
-connect = pymysql.Connect(
-    host='localhost',
-    port=3306,
-    user='root',
-    passwd='123456',
-    db='xg',
-    charset='utf8'
-)
 
-# 获取游标
-cursor = connect.cursor()
-
-# 插入数据
-total=0;
-for i in range(len(list)):
-    sql = "INSERT INTO gpdmb (dm,name) VALUES ( '%s', '%s')"
-    data = (list[i][0],list[i][1])
-    cursor.execute(sql % data)
-    connect.commit()
-    total=total+cursor.rowcount
-print('成功获取', total, '支股票')
-
-# 关闭连接
-cursor.close()
-connect.close()
+for i in range(len(rq_list)):
+    p=int(rq_list[i].replace('-','').replace('\'', ''))     
+    re.append(p) 
+print(re)
