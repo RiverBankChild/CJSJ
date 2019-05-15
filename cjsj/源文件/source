@@ -50,6 +50,7 @@ lt_9  Float(5,2) default  0.00,
 lt_10  Float(5,2) default  0.00
 );
 
+
 更新股票表的dm为同一个dm
 用于清空某表的数据 且让自增的id重新从0开始 truncate table 你的表名  
 采集上市日期
