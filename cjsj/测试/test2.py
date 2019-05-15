@@ -19,22 +19,19 @@ connect = pymysql.Connect(
 )
 cursor = connect.cursor()
 
-dm_list=['000001','000002']
+dm_delete_list= [['000001', '平安银行']]
 
 # 插入数据
-total=0;
-for i in range(len(dm_list)):
-    sql = "create table IF NOT EXISTS %s  (id int primary key auto_increment);"    
-    data = 'TB'+dm_list[i]
-    print(sql)
+total=0
+for o in range(len(dm_delete_list)):
+    sql = " drop table %s"
+    data = ('TB'+dm_delete_list[o][0])
     print(data)
-    cursor.execute(sql % data)
-    break
+    cursor.execute(sql%data)
     connect.commit()
-    print(data+'创建成功')
-    total=total+1
-print('成功创建', total, '张表')
-
+    total=total+cursor.rowcount
+    print('成功删除', 'TB'+dm_delete_list[o][0])
+print('成功删除', total, '张股票表')
 # 关闭连接
 cursor.close()
 connect.close()
