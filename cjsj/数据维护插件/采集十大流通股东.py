@@ -63,8 +63,9 @@ for row in cursor.fetchall():
 
 
 #主体部分
-for x in range(len(rq_list)): 
-    for y in range(0,len(dm_list)):
+for y in range(0,len(dm_list)):
+    total=0;
+    for x in range(len(rq_list)): 
         ltgd_df=finance.run_query(jq.query(
         finance.STK_SHAREHOLDER_FLOATING_TOP10.code,
         finance.STK_SHAREHOLDER_FLOATING_TOP10.shareholder_rank,
@@ -73,20 +74,19 @@ for x in range(len(rq_list)):
         finance.STK_SHAREHOLDER_FLOATING_TOP10.code==dm_list[y],
         finance.STK_SHAREHOLDER_FLOATING_TOP10.end_date==rq_list[x]  
         ))
-        total=0;
         for z in range(len(date_int_list)):
             if date_int_list[z]>rq_int_list[x] and date_int_list[z]<=rq_int_list[x+1]:
                 try:
-                    sql = "update %s set lt_1='%s'  , lt_2='%s'  ,lt_3='%s'  ,lt_4='%s'  ,lt_5='%s'  ,lt_6='%s'  ,lt_7='%s'  ,lt_8='%s'  ,lt_9='%s'  ,lt_10='%s'    where date='%s'"
-                    data=('TB'+dm_list[y][:6],ltgd_df.iloc[0]['share_ratio'],ltgd_df.iloc[1]['share_ratio'],ltgd_df.iloc[2]['share_ratio'],ltgd_df.iloc[3]['share_ratio'],ltgd_df.iloc[4]['share_ratio'],ltgd_df.iloc[5]['share_ratio'],ltgd_df.iloc[6]['share_ratio'],ltgd_df.iloc[7]['share_ratio'],ltgd_df.iloc[8]['share_ratio'],ltgd_df.iloc[9]['share_ratio'],date_list[z])
+                    sql = "  update %s set lt_1=%.2f , lt_2=%.2f  ,lt_3=%.2f  ,lt_4=%.2f  ,lt_5=%.2f  ,lt_6=%.2f  ,lt_7=%.2f  ,lt_8=%.2f  ,lt_9=%.2f  ,lt_10=%.2f    where date='%s'"
+                    data=('TB'+dm_list[y][:6],ltgd_df.iloc[0]['share_ratio'],ltgd_df.iloc[1]['share_ratio'],ltgd_df.iloc[2]['share_ratio'],ltgd_df.iloc[3]['share_ratio'],ltgd_df.iloc[4]['share_ratio'],ltgd_df.iloc[5]['share_ratio'],ltgd_df.iloc[6]['share_ratio'],ltgd_df.iloc[7]['share_ratio'],ltgd_df.iloc[8]['share_ratio'],ltgd_df.iloc[9]['share_ratio'],date_list[z][0])
                     cursor.execute(sql % data)
                 except Exception as e:
                     print(e)
                     connect.rollback()  # 事务回滚
                 else:
                     connect.commit()  # 事务提交
-                    total=total+cursor.rowcount
-    print(dm_list[y],'数据插入完毕','共更新了',total,'条数据')   
+                    total=total+cursor.rowcount                   
+    print(dm_list[y],'数据插入完毕，共更新了',total,'条数据')   
 print('所有数据插入完毕')         
 
 # 关闭连接

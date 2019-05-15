@@ -5,24 +5,36 @@ Created on 2019年5月1日
 '''
 import pymysql
 import jqdatasdk as jq
-from jqdatasdk import finance
+import time
 
 
-#获取报告期数据
-re=[]
-rq_list=['2015-03-31','2015-06-30','2015-09-30','2015-12-31',
-         '2016-03-31','2016-06-30','2016-09-30','2016-12-31',
-         '2017-03-31','2017-06-30','2017-09-30','2017-12-31',
-         '2018-03-31','2018-06-30','2018-09-30','2018-12-31',
-         '2019-03-31']
-rq_int_list=[20150331,20150630,20150930,20151231,
-         20160331,20160630,20160930,20161231,
-         20170331,20170630,20170930,20171231,
-         20180331,20180630,20180930,20181231,
-         20190331]
+#建立连接 获取游标
+connect = pymysql.Connect(
+    host='localhost',
+    port=3306,
+    user='root',
+    passwd='123456',
+    db='xg',
+    charset='utf8'
+)
+cursor = connect.cursor()
 
+dm_list=['000001','000002']
 
-for i in range(len(rq_list)):
-    p=int(rq_list[i].replace('-','').replace('\'', ''))     
-    re.append(p) 
-print(re)
+# 插入数据
+total=0;
+for i in range(len(dm_list)):
+    sql = "create table IF NOT EXISTS %s  (id int primary key auto_increment);"    
+    data = 'TB'+dm_list[i]
+    print(sql)
+    print(data)
+    cursor.execute(sql % data)
+    break
+    connect.commit()
+    print(data+'创建成功')
+    total=total+1
+print('成功创建', total, '张表')
+
+# 关闭连接
+cursor.close()
+connect.close()

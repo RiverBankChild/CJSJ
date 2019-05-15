@@ -27,7 +27,7 @@ sql = "SELECT date FROM rqb order by id "
 cursor.execute(sql)
 for row in cursor.fetchall():
     date_list.append(row)
-for k in range(338,len(date_list)):
+for k in range(0,len(date_list)):
     df_volandincome = jq.get_fundamentals(jq.query(
     jq.valuation.code, 
     jq.valuation.circulating_market_cap, 

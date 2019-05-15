@@ -27,6 +27,7 @@ cursor = connect.cursor()
 
 #调用jqdata获取数据
 df=jq.get_all_securities(date=d );
+
 #数据整理
 df.drop(columns=['start_date', 'end_date','type','name'],axis=1,inplace=True);
 df.rename(columns={'display_name':'name'},inplace=True)

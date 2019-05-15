@@ -46,7 +46,6 @@ for k in range(0,len(list5)):
         cursor.execute(sql % datak)
     except Exception as e:
         connect.rollback()  # 事务回滚
-        continue
     else:
         connect.commit()  # 事务提交
         total=total+cursor.rowcount

@@ -6,9 +6,13 @@ Created on 2019年5月1日
 import pymysql
 import jqdatasdk as jq
 from _datetime import datetime
+import time
  
 #jqdata认证
 jq.auth('13401179853','king179853')
+
+d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
+print('今天是'+d)
 
 #建立连接# 获取游标
 connect = pymysql.Connect(
@@ -34,14 +38,13 @@ for row in cursor.fetchall():
     dmb_list.append(r)       
 
 for o in range(0,len(dmb_list)):
-    zjl_df=jq.get_money_flow([dmb_list[o]], start_date='2015-01-01', end_date='2019-05-15', fields=['date','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
+    zjl_df=jq.get_money_flow([dmb_list[o]], start_date='2015-01-01', end_date=d, fields=['date','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
     zjl_list=zjl_df.values.tolist()
 
     total=0;
     for p in range(0,len(zjl_list)):
         try:
             sql = "update %s set  cdd=%.2f ,  dd=%.2f  ,  zd=%.2f  ,  xd=%.2f  where date='%s'"
-            #sql = "update %s set dm='%s'  , ltsz=%.2f ,  syl=%.2f  ,  ys=%.2f  ,  jlr=%.2f  where date='%s'"
             data=('TB'+dmb_list[o][:6],zjl_list[p][1],zjl_list[p][2],zjl_list[p][3],zjl_list[p][4],datetime.date(datetime.fromtimestamp(zjl_list[p][0].timestamp())))
             cursor.execute(sql % data)
         except Exception as e:
