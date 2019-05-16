@@ -194,6 +194,7 @@ for p in range(0, len(dm_insert_list)):
     close Float(7,2) default  0.00,\
     high Float(7,2) default  0.00,\
     low Float(7,2) default  0.00,\
+    zdf  Float(5,2) default  0.00,\
     cjl Float(14,2) default  0.00,\
     ltsz   Float(14,2) default  0.00,\
     syl    Float(10,2)  default  0.00,\
@@ -266,11 +267,11 @@ for q in range(0, len(dm_insert_list)):
     
     
     #获取资金流向
-    zjl_df=jq.get_money_flow(dm_insert_sh_list[q], start_date='2015-01-01', end_date=d, fields=['date','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
+    zjl_df=jq.get_money_flow(dm_insert_sh_list[q], start_date='2015-01-01', end_date=d, fields=['date','change_pct','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
     zjl_list=zjl_df.values.tolist()
     for p in range(0,len(zjl_list)):
-        sql = "update %s set  cdd=%.2f ,  dd=%.2f  ,  zd=%.2f  ,  xd=%.2f  where date='%s'"
-        data=('TB'+dm_insert_list[q][0],zjl_list[p][1],zjl_list[p][2],zjl_list[p][3],zjl_list[p][4],datetime.date(datetime.fromtimestamp(zjl_list[p][0].timestamp())))
+        sql = "update %s set zdf=%.2f , cdd=%.2f ,  dd=%.2f  ,  zd=%.2f  ,  xd=%.2f  where date='%s'"
+        data=('TB'+dm_insert_list[q][0],zjl_list[p][1],zjl_list[p][2],zjl_list[p][3],zjl_list[p][4],zjl_list[p][5],datetime.date(datetime.fromtimestamp(zjl_list[p][0].timestamp())))
         cursor.execute(sql % data)
         connect.commit()  # 事务提交
     print('TB'+dm_insert_sh_list[q][:6],'资金流数据获取完成')
@@ -357,12 +358,12 @@ for q in range(0, len(dm_update_list)):
 
     
     #更新资金流向
-    zjl_df=jq.get_money_flow(dm_sh_list[q], start_date=date_insert_list[0] , end_date=date_insert_list[-1], fields=['date','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
+    zjl_df=jq.get_money_flow(dm_sh_list[q], start_date=date_insert_list[0] , end_date=date_insert_list[-1], fields=['date','change_pct','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
     zjl_list=zjl_df.values.tolist()
     for p in range(0,len(zjl_list)):
-        sql = "update %s set  cdd=%.2f ,  dd=%.2f  ,  zd=%.2f  ,  xd=%.2f  where date='%s'"
+        sql = "update %s set zdf=%.2f, cdd=%.2f ,  dd=%.2f  ,  zd=%.2f  ,  xd=%.2f  where date='%s'"
         try:
-            data=('TB'+dm_update_list[q][0],zjl_list[p][1],zjl_list[p][2],zjl_list[p][3],zjl_list[p][4],datetime.date(datetime.fromtimestamp(zjl_list[p][0].timestamp())))
+            data=('TB'+dm_update_list[q][0],zjl_list[p][1],zjl_list[p][2],zjl_list[p][3],zjl_list[p][4],zjl_list[p][5],datetime.date(datetime.fromtimestamp(zjl_list[p][0].timestamp())))
             cursor.execute(sql % data)
         except Exception as e:
             connect.rollback()  # 事务回滚

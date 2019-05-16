@@ -50,7 +50,7 @@ for i in range(0,len(list_dm)):
     '''
     
     data = ('TB'+list_dm[i][0])
-    sql="alter table %s modify column syl Float(10,2)  default  0.00;"
+    sql="ALTER TABLE %s ADD zdf  Float(5,2) default  0.00;"
     cursor.execute(sql % data)
     connect.commit()
     print(data+'修改成功')
