@@ -5,7 +5,7 @@ pip install seaborn scipy  -i http://pypi.douban.com/simple --trusted-host pypi.
 pip install pymysql -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 
 ----------------------------------说明----------------------------------
-采集数据的时候请指定日期
+采集数据的时候请指定日期，最好在周末进行
 获取上证指数---->采集日期----->获取代码表------>创建股票表------>采集收盘数据------>采集流通市值和净利润------>采集资金流----->采集十大流通股东
 
 
