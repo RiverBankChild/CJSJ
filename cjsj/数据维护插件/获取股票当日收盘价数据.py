@@ -38,7 +38,7 @@ for row in cursor.fetchall():
     dm_list.append(r)  
 
 for i in range(0, len(dm_list)):
-    df1=jq.get_price(dm_list[i],  end_date=d, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
+    df1=jq.get_price(dm_list[i],  end_date='2019-05-10', frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
     df1.reset_index(inplace=True,drop=False)
     list=df1.values.tolist()
     for j in range(len(list)):
@@ -46,7 +46,7 @@ for i in range(0, len(dm_list)):
         date = datetime.date(datetime.fromtimestamp(list[j][0].timestamp()))        
         data = ('TB'+dm_list[i][:6],date,list[j][1],list[j][2],list[j][3],list[j][4],list[j][5])
         cursor.execute(sql % data)
-        connect.commit()
+        connect.commit()  # 事务提交  
     print(dm_list[i][:6]+'历史收盘价获取完成')
 print('所有历史收盘价获取完成')
 

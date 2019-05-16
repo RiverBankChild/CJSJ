@@ -5,7 +5,8 @@ Created on 2019年5月1日
 '''
 import pymysql
 import jqdatasdk as jq
-import time
+#认证
+jq.auth('13401179853','king179853')
 
 
 #建立连接 获取游标
@@ -18,20 +19,20 @@ connect = pymysql.Connect(
     charset='utf8'
 )
 cursor = connect.cursor()
+df_volandincome = jq.get_fundamentals(jq.query(
+        jq.valuation.code, 
+        jq.valuation.circulating_market_cap, 
+        jq.valuation.pe_ratio, 
+        jq.income.total_operating_revenue,
+        jq.income.np_parent_company_owners 
+        ).filter(
+        jq.valuation.code == '603999.XSHG'
+        ), date='2019-01-05')
+volandincome_list=df_volandincome.values.tolist()
+print(volandincome_list)
 
-dm_delete_list= [['000001', '平安银行']]
 
-# 插入数据
-total=0
-for o in range(len(dm_delete_list)):
-    sql = " drop table %s"
-    data = ('TB'+dm_delete_list[o][0])
-    print(data)
-    cursor.execute(sql%data)
-    connect.commit()
-    total=total+cursor.rowcount
-    print('成功删除', 'TB'+dm_delete_list[o][0])
-print('成功删除', total, '张股票表')
-# 关闭连接
+
+
 cursor.close()
 connect.close()

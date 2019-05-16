@@ -38,12 +38,13 @@ for k in range(0,len(date_list)):
     volandincome_list=df_volandincome.values.tolist()
     total=0;
     for l in range(0,len(volandincome_list)):
+        sql = "update %s set dm='%s'  , ltsz=%.2f ,  syl=%.2f  ,  ys=%.2f  ,  jlr=%.2f  where date='%s'"
         try:
-            sql = "update %s set dm='%s'  , ltsz=%.2f ,  syl=%.2f  ,  ys=%.2f  ,  jlr=%.2f  where date='%s'"
             dataall=('TB'+volandincome_list[l][0][:6],volandincome_list[l][0][:6],volandincome_list[l][1],volandincome_list[l][2],volandincome_list[l][3],volandincome_list[l][4],date_list[k][0])
             cursor.execute(sql % dataall)
         except Exception as e:
             connect.rollback()  # 事务回滚
+            continue
         else:
             connect.commit()  # 事务提交
             total=total+cursor.rowcount

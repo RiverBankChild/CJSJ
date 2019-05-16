@@ -38,21 +38,16 @@ for row in cursor.fetchall():
     dmb_list.append(r)       
 
 for o in range(0,len(dmb_list)):
-    zjl_df=jq.get_money_flow([dmb_list[o]], start_date='2015-01-01', end_date=d, fields=['date','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
+    zjl_df=jq.get_money_flow([dmb_list[o]], start_date='2015-01-01', end_date='2019-05-10', fields=['date','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
     zjl_list=zjl_df.values.tolist()
 
     total=0;
     for p in range(0,len(zjl_list)):
-        try:
-            sql = "update %s set  cdd=%.2f ,  dd=%.2f  ,  zd=%.2f  ,  xd=%.2f  where date='%s'"
-            data=('TB'+dmb_list[o][:6],zjl_list[p][1],zjl_list[p][2],zjl_list[p][3],zjl_list[p][4],datetime.date(datetime.fromtimestamp(zjl_list[p][0].timestamp())))
-            cursor.execute(sql % data)
-        except Exception as e:
-            print(e)
-            connect.rollback()  # 事务回滚
-        else:
-            connect.commit()  # 事务提交
-            total=total+cursor.rowcount
+        sql = "update %s set  cdd=%.2f ,  dd=%.2f  ,  zd=%.2f  ,  xd=%.2f  where date='%s'"
+        data=('TB'+dmb_list[o][:6],zjl_list[p][1],zjl_list[p][2],zjl_list[p][3],zjl_list[p][4],datetime.date(datetime.fromtimestamp(zjl_list[p][0].timestamp())))
+        cursor.execute(sql % data)
+        connect.commit()  # 事务提交
+        total=total+cursor.rowcount
     print(dmb_list[o],'数据插入完毕,','共更新了',total,'条数据')
 print("所有数据插入完成")
 

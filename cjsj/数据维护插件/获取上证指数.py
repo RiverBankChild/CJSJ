@@ -29,7 +29,7 @@ connect = pymysql.Connect(
 # 获取游标
 cursor = connect.cursor()
 
-df1=jq.get_price('000001.XSHG',  end_date=d, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
+df1=jq.get_price('000001.XSHG',  end_date='2019-05-10', frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
 df1.reset_index(inplace=True,drop=False)
 list=df1.values.tolist()
 #插入数据 

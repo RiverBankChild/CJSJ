@@ -29,12 +29,12 @@ rq_list=['2015-03-31','2015-06-30','2015-09-30','2015-12-31',
          '2016-03-31','2016-06-30','2016-09-30','2016-12-31',
          '2017-03-31','2017-06-30','2017-09-30','2017-12-31',
          '2018-03-31','2018-06-30','2018-09-30','2018-12-31',
-         '2019-03-31','2019-06-30']
+         '2019-03-31','2019-06-30','2019-09-30','2019-12-31']
 rq_int_list=[20150331,20150630,20150930,20151231,
          20160331,20160630,20160930,20161231,
          20170331,20170630,20170930,20171231,
          20180331,20180630,20180930,20181231,
-         20190331,20190630]
+         20190331,20190630,20190930,20191231]
 
 #获取日期数据
 date_list=[]
@@ -76,16 +76,16 @@ for y in range(0,len(dm_list)):
         ))
         for z in range(len(date_int_list)):
             if date_int_list[z]>rq_int_list[x] and date_int_list[z]<=rq_int_list[x+1]:
+                sql = "  update %s set lt_1=%.2f , lt_2=%.2f  ,lt_3=%.2f  ,lt_4=%.2f  ,lt_5=%.2f  ,lt_6=%.2f  ,lt_7=%.2f  ,lt_8=%.2f  ,lt_9=%.2f  ,lt_10=%.2f    where date='%s'"
                 try:
-                    sql = "  update %s set lt_1=%.2f , lt_2=%.2f  ,lt_3=%.2f  ,lt_4=%.2f  ,lt_5=%.2f  ,lt_6=%.2f  ,lt_7=%.2f  ,lt_8=%.2f  ,lt_9=%.2f  ,lt_10=%.2f    where date='%s'"
                     data=('TB'+dm_list[y][:6],ltgd_df.iloc[0]['share_ratio'],ltgd_df.iloc[1]['share_ratio'],ltgd_df.iloc[2]['share_ratio'],ltgd_df.iloc[3]['share_ratio'],ltgd_df.iloc[4]['share_ratio'],ltgd_df.iloc[5]['share_ratio'],ltgd_df.iloc[6]['share_ratio'],ltgd_df.iloc[7]['share_ratio'],ltgd_df.iloc[8]['share_ratio'],ltgd_df.iloc[9]['share_ratio'],date_list[z][0])
                     cursor.execute(sql % data)
                 except Exception as e:
-                    print(e)
                     connect.rollback()  # 事务回滚
+                    continue
                 else:
                     connect.commit()  # 事务提交
-                    total=total+cursor.rowcount                   
+                    total=total+cursor.rowcount
     print(dm_list[y],'数据插入完毕，共更新了',total,'条数据')   
 print('所有数据插入完毕')         
 
