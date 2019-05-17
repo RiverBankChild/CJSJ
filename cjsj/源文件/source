@@ -73,8 +73,11 @@ lt_10  Float(5,2) default  0.00
 
 更新股票表的dm为同一个dm
 用于清空某表的数据 且让自增的id重新从0开始 truncate table 你的表名  
-采集上市日期
-
+采集涨停价跌停价
+1.select * from table_a where id = (select id from table_a where id < {$id} order by id desc limit 1);   
+2.select * from table_a where id = (select id from table_a where id > {$id} order by id asc limit 1);  
+1.select * from table_a where id = (select max(id) from table_a where id < {$id});   
+2.select * from table_a where id = (select min(id) from table_a where id > {$id}); 
 
 
 
