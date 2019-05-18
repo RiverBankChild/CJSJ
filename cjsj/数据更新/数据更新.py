@@ -62,6 +62,9 @@ szzs_df=jq.get_price('000001.XSHG',  end_date=d, frequency='daily', fields=['ope
 szzs_df.reset_index(inplace=True,drop=False)
 szzs_list=szzs_df.values.tolist()
 total=0;
+sql10="truncate table szzs"
+cursor.execute(sql10)
+connect.commit() 
 for j in range(len(szzs_list)):
     try:
         sql = "INSERT INTO szzs (date,open,close,high,low,volume) VALUES ( '%s', %.2f ,%.2f ,%.2f ,%.2f,%.2f  )"
@@ -78,11 +81,17 @@ print('上证指数历史数据更新完成，共更新了',total,'条数据')
 
 
 #更新日期表
+total=0;
 date_list=[]
 sql = "SELECT date FROM szzs order by id "
 cursor.execute(sql)
 for row in cursor.fetchall():
     date_list.append(row)
+    
+sql11="truncate table rqb"
+cursor.execute(sql11)
+connect.commit() 
+   
 for k in range(0,len(date_list)):
     try:
         sql = "INSERT INTO rqb (date) VALUES ( '%s')"
@@ -124,7 +133,14 @@ date_insert_list=[]
 dm_insert_list=[]
 dm_delete_list=[]
 dm_update_list=[]
+dm_old_int_list=[]
+dm_new_int_list=[]
 
+for a0 in range(len(dm_old_list)):
+    dm_old_int_list.append(dm_old_list[a0][0])
+for b0 in range(len(dm_new_list)):
+    dm_new_int_list.append(dm_new_list[b0][0])
+    
 for f in range(len(date_new_list)):
     if date_new_list[f] in date_old_list:
         pass
@@ -132,13 +148,13 @@ for f in range(len(date_new_list)):
         date_insert_list.append(date_new_list[f])
         
 for g in range(len(dm_new_list)):
-    if dm_new_list[g] in dm_old_list:
+    if dm_new_int_list[g] in dm_old_int_list:
         pass
     else:
         dm_insert_list.append(dm_new_list[g])
         
 for h in range(len(dm_old_list)):
-    if dm_old_list[h] in dm_new_list:
+    if dm_old_int_list[h] in dm_new_int_list:
         pass
     else:
         dm_delete_list.append(dm_old_list[h])

@@ -63,7 +63,7 @@ for row in cursor.fetchall():
 
 
 #主体部分
-for y in range(0,len(dm_list)):
+for y in range(3050,len(dm_list)):
     total=0;
     for x in range(len(rq_list)): 
         ltgd_df=finance.run_query(jq.query(

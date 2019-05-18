@@ -37,6 +37,9 @@ for i in range(0, len(df)):
     df.iloc[i]['dm']=df.iloc[i]['dm'][:6] 
 list=df.values.tolist()
 
+sql1="truncate table dmb"
+cursor.execute(sql1)
+connect.commit()
 
 # 插入数据
 total=0;
