@@ -1,5 +1,9 @@
-# -*- encoding: utf8 -*-
-# version 1.11
+'''
+Created on 2019年5月31日
+ -*- encoding: utf8 -*-
+@author: Administrator
+'''
+
 
 
 import tkinter.messagebox,os
