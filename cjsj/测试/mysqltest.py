@@ -6,6 +6,7 @@ Created on 2019年4月30日
 '''
 import pymysql.cursors
 
+
 # 连接数据库
 connect = pymysql.Connect(
     host='localhost',
