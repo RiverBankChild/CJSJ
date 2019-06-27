@@ -1,6 +1,7 @@
 '''
 Created on 2019年5月1日
 # -*- coding:utf-8 -*-
+除权最好一个月一次，需要在周末进行
 @author: Administrator
 '''
 import pymysql
