@@ -84,7 +84,6 @@ for x in range(0,len(dm_sh_list)):
                 else:
                     if((str(df.iloc[i]['dividend_ratio'])!='None' or str(df.iloc[i]['transfer_ratio'])!='None')):
                         dm_cq_list.append(df.iloc[i]['code'][:6])
-    print(dm_cq_list)
 print(dm_cq_list)        
 print("共需要更新",len(dm_cq_list),'张表')
 
