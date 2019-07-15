@@ -1,0 +1,224 @@
+//jqdata安装
+pip install git+https://github.com/JoinQuant/jqdatasdk.git -i https://mirrors.aliyun.com/pypi/simple/
+
+
+//
+pip install matplotlib -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+pip install numpy -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+pip install pandas -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+pip install seaborn scipy  -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+pip install pymysql -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+
+//自动交易界面
+pip install tushare -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+pip install pywinauto -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+pip install pywin32 -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+
+
+
+
+----------------------------------说明----------------------------------
+采集数据的时候请指定日期，最好在周末进行
+获取上证指数---->采集日期----->获取代码表------>创建股票表------>采集收盘数据------>采集流通市值和净利润------>采集资金流----->采集十大流通股东
+
+
+数据更新的时候必须收盘后当天更新完毕
+
+
+
+------------------------------------------------------------------------
+
+
+create table dmb (id int primary key auto_increment,dm varchar(8) unique ,name varchar(8) default'未知名称');
+create table rqb (id int primary key auto_increment,date varchar(11) unique default '未知日期');
+create table szzs (id int primary key auto_increment,date varchar(16) unique default '未知',open Float(7,2) default  0.00,close Float(7,2) default  0.00,high Float(7,2) default  0.00,low Float(7,2) default  0.00,volume Float(16,2) default  0.00);
+
+
+create table  clb (
+id int primary key auto_increment,
+cgl Float(5,2) default  0.00 comment '成功率',
+cxgl Float(5,2) default  0.00 comment '出现概率',
+sy Float(5,2) default  0.00 comment '成功后收益多少点',
+
+name varchar(20) unique  default '未知策略名称',
+clzts  int(2) default  0 comment '策略总天数',
+cgts int(2) default  0 comment '持股天数',
+day1dpztx  int(2) default  0 comment '大盘状态最小值',
+day1dpztd  int(2) default  0 comment '大盘状态最大值',
+day1ltszx   Float(14,2) default  0.00 comment '流通市值最小值',
+day1ltszd   Float(14,2) default  0.00 comment '流通市值最大值',
+day1jlrx  Float(14,2) default  0.00 comment '净利润最小值',
+day1lt_3  Float(5,2) default  0.00 comment '三大流通股东',
+day1lt_4  Float(5,2) default  0.00 comment '四大流通股东',
+day1zdfx  Float(5,2) default  0.00 comment '涨跌幅最小值',
+day1zdfd  Float(5,2) default  0.00 comment '涨跌幅最大值',
+day1cjlx  Float(14,2) default  0.00 comment '成交量最小值',
+day1cjld  Float(14,2) default  0.00 comment '成交量最大值',
+day1syxx  Float(5,2) default  0.00 comment '上引线最小值',
+day1syxd  Float(5,2) default  0.00 comment '上引线最大值',
+day1xyxx  Float(5,2) default  0.00 comment '下引线最小值',
+day1xyxd  Float(5,2) default  0.00 comment '下引线最大值',
+day1stxx  Float(5,2) default  0.00 comment '实体线最小值',
+day1stxd  Float(5,2) default  0.00 comment '实体线最大值',
+day2zdfx  Float(5,2) default  0.00 comment '涨跌幅最小值',
+day2zdfd  Float(5,2) default  0.00 comment '涨跌幅最大值',
+day2cjlx  Float(14,2) default  0.00 comment '成交量最小值',
+day2cjld  Float(14,2) default  0.00 comment '成交量最大值',
+day2syxx  Float(5,2) default  0.00 comment '上引线最小值',
+day2syxd  Float(5,2) default  0.00 comment '上引线最大值',
+day2xyxx  Float(5,2) default  0.00 comment '下引线最小值',
+day2xyxd  Float(5,2) default  0.00 comment '下引线最大值',
+day2stxx  Float(5,2) default  0.00 comment '实体线最小值', 
+day2stxd  Float(5,2) default  0.00 comment '实体线最大值', 
+day3zdfx  Float(5,2) default  0.00 comment '涨跌幅最小值',
+day3zdfd  Float(5,2) default  0.00 comment '涨跌幅最大值',
+day3cjlx  Float(14,2) default  0.00 comment '成交量最小值',
+day3cjld  Float(14,2) default  0.00 comment '成交量最大值',
+day3syxx  Float(5,2) default  0.00 comment '上引线最小值',
+day3syxd  Float(5,2) default  0.00 comment '上引线最大值',
+day3xyxx  Float(5,2) default  0.00 comment '下引线最小值',
+day3xyxd  Float(5,2) default  0.00 comment '下引线最大值',
+day3stxx  Float(5,2) default  0.00 comment '实体线最小值',
+day3stxd  Float(5,2) default  0.00 comment '实体线最大值',
+day4zdfx  Float(5,2) default  0.00 comment '涨跌幅最小值',
+day4zdfd  Float(5,2) default  0.00 comment '涨跌幅最大值',
+day4cjlx  Float(14,2) default  0.00 comment '成交量最小值',
+day4cjld  Float(14,2) default  0.00 comment '成交量最大值',
+day4syxx  Float(5,2) default  0.00 comment '上引线最小值',
+day4syxd  Float(5,2) default  0.00 comment '上引线最大值',
+day4xyxx  Float(5,2) default  0.00 comment '下引线最小值',
+day4xyxd  Float(5,2) default  0.00 comment '下引线最大值',
+day4stxx  Float(5,2) default  0.00 comment '实体线最小值',
+day4stxd  Float(5,2) default  0.00 comment '实体线最大值',
+
+
+day5zdfx  Float(5,2) default  0.00 comment '涨跌幅最小值',
+day5zdfd  Float(5,2) default  0.00 comment '涨跌幅最大值',
+day5cjlx  Float(14,2) default  0.00 comment '成交量最小值',
+day5cjld  Float(14,2) default  0.00 comment '成交量最大值',
+day5syxx  Float(5,2) default  0.00 comment '上引线最小值',
+day5syxd  Float(5,2) default  0.00 comment '上引线最大值',
+day5xyxx  Float(5,2) default  0.00 comment '下引线最小值',
+day5xyxd  Float(5,2) default  0.00 comment '下引线最大值',
+day5stxx  Float(5,2) default  0.00 comment '实体线最小值',
+day5stxd  Float(5,2) default  0.00 comment '实体线最大值',
+
+daynn int(2) default  0,
+daynzdfx  Float(5,2) default  0.00 comment '涨跌幅最小值',
+daynzdfd  Float(5,2) default  0.00 comment '涨跌幅最大值',
+dayncjlx  Float(14,2) default  0.00 comment '成交量最小值',
+dayncjld  Float(14,2) default  0.00 comment '成交量最大值',
+daynsyxx  Float(5,2) default  0.00 comment '上引线最小值',
+daynsyxd  Float(5,2) default  0.00 comment '上引线最大值',
+daynxyxx  Float(5,2) default  0.00 comment '下引线最小值',
+daynxyxd  Float(5,2) default  0.00 comment '下引线最大值',
+daynstxx  Float(5,2) default  0.00 comment '实体线最小值',
+daynstxd  Float(5,2) default  0.00 comment '实体线最大值',
+
+
+daylast1zdfx  Float(5,2) default  0.00 comment '涨跌幅最小值',
+daylast1zdfd  Float(5,2) default  0.00 comment '涨跌幅最大值',
+daylast1cjlx  Float(14,2) default  0.00 comment '成交量最小值',
+daylast1cjld  Float(14,2) default  0.00 comment '成交量最大值',
+daylast1syxx  Float(5,2) default  0.00 comment '上引线最小值',
+daylast1syxd  Float(5,2) default  0.00 comment '上引线最大值',
+daylast1xyxx  Float(5,2) default  0.00 comment '下引线最小值',
+daylast1xyxd  Float(5,2) default  0.00 comment '下引线最大值',
+daylast1stxx  Float(5,2) default  0.00 comment '实体线最小值', 
+daylast1stxd  Float(5,2) default  0.00 comment '实体线最大值',
+daylast2zdfx  Float(5,2) default  0.00 comment '涨跌幅最小值',
+daylast2zdfd  Float(5,2) default  0.00 comment '涨跌幅最大值',
+daylast2cjlx  Float(14,2) default  0.00 comment '成交量最小值',
+daylast2cjld  Float(14,2) default  0.00 comment '成交量最大值',
+daylast2syxx  Float(5,2) default  0.00 comment '上引线最小值',
+daylast2syxd  Float(5,2) default  0.00 comment '上引线最大值',
+daylast2xyxx  Float(5,2) default  0.00 comment '下引线最小值',
+daylast2xyxd  Float(5,2) default  0.00 comment '下引线最大值',
+daylast2stxx  Float(5,2) default  0.00 comment '实体线最小值',  
+daylast2stxd  Float(5,2) default  0.00 comment '实体线最大值', 
+
+qjdfgs  int(2) default  0 comment '凸起1的个数',
+qjdfkssj int(2) default  0 comment '凸起1从第几天开始计算',
+qjdfts int(2) default  0 comment '凸起1的天数',
+qjdffd  Float(5,2) default  0.00  comment '凸起1的正负幅度',
+
+tq1gs  int(2) default  0 comment '凸起1的个数',
+tq1kssj int(2) default  0 comment '凸起1从第几天开始计算',
+tq1ts int(2) default  0 comment '凸起1的天数',
+tq1fd  Float(5,2) default  0.00  comment '凸起1的正负幅度',
+
+
+tq2gs  int(2) default  0,
+tq2kssj int(2) default  0,
+tq2ts int(2) default  0,
+tq2fd  Float(5,2) default  0.00,
+qjzf1zfx Float(5,2) default  0.00 comment '区间涨幅1的最小值',
+qjzf1zfd Float(5,2) default  0.00 comment '区间涨幅1的最大值',
+qjzf1kssj int(2) default  0 comment '区间涨幅1从第几天开始计算',
+qjzf1ts int(2) default  0 comment '区间涨幅1的天数',
+qjzf2zfx Float(5,2) default  0.00,
+qjzf2zfd Float(5,2) default  0.00,
+qjzf2kssj int(2) default  0,
+qjzf2ts int(2) default  0
+
+
+);
+
+ ALTER TABLE clb 
+     ADD COLUMN  ddwzx  int(2) default  0 comment '高低点位置从第几天开始计算',
+     ADD COLUMN  ddwzd  int(2) default  0 comment '高低点位置从第几天结束计算',
+     ADD COLUMN  ddfdx  Float(5,2) default  0.00  comment '高低点的幅度范围下边界',
+     ADD COLUMN  ddfdd  Float(5,2) default  0.00  comment '高低点的幅度范围上边界';
+     
+alter table clb ADD COLUMN  gxsj  Timestamp default  CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP  comment '更新时间';
+alter table clb ADD COLUMN  dltjts  int(3) default  0 comment '地量统计天数';
+
+
+create table dpztb (id int primary key auto_increment,date varchar(16) unique default '未知',close Float(7,2) default  0.00,ylw Float(7,2) default  0.00,zcw Float(7,2) default  0.00,dpzt int(2) default  0,czzn varchar(250) default  "未知操作指南",tag varchar(250) default  "未知标签");
+alter table dpztb ADD COLUMN  gxsj  Timestamp default  CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP  comment '更新时间';
+
+create table fzb (id int primary key auto_increment,dm varchar(8) unique ,name varchar(8) default'未知名称',tag1 varchar(250) default  "未知标签1",tag2 varchar(250) default  "未知标签2",tag3 varchar(250) default  "未知标签3");
+
+create table IF NOT EXISTS tb+dm (
+id int primary key auto_increment,
+dm varchar(8)  default '未知代码',
+date varchar(16) unique default '未知日期',
+open Float(7,2) default  0.00,
+close Float(7,2) default  0.00,
+high Float(7,2) default  0.00,
+low Float(7,2) default  0.00,
+zdf  Float(5,2) default  0.00,
+cjl Float(14,2) default  0.00,
+ltsz   Float(14,2) default  0.00,
+syl    Float(10,2)  default  0.00,
+ys     Float(14,2) default  0.00,
+jlr    Float(14,2) default  0.00,
+cdd    Float(14,2) default  0.00,
+dd    Float(14,2) default  0.00,
+zd    Float(14,2) default  0.00,
+xd    Float(14,2) default  0.00,
+lt_1  Float(5,2) default  0.00,
+lt_2  Float(5,2) default  0.00,
+lt_3  Float(5,2) default  0.00,
+lt_4  Float(5,2) default  0.00,
+lt_5  Float(5,2) default  0.00,
+lt_6  Float(5,2) default  0.00,
+lt_7  Float(5,2) default  0.00,
+lt_8  Float(5,2) default  0.00,
+lt_9  Float(5,2) default  0.00,
+lt_10  Float(5,2) default  0.00
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
