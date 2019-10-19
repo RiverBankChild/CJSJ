@@ -78,7 +78,7 @@ for x in range(0,len(dm_sh_list)):
                 print('NONE')
                 pass
             else:
-                if(int(str(df.iloc[i]['a_xr_date']).replace('-',''))>int(d.replace('-','')) or int(str(df.iloc[i]['a_xr_date']).replace('-',''))<int('2019-08-30'.replace('-',''))):
+                if(int(str(df.iloc[i]['a_xr_date']).replace('-',''))>int(d.replace('-','')) or int(str(df.iloc[i]['a_xr_date']).replace('-',''))<int('2019-10-19'.replace('-',''))):
                     print('未来除权或者已经除权')
                     pass
                 else:
