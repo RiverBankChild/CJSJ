@@ -1,6 +1,7 @@
 //jqdata安装
 pip install git+https://github.com/JoinQuant/jqdatasdk.git -i https://mirrors.aliyun.com/pypi/simple/
-
+pip install --user jqdatasdk
+pip install -U jqdatasdk
 //
 pip install matplotlib -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 pip install numpy -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
