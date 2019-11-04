@@ -1,7 +1,7 @@
 '''
 Created on 2019年5月1日
 # -*- coding:utf-8 -*-
-除权最好一个月一次，需要在周末进行，上一次除权6月30日
+除权最好一个月一次，需要在周末进行，上一次除权10月27日
 @author: Administrator
 '''
 import pymysql
@@ -78,7 +78,7 @@ for x in range(0,len(dm_sh_list)):
                 print('NONE')
                 pass
             else:
-                if(int(str(df.iloc[i]['a_xr_date']).replace('-',''))>int(d.replace('-','')) or int(str(df.iloc[i]['a_xr_date']).replace('-',''))<int('2019-10-19'.replace('-',''))):
+                if(int(str(df.iloc[i]['a_xr_date']).replace('-',''))>int(d.replace('-','')) or int(str(df.iloc[i]['a_xr_date']).replace('-',''))<int('2019-10-28'.replace('-',''))):
                     print('未来除权或者已经除权')
                     pass
                 else:
