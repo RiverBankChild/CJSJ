@@ -26,6 +26,7 @@ connect = pymysql.Connect(
 )
 cursor = connect.cursor()
 
+
 #定义编码方法
 def js(open,high,low,close):   
     d=0
@@ -3739,6 +3740,7 @@ rq_int_list=[20150331,20150630,20150930,20151231,
 
 
 #获取需要除权的表
+
 dm_list=[]
 tjts=256
 dm_update_list=[]
@@ -3824,6 +3826,8 @@ for k in range(0,len(dm_list)) :
 
 dm_cq_list=[]
 dm_cq_list=dm_update_list
+
+#dm_cq_list=['603909']
 print(dm_cq_list)        
 print("共需要更新",len(dm_cq_list),'张表')
 
