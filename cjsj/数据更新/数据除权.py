@@ -286,7 +286,6 @@ def bm(open,high,low,close):
                 if(l>=1.5 and l<3.5):
                     num=82
         if(close>=4 and close<7):
-            print("s")
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
@@ -1775,6 +1774,8 @@ def bm(open,high,low,close):
             if(l>=3.5 and l<=20.5):
                 num=640
     return num
+
+
 
 
 
