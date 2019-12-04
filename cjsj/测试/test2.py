@@ -27,84 +27,84 @@ def bm(open,high,low,close):
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=3
+                num=2
             if(h>=1.5 and h<3.5):
-                num=4
+                num=3
             if(h>=3.5 and h<=20.5):
-                num=6
+                num=4
         if(close>=-7 and close<-4):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                num=5
+            if(h>=1.5 and h<3.5):
+                num=6
+            if(h>=3.5 and h<=20.5):
+                num=7
+        if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=8
             if(h>=1.5 and h<3.5):
                 num=9
             if(h>=3.5 and h<=20.5):
-                num=11
-        if(close>=-4 and close<-2):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                num=13
-            if(h>=1.5 and h<3.5):
-                num=14
-            if(h>=3.5 and h<=20.5):
-                num=16
+                num=10
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=18
+                num=11
             if(h>=1.5 and h<3.5):
-                num=19
+                num=12
             if(h>=3.5 and h<=20.5):
-                num=21
+                num=13
         if(close>=-1 and close<0):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                num=14
+            if(h>=1.5 and h<3.5):
+                num=15
+            if(h>=3.5 and h<=20.5):
+                num=16
+        if(close>=0 and close<1):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                num=17
+            if(h>=1.5 and h<3.5):
+                num=18
+            if(h>=3.5 and h<=20.5):
+                num=19
+        if(close>=1 and close<2):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                num=20
+            if(h>=1.5 and h<3.5):
+                num=21
+            if(h>=3.5 and h<=20.5):
+                num=22
+        if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=23
             if(h>=1.5 and h<3.5):
                 num=24
             if(h>=3.5 and h<=20.5):
-                num=26
-        if(close>=0 and close<1):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                num=28
-            if(h>=1.5 and h<3.5):
-                num=29
-            if(h>=3.5 and h<=20.5):
-                num=31
-        if(close>=1 and close<2):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                num=33
-            if(h>=1.5 and h<3.5):
-                num=34
-            if(h>=3.5 and h<=20.5):
-                num=36
-        if(close>=2 and close<4):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                num=38
-            if(h>=1.5 and h<3.5):
-                num=39
-            if(h>=3.5 and h<=20.5):
-                num=41
+                num=25
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=43
+                num=26
             if(h>=1.5 and h<3.5):
-                num=44
+                num=27
             if(h>=3.5 and h<=20.5):
-                num=44
+                num=28
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=47
+                num=29
             if(h>=1.5 and h<3.5):
-                num=48
+                num=30
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
-            num=49
+            num=31
 
 
 
@@ -114,12 +114,80 @@ def bm(open,high,low,close):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=51
+                num=32
             if(h>=1.5 and h<3.5):
-                num=52
+                num=33
             if(h>=3.5 and h<=20.5):
-                num=54
+                num=34
         if(close>-9.94 and close<-7):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=35
+                if(l>=1.5 and l<3.5):
+                    num=36
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=37
+                if(l>=1.5 and l<3.5):
+                    num=38
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=39
+                if(l>=1.5 and l<3.5):
+                    num=40
+        if(close>=-7 and close<-4):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=41
+                if(l>=1.5 and l<3.5):
+                    num=42
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=43
+                if(l>=1.5 and l<3.5):
+                    num=44
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=45
+                if(l>=1.5 and l<3.5):
+                    num=46
+        if(close>=-4 and close<-2):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=47
+                if(l>=1.5 and l<3.5):
+                    num=48
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=49
+                if(l>=1.5 and l<3.5):
+                    num=50
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=51
+                if(l>=1.5 and l<3.5):
+                    num=52
+        if(close>=-2 and close<-1):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=53
+                if(l>=1.5 and l<3.5):
+                    num=54
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=55
+                if(l>=1.5 and l<3.5):
+                    num=56
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=57
+                if(l>=1.5 and l<3.5):
+                    num=58
+        if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
@@ -128,32 +196,83 @@ def bm(open,high,low,close):
                     num=60
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=62
+                    num=61
                 if(l>=1.5 and l<3.5):
-                    num=63
+                    num=62
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=68
+                    num=63
                 if(l>=1.5 and l<3.5):
-                    num=69
-        if(close>=-7 and close<-4):
+                    num=64
+        if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=74
+                    num=65
                 if(l>=1.5 and l<3.5):
-                    num=75
+                    num=66
             if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=67
+                if(l>=1.5 and l<3.5):
+                    num=68
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=69
+                if(l>=1.5 and l<3.5):
+                    num=70
+        if(close>=1 and close<2):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=71
+                if(l>=1.5 and l<3.5):
+                    num=72
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=73
+                if(l>=1.5 and l<3.5):
+                    num=74
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=75
+                if(l>=1.5 and l<3.5):
+                    num=76
+        if(close>=2 and close<4):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
                     num=77
                 if(l>=1.5 and l<3.5):
                     num=78
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=79
+                if(l>=1.5 and l<3.5):
+                    num=80
             if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=81
+                if(l>=1.5 and l<3.5):
+                    num=82
+        if(close>=4 and close<7):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
                     num=83
                 if(l>=1.5 and l<3.5):
                     num=84
-        if(close>=-4 and close<-2):
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=85
+                if(l>=1.5 and l<3.5):
+                    num=86
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=87
+                if(l>=1.5 and l<3.5):
+                    num=88
+        if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
@@ -162,130 +281,15 @@ def bm(open,high,low,close):
                     num=90
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
+                    num=91
+                if(l>=1.5 and l<3.5):
                     num=92
-                if(l>=1.5 and l<3.5):
-                    num=93
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=98
-                if(l>=1.5 and l<3.5):
-                    num=99
-        if(close>=-2 and close<-1):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=104
-                if(l>=1.5 and l<3.5):
-                    num=105
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=107
-                if(l>=1.5 and l<3.5):
-                    num=108
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=113
-                if(l>=1.5 and l<3.5):
-                    num=114
-        if(close>=-1 and close<0):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=119
-                if(l>=1.5 and l<3.5):
-                    num=120
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=122
-                if(l>=1.5 and l<3.5):
-                    num=123
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=128
-                if(l>=1.5 and l<3.5):
-                    num=129
-        if(close>=0 and close<1):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=134
-                if(l>=1.5 and l<3.5):
-                    num=135
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=137
-                if(l>=1.5 and l<3.5):
-                    num=138
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=143
-                if(l>=1.5 and l<3.5):
-                    num=144
-        if(close>=1 and close<2):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=149
-                if(l>=1.5 and l<3.5):
-                    num=150
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=152
-                if(l>=1.5 and l<3.5):
-                    num=153
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=158
-                if(l>=1.5 and l<3.5):
-                    num=159
-        if(close>=2 and close<4):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=164
-                if(l>=1.5 and l<3.5):
-                    num=165
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=167
-                if(l>=1.5 and l<3.5):
-                    num=168
-        if(close>=4 and close<7):
-            print("s")
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=176
-                if(l>=1.5 and l<3.5):
-                    num=177
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=179
-                if(l>=1.5 and l<3.5):
-                    num=180
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=179
-                if(l>=1.5 and l<3.5):
-                    num=180
-        if(close>=7 and close<9.94):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=185
-                if(l>=1.5 and l<3.5):
-                    num=186
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=188
-                if(l>=1.5 and l<3.5):
-                    num=189
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=191
+                num=93
             if(l>=1.5 and l<3.5):
-                num=193
+                num=94
 
 
 
@@ -293,236 +297,236 @@ def bm(open,high,low,close):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=195            
+                num=95
             if(h>=1.5 and h<3.5):
-                num=196
+                num=96
             if(h>=3.5 and h<=20.5):
-                num=198
+                num=97
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=203
+                    num=98
                 if(l>=1.5 and l<3.5):
-                    num=204
+                    num=99
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=206
+                    num=100
                 if(l>=1.5 and l<3.5):
-                    num=207
+                    num=101
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=212
+                    num=102
                 if(l>=1.5 and l<3.5):
-                    num=213
+                    num=103
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=219
+                    num=104
                 if(l>=1.5 and l<3.5):
-                    num=220
-            if(l>=3.5 and l<20.5):
-                    num=221
+                    num=105
+                if(l>=3.5 and l<20.5):
+                    num=106
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=223
+                    num=107
                 if(l>=1.5 and l<3.5):
-                    num=224
-            if(l>=3.5 and l<20.5):
-                    num=225
+                    num=108
+                if(l>=3.5 and l<20.5):
+                    num=109
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=231
+                    num=110
                 if(l>=1.5 and l<3.5):
-                    num=232
-            if(l>=3.5 and l<20.5):
-                    num=233
+                    num=111
+                if(l>=3.5 and l<20.5):
+                    num=112
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=240
+                    num=113
                 if(l>=1.5 and l<3.5):
-                    num=241
+                    num=114
                 if(l>=3.5 and l<=20.5):
-                    num=243
+                    num=115
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=245
+                    num=116
                 if(l>=1.5 and l<3.5):
-                    num=246
+                    num=117
                 if(l>=3.5 and l<=20.5):
-                    num=248
+                    num=118
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=255
+                    num=119
                 if(l>=1.5 and l<3.5):
-                    num=256
+                    num=120
                 if(l>=3.5 and l<=20.5):
-                    num=258
+                    num=121
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=265
+                    num=122
                 if(l>=1.5 and l<3.5):
-                    num=266
+                    num=123
                 if(l>=3.5 and l<=20.5):
-                    num=268
+                    num=124
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=270
+                    num=125
                 if(l>=1.5 and l<3.5):
-                    num=271
+                    num=126
                 if(l>=3.5 and l<=20.5):
-                    num=273
+                    num=127
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=280
+                    num=128
                 if(l>=1.5 and l<3.5):
-                    num=281
+                    num=129
                 if(l>=3.5 and l<=20.5):
-                    num=283
+                    num=130
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=290
+                    num=131
                 if(l>=1.5 and l<3.5):
-                    num=291
+                    num=132
                 if(l>=3.5 and l<=20.5):
-                    num=293
+                    num=133
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=295
+                    num=134
                 if(l>=1.5 and l<3.5):
-                    num=296
+                    num=135
                 if(l>=3.5 and l<=20.5):
-                    num=298
+                    num=136
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=305
+                    num=137
                 if(l>=1.5 and l<3.5):
-                    num=306
+                    num=138
                 if(l>=3.5 and l<=20.5):
-                    num=308
+                    num=139
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=315
+                    num=140
                 if(l>=1.5 and l<3.5):
-                    num=316
+                    num=141
                 if(l>=3.5 and l<=20.5):
-                    num=318
+                    num=142
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=320
+                    num=143
                 if(l>=1.5 and l<3.5):
-                    num=321
+                    num=144
                 if(l>=3.5 and l<=20.5):
-                    num=323
+                    num=145
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=330
+                    num=146
                 if(l>=1.5 and l<3.5):
-                    num=331
+                    num=147
                 if(l>=3.5 and l<=20.5):
-                    num=333
+                    num=148
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=340
+                    num=149
                 if(l>=1.5 and l<3.5):
-                    num=341
+                    num=150
                 if(l>=3.5 and l<=20.5):
-                    num=343
+                    num=151
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=345
+                    num=152
                 if(l>=1.5 and l<3.5):
-                    num=346
+                    num=153
                 if(l>=3.5 and l<=20.5):
-                    num=348
+                    num=154
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=355
+                    num=155
                 if(l>=1.5 and l<3.5):
-                    num=356
+                    num=156
                 if(l>=3.5 and l<=20.5):
-                    num=358
+                    num=157
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=365
+                    num=158
                 if(l>=1.5 and l<3.5):
-                    num=366
+                    num=159
                 if(l>=3.5 and l<=20.5):
-                    num=368
+                    num=160
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=370
+                    num=161
                 if(l>=1.5 and l<3.5):
-                    num=371
+                    num=162
                 if(l>=3.5 and l<=20.5):
-                    num=372
+                    num=163
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=379
+                    num=164
                 if(l>=1.5 and l<3.5):
-                    num=380
+                    num=165
                 if(l>=3.5 and l<=20.5):
-                    num=382
+                    num=166
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=389
+                    num=167
                 if(l>=1.5 and l<3.5):
-                    num=390
+                    num=168
                 if(l>=3.5 and l<=20.5):
-                    num=392
+                    num=169
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=394
+                    num=170
                 if(l>=1.5 and l<3.5):
-                    num=395
+                    num=171
                 if(l>=3.5 and l<=20.5):
-                    num=397
+                    num=172
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=394
+                    num=173
                 if(l>=1.5 and l<3.5):
-                    num=395
+                    num=174
                 if(l>=3.5 and l<=20.5):
-                    num=397
+                    num=175
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=409
+                    num=176
                 if(l>=1.5 and l<3.5):
-                    num=410
+                    num=177
                 if(l>=3.5 and l<=20.5):
-                    num=412
+                    num=178
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=414
+                    num=179
                 if(l>=1.5 and l<3.5):
-                    num=415
+                    num=180
                 if(l>=3.5 and l<=20.5):
-                    num=417
+                    num=181
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=419
+                num=182
             if(l>=1.5 and l<3.5):
-                num=420
+                num=183
             if(l>=3.5 and l<=20.5):
-                num=422
+                num=184
 
 
 
@@ -531,236 +535,236 @@ def bm(open,high,low,close):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=424
+                num=185
             if(h>=1.5 and h<3.5):
-                num=425
+                num=186
             if(h>=3.5 and h<=20.5):
-                num=427
+                num=187
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=432
+                    num=188
                 if(l>=1.5 and l<3.5):
-                    num=433
+                    num=189
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=435
+                    num=190
                 if(l>=1.5 and l<3.5):
-                    num=436
+                    num=191
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=441
+                    num=192
                 if(l>=1.5 and l<3.5):
-                    num=442
+                    num=193
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=448
+                    num=194
                 if(l>=1.5 and l<3.5):
-                    num=449
-            if(l>=3.5 and l<20.5):
-                    num=450
+                    num=195
+                if(l>=3.5 and l<20.5):
+                    num=196
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=452
+                    num=197
                 if(l>=1.5 and l<3.5):
-                    num=453
-            if(l>=3.5 and l<20.5):
-                    num=454
+                    num=198
+                if(l>=3.5 and l<20.5):
+                    num=199
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=460
+                    num=200
                 if(l>=1.5 and l<3.5):
-                    num=461
-            if(l>=3.5 and l<20.5):
-                    num=462
+                    num=201
+                if(l>=3.5 and l<20.5):
+                    num=202
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=469
+                    num=203
                 if(l>=1.5 and l<3.5):
-                    num=470
+                    num=204
                 if(l>=3.5 and l<=20.5):
-                    num=472
+                    num=205
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=474
+                    num=206
                 if(l>=1.5 and l<3.5):
-                    num=475
+                    num=207
                 if(l>=3.5 and l<=20.5):
-                    num=477
+                    num=208
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=484
+                    num=209
                 if(l>=1.5 and l<3.5):
-                    num=485
+                    num=210
                 if(l>=3.5 and l<=20.5):
-                    num=487
+                    num=211
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=494
+                    num=212
                 if(l>=1.5 and l<3.5):
-                    num=495
+                    num=213
                 if(l>=3.5 and l<=20.5):
-                    num=497
+                    num=214
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=499
+                    num=215
                 if(l>=1.5 and l<3.5):
-                    num=500
+                    num=216
                 if(l>=3.5 and l<=20.5):
-                    num=502
+                    num=217
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=509
+                    num=218
                 if(l>=1.5 and l<3.5):
-                    num=510
+                    num=219
                 if(l>=3.5 and l<=20.5):
-                    num=512
+                    num=220
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=519
+                    num=221
                 if(l>=1.5 and l<3.5):
-                    num=520
+                    num=222
                 if(l>=3.5 and l<=20.5):
-                    num=522
+                    num=223
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=524
+                    num=224
                 if(l>=1.5 and l<3.5):
-                    num=525
+                    num=225
                 if(l>=3.5 and l<=20.5):
-                    num=527
+                    num=226
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=534
+                    num=227
                 if(l>=1.5 and l<3.5):
-                    num=535
+                    num=228
                 if(l>=3.5 and l<=20.5):
-                    num=537
+                    num=229
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=544
+                    num=230
                 if(l>=1.5 and l<3.5):
-                    num=545
+                    num=231
                 if(l>=3.5 and l<=20.5):
-                    num=547
+                    num=232
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=549
+                    num=233
                 if(l>=1.5 and l<3.5):
-                    num=550
+                    num=234
                 if(l>=3.5 and l<=20.5):
-                    num=552
+                    num=235
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=559
+                    num=236
                 if(l>=1.5 and l<3.5):
-                    num=560
+                    num=237
                 if(l>=3.5 and l<=20.5):
-                    num=562
+                    num=238
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=569
+                    num=239
                 if(l>=1.5 and l<3.5):
-                    num=570
+                    num=240
                 if(l>=3.5 and l<=20.5):
-                    num=572
+                    num=241
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=574
+                    num=242
                 if(l>=1.5 and l<3.5):
-                    num=575
+                    num=243
                 if(l>=3.5 and l<=20.5):
-                    num=577
+                    num=244
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=584
+                    num=245
                 if(l>=1.5 and l<3.5):
-                    num=585
+                    num=246
                 if(l>=3.5 and l<=20.5):
-                    num=587
+                    num=247
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=594
+                    num=248
                 if(l>=1.5 and l<3.5):
-                    num=595
+                    num=249
                 if(l>=3.5 and l<=20.5):
-                    num=597
+                    num=250
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=599
+                    num=251
                 if(l>=1.5 and l<3.5):
-                    num=600
+                    num=252
                 if(l>=3.5 and l<=20.5):
-                    num=602
+                    num=253
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=609
+                    num=254
                 if(l>=1.5 and l<3.5):
-                    num=610
+                    num=255
                 if(l>=3.5 and l<=20.5):
-                    num=612
+                    num=256
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=619
+                    num=257
                 if(l>=1.5 and l<3.5):
-                    num=620
+                    num=258
                 if(l>=3.5 and l<=20.5):
-                    num=622
+                    num=259
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=624
+                    num=260
                 if(l>=1.5 and l<3.5):
-                    num=625
+                    num=261
                 if(l>=3.5 and l<=20.5):
-                    num=627
+                    num=262
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=624
+                    num=263
                 if(l>=1.5 and l<3.5):
-                    num=625
+                    num=264
                 if(l>=3.5 and l<=20.5):
-                    num=627
+                    num=265
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=639
+                    num=266
                 if(l>=1.5 and l<3.5):
-                    num=640
+                    num=267
                 if(l>=3.5 and l<=20.5):
-                    num=642
+                    num=268
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=644
+                    num=269
                 if(l>=1.5 and l<3.5):
-                    num=645
+                    num=270
                 if(l>=3.5 and l<=20.5):
-                    num=647
+                    num=271
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=649
+                num=272
             if(l>=1.5 and l<3.5):
-                num=650
+                num=273
             if(l>=3.5 and l<=20.5):
-                num=652
+                num=274
 
 
 
@@ -768,465 +772,472 @@ def bm(open,high,low,close):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=354
+                num=275
             if(h>=1.5 and h<3.5):
-                num=655
+                num=276
             if(h>=3.5 and h<=20.5):
-                num=657
+                num=277
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=662
+                    num=278
                 if(l>=1.5 and l<3.5):
-                    num=663
+                    num=279
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=665
+                    num=280
                 if(l>=1.5 and l<3.5):
-                    num=666
+                    num=281
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=671
+                    num=282
                 if(l>=1.5 and l<3.5):
-                    num=672
+                    num=283
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=678
+                    num=284
                 if(l>=1.5 and l<3.5):
-                    num=679
-            if(l>=3.5 and l<20.5):
-                    num=680
+                    num=285
+                if(l>=3.5 and l<20.5):
+                    num=286
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=682
+                    num=287
                 if(l>=1.5 and l<3.5):
-                    num=683
-            if(l>=3.5 and l<20.5):
-                    num=684
+                    num=288
+                if(l>=3.5 and l<20.5):
+                    num=289
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=690
+                    num=290
                 if(l>=1.5 and l<3.5):
-                    num=691
-            if(l>=3.5 and l<20.5):
-                    num=692
+                    num=291
+                if(l>=3.5 and l<20.5):
+                    num=292
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=699
+                    num=293
                 if(l>=1.5 and l<3.5):
-                    num=700
+                    num=294
                 if(l>=3.5 and l<=20.5):
-                    num=702
+                    num=295
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=704
+                    num=296
                 if(l>=1.5 and l<3.5):
-                    num=705
+                    num=297
                 if(l>=3.5 and l<=20.5):
-                    num=707
+                    num=298
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=714
+                    num=299
                 if(l>=1.5 and l<3.5):
-                    num=715
+                    num=300
                 if(l>=3.5 and l<=20.5):
-                    num=717
+                    num=301
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=724
+                    num=302
                 if(l>=1.5 and l<3.5):
-                    num=725
+                    num=303
                 if(l>=3.5 and l<=20.5):
-                    num=727
+                    num=304
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=729
+                    num=305
                 if(l>=1.5 and l<3.5):
-                    num=730
+                    num=306
                 if(l>=3.5 and l<=20.5):
-                    num=732
+                    num=307
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=739
+                    num=308
                 if(l>=1.5 and l<3.5):
-                    num=740
+                    num=309
                 if(l>=3.5 and l<=20.5):
-                    num=742
+                    num=310
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=749
+                    num=311
                 if(l>=1.5 and l<3.5):
-                    num=750
+                    num=312
                 if(l>=3.5 and l<=20.5):
-                    num=752
+                    num=313
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=754
+                    num=314
                 if(l>=1.5 and l<3.5):
-                    num=755
+                    num=315
                 if(l>=3.5 and l<=20.5):
-                    num=757
+                    num=316
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=764
+                    num=317
                 if(l>=1.5 and l<3.5):
-                    num=765
+                    num=318
                 if(l>=3.5 and l<=20.5):
-                    num=767
+                    num=319
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=774
+                    num=320
                 if(l>=1.5 and l<3.5):
-                    num=775
+                    num=321
                 if(l>=3.5 and l<=20.5):
-                    num=777
+                    num=322
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=779
+                    num=323
                 if(l>=1.5 and l<3.5):
-                    num=780
+                    num=324
                 if(l>=3.5 and l<=20.5):
-                    num=782
+                    num=325
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=789
+                    num=326
                 if(l>=1.5 and l<3.5):
-                    num=790
+                    num=327
                 if(l>=3.5 and l<=20.5):
-                    num=792
+                    num=328
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=799
+                    num=329
                 if(l>=1.5 and l<3.5):
-                    num=800
+                    num=330
                 if(l>=3.5 and l<=20.5):
-                    num=802
+                    num=331
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=804
+                    num=332
                 if(l>=1.5 and l<3.5):
-                    num=805
+                    num=333
                 if(l>=3.5 and l<=20.5):
-                    num=807
+                    num=334
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=814
+                    num=335
                 if(l>=1.5 and l<3.5):
-                    num=815
+                    num=336
                 if(l>=3.5 and l<=20.5):
-                    num=817
+                    num=337
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=824
+                    num=338
                 if(l>=1.5 and l<3.5):
-                    num=825
+                    num=339
                 if(l>=3.5 and l<=20.5):
-                    num=827
+                    num=340
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=829
+                    num=341
                 if(l>=1.5 and l<3.5):
-                    num=830
+                    num=342
                 if(l>=3.5 and l<=20.5):
-                    num=832
+                    num=343
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=839
+                    num=344
                 if(l>=1.5 and l<3.5):
-                    num=840
+                    num=345
                 if(l>=3.5 and l<=20.5):
-                    num=842
+                    num=346
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=849
+                    num=347
                 if(l>=1.5 and l<3.5):
-                    num=850
+                    num=348
                 if(l>=3.5 and l<=20.5):
-                    num=852
+                    num=349
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=854
+                    num=350
                 if(l>=1.5 and l<3.5):
-                    num=855
+                    num=351
                 if(l>=3.5 and l<=20.5):
-                    num=857
+                    num=352
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=854
+                    num=353
                 if(l>=1.5 and l<3.5):
-                    num=855
+                    num=354
                 if(l>=3.5 and l<=20.5):
-                    num=857
+                    num=355
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=869
+                    num=356
                 if(l>=1.5 and l<3.5):
-                    num=870
+                    num=357
                 if(l>=3.5 and l<=20.5):
-                    num=872
+                    num=358
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=874
+                    num=359
                 if(l>=1.5 and l<3.5):
-                    num=875
+                    num=360
                 if(l>=3.5 and l<=20.5):
-                    num=877
+                    num=361
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=879
+                num=362
             if(l>=1.5 and l<3.5):
-                num=880
+                num=363
             if(l>=3.5 and l<=20.5):
-                num=882
+                num=364
 
 
     if(open>=1 and open <3):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=884
+                num=365
             if(h>=1.5 and h<3.5):
-                num=885
+                num=366
             if(h>=3.5 and h<=20.5):
-                num=887
+                num=367
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=892
+                    num=368
                 if(l>=1.5 and l<3.5):
-                    num=893
+                    num=369
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=895
+                    num=370
                 if(l>=1.5 and l<3.5):
-                    num=896
+                    num=371
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=901
+                    num=372
                 if(l>=1.5 and l<3.5):
-                    num=902
+                    num=373
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=908
+                    num=374
                 if(l>=1.5 and l<3.5):
-                    num=909
-            if(l>=3.5 and l<20.5):
-                    num=910
+                    num=375
+                if(l>=3.5 and l<20.5):
+                    num=376
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=912
+                    num=377
                 if(l>=1.5 and l<3.5):
-                    num=913
-            if(l>=3.5 and l<20.5):
-                    num=914
+                    num=378
+                if(l>=3.5 and l<20.5):
+                    num=379
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=920
+                    num=380
                 if(l>=1.5 and l<3.5):
-                    num=921
-            if(l>=3.5 and l<20.5):
-                    num=922
+                    num=381
+                if(l>=3.5 and l<20.5):
+                    num=382
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=929
+                    num=383
                 if(l>=1.5 and l<3.5):
-                    num=930
+                    num=384
                 if(l>=3.5 and l<=20.5):
-                    num=932
+                    num=385
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=934
+                    num=386
                 if(l>=1.5 and l<3.5):
-                    num=935
+                    num=387
                 if(l>=3.5 and l<=20.5):
-                    num=937
+                    num=388
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=944
+                    num=389
                 if(l>=1.5 and l<3.5):
-                    num=945
+                    num=390
                 if(l>=3.5 and l<=20.5):
-                    num=947
+                    num=391
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=954
+                    num=392
                 if(l>=1.5 and l<3.5):
-                    num=955
+                    num=393
                 if(l>=3.5 and l<=20.5):
-                    num=957
+                    num=394
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=959
+                    num=395
                 if(l>=1.5 and l<3.5):
-                    num=960
+                    num=396
                 if(l>=3.5 and l<=20.5):
-                    num=962
+                    num=397
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=969
+                    num=398
                 if(l>=1.5 and l<3.5):
-                    num=970
+                    num=399
                 if(l>=3.5 and l<=20.5):
-                    num=972
+                    num=400
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=979
+                    num=401
                 if(l>=1.5 and l<3.5):
-                    num=980
+                    num=402
                 if(l>=3.5 and l<=20.5):
-                    num=982
+                    num=403
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=984
+                    num=404
                 if(l>=1.5 and l<3.5):
-                    num=985
+                    num=405
                 if(l>=3.5 and l<=20.5):
-                    num=987
+                    num=406
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=994
+                    num=407
                 if(l>=1.5 and l<3.5):
-                    num=995
+                    num=408
                 if(l>=3.5 and l<=20.5):
-                    num=997
+                    num=409
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1004
+                    num=410
                 if(l>=1.5 and l<3.5):
-                    num=1005
+                    num=411
                 if(l>=3.5 and l<=20.5):
-                    num=1007
+                    num=412
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1009
+                    num=413
                 if(l>=1.5 and l<3.5):
-                    num=1010
+                    num=414
                 if(l>=3.5 and l<=20.5):
-                    num=1012
+                    num=415
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1019
+                    num=416
                 if(l>=1.5 and l<3.5):
-                    num=1020
+                    num=417
                 if(l>=3.5 and l<=20.5):
-                    num=1022
+                    num=418
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1029
+                    num=419
                 if(l>=1.5 and l<3.5):
-                    num=1030
+                    num=420
                 if(l>=3.5 and l<=20.5):
-                    num=1032
+                    num=421
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1034
+                    num=422
                 if(l>=1.5 and l<3.5):
-                    num=1035
+                    num=423
                 if(l>=3.5 and l<=20.5):
-                    num=1037
+                    num=424
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1044
+                    num=425
                 if(l>=1.5 and l<3.5):
-                    num=1045
+                    num=426
                 if(l>=3.5 and l<=20.5):
-                    num=1047
+                    num=427
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1054
+                    num=428
                 if(l>=1.5 and l<3.5):
-                    num=1055
+                    num=429
                 if(l>=3.5 and l<=20.5):
-                    num=1057
+                    num=430
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1059
+                    num=431
                 if(l>=1.5 and l<3.5):
-                    num=1060
+                    num=432
                 if(l>=3.5 and l<=20.5):
-                    num=1062
+                    num=433
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1069
+                    num=434
                 if(l>=1.5 and l<3.5):
-                    num=1070
+                    num=435
                 if(l>=3.5 and l<=20.5):
-                    num=1072
+                    num=436
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1079
+                    num=437
                 if(l>=1.5 and l<3.5):
-                    num=1080
+                    num=438
                 if(l>=3.5 and l<=20.5):
-                    num=1082
+                    num=439
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1084
+                    num=440
                 if(l>=1.5 and l<3.5):
-                    num=1085
+                    num=441
                 if(l>=3.5 and l<=20.5):
-                    num=1087
+                    num=442
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=443
+                if(l>=1.5 and l<3.5):
+                    num=444
+                if(l>=3.5 and l<=20.5):
+                    num=445
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1099
+                    num=446
                 if(l>=1.5 and l<3.5):
-                    num=1100
+                    num=447
                 if(l>=3.5 and l<=20.5):
-                    num=1102
+                    num=448
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1104
+                    num=449
                 if(l>=1.5 and l<3.5):
-                    num=1105
+                    num=450
                 if(l>=3.5 and l<=20.5):
-                    num=1107
+                    num=451
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1109
+                num=452
             if(l>=1.5 and l<3.5):
-                num=1110
+                num=453
             if(l>=3.5 and l<=20.5):
-                num=1112
+                num=454
 
 
 
@@ -1235,236 +1246,236 @@ def bm(open,high,low,close):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=1114
+                num=455
             if(h>=1.5 and h<3.5):
-                num=1115
+                num=456
             if(h>=3.5 and h<=20.5):
-                num=1117
+                num=457
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1122
+                    num=458
                 if(l>=1.5 and l<3.5):
-                    num=1123
+                    num=459
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1125
+                    num=460
                 if(l>=1.5 and l<3.5):
-                    num=1126
+                    num=461
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1131
+                    num=462
                 if(l>=1.5 and l<3.5):
-                    num=1132
+                    num=463
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1138
+                    num=464
                 if(l>=1.5 and l<3.5):
-                    num=1139
+                    num=465
                 if(l>=3.5 and l<20.5):
-                    num=1140
+                    num=466
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1142
+                    num=467
                 if(l>=1.5 and l<3.5):
-                    num=1143
+                    num=468
                 if(l>=3.5 and l<20.5):
-                    num=1144
+                    num=469
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1150
+                    num=470
                 if(l>=1.5 and l<3.5):
-                    num=1151
+                    num=471
                 if(l>=3.5 and l<20.5):
-                    num=1152
+                    num=472
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1159
+                    num=473
                 if(l>=1.5 and l<3.5):
-                    num=1160
+                    num=474
                 if(l>=3.5 and l<=20.5):
-                    num=1162
+                    num=475
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1164
+                    num=476
                 if(l>=1.5 and l<3.5):
-                    num=1165
+                    num=477
                 if(l>=3.5 and l<=20.5):
-                    num=1167
+                    num=478
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1174
+                    num=479
                 if(l>=1.5 and l<3.5):
-                    num=1175
+                    num=480
                 if(l>=3.5 and l<=20.5):
-                    num=1177
+                    num=481
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1184
+                    num=482
                 if(l>=1.5 and l<3.5):
-                    num=1185
+                    num=483
                 if(l>=3.5 and l<=20.5):
-                    num=1187
+                    num=484
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1189
+                    num=485
                 if(l>=1.5 and l<3.5):
-                    num=1190
+                    num=486
                 if(l>=3.5 and l<=20.5):
-                    num=1192
+                    num=487
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1199
+                    num=488
                 if(l>=1.5 and l<3.5):
-                    num=1200
+                    num=489
                 if(l>=3.5 and l<=20.5):
-                    num=1202
+                    num=490
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1209
+                    num=491
                 if(l>=1.5 and l<3.5):
-                    num=1210
+                    num=492
                 if(l>=3.5 and l<=20.5):
-                    num=1212
+                    num=493
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1214
+                    num=494
                 if(l>=1.5 and l<3.5):
-                    num=1215
+                    num=495
                 if(l>=3.5 and l<=20.5):
-                    num=1217
+                    num=496
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1224
+                    num=497
                 if(l>=1.5 and l<3.5):
-                    num=1225
+                    num=498
                 if(l>=3.5 and l<=20.5):
-                    num=1227
+                    num=499
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1234
+                    num=500
                 if(l>=1.5 and l<3.5):
-                    num=1235
+                    num=501
                 if(l>=3.5 and l<=20.5):
-                    num=1237
+                    num=502
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1239
+                    num=503
                 if(l>=1.5 and l<3.5):
-                    num=1240
+                    num=504
                 if(l>=3.5 and l<=20.5):
-                    num=1242
+                    num=505
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1249
+                    num=506
                 if(l>=1.5 and l<3.5):
-                    num=1250
+                    num=507
                 if(l>=3.5 and l<=20.5):
-                    num=1252
+                    num=508
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1259
+                    num=509
                 if(l>=1.5 and l<3.5):
-                    num=1260
+                    num=510
                 if(l>=3.5 and l<=20.5):
-                    num=1262
+                    num=511
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1264
+                    num=512
                 if(l>=1.5 and l<3.5):
-                    num=1265
+                    num=513
                 if(l>=3.5 and l<=20.5):
-                    num=1267
+                    num=514
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1274
+                    num=515
                 if(l>=1.5 and l<3.5):
-                    num=1275
+                    num=516
                 if(l>=3.5 and l<=20.5):
-                    num=1277
+                    num=517
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1284
+                    num=518
                 if(l>=1.5 and l<3.5):
-                    num=1285
+                    num=519
                 if(l>=3.5 and l<=20.5):
-                    num=1287
+                    num=520
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1289
+                    num=521
                 if(l>=1.5 and l<3.5):
-                    num=1290
+                    num=522
                 if(l>=3.5 and l<=20.5):
-                    num=1292
+                    num=523
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1299
+                    num=524
                 if(l>=1.5 and l<3.5):
-                    num=1300
+                    num=525
                 if(l>=3.5 and l<=20.5):
-                    num=1302
+                    num=526
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1309
+                    num=527
                 if(l>=1.5 and l<3.5):
-                    num=1310
+                    num=528
                 if(l>=3.5 and l<=20.5):
-                    num=1312
+                    num=529
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1314
+                    num=530
                 if(l>=1.5 and l<3.5):
-                    num=1315
+                    num=531
                 if(l>=3.5 and l<=20.5):
-                    num=1317
+                    num=532
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=1314
+                    num=533
                 if(l>=1.5 and l<3.5):
-                    num=1315
+                    num=534
                 if(l>=3.5 and l<=20.5):
-                    num=1317
+                    num=535
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1329
+                    num=536
                 if(l>=1.5 and l<3.5):
-                    num=1330
+                    num=537
                 if(l>=3.5 and l<=20.5):
-                    num=1332
+                    num=538
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1334
+                    num=539
                 if(l>=1.5 and l<3.5):
-                    num=1335
+                    num=540
                 if(l>=3.5 and l<=20.5):
-                    num=1337
+                    num=541
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1339
+                num=542
             if(l>=1.5 and l<3.5):
-                num=1340
+                num=543
             if(l>=3.5 and l<=20.5):
-                num=1342
+                num=544
 
 
 
@@ -1472,266 +1483,266 @@ def bm(open,high,low,close):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=1344
+                num=545
             if(h>=1.5 and h<3.5):
-                num=1345
+                num=546
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1350
+                    num=547
                 if(l>=1.5 and l<3.5):
-                    num=1351
+                    num=548
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1353
+                    num=549
                 if(l>=1.5 and l<3.5):
-                    num=1354
+                    num=550
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1360
+                    num=551
                 if(l>=1.5 and l<3.5):
-                    num=1361
+                    num=552
                 if(l>=3.5 and l<20.5):
-                    num=1362
+                    num=553
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1364
+                    num=554
                 if(l>=1.5 and l<3.5):
-                    num=1365
+                    num=555
                 if(l>=3.5 and l<20.5):
-                    num=1366
+                    num=556
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1373
+                    num=557
                 if(l>=1.5 and l<3.5):
-                    num=1374
+                    num=558
                 if(l>=3.5 and l<=20.5):
-                    num=1376
+                    num=559
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1378
+                    num=560
                 if(l>=1.5 and l<3.5):
-                    num=1379
+                    num=561
                 if(l>=3.5 and l<=20.5):
-                    num=1381
+                    num=562
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1388
+                    num=563
                 if(l>=1.5 and l<3.5):
-                    num=1389
+                    num=564
                 if(l>=3.5 and l<=20.5):
-                    num=1391
+                    num=565
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1393
+                    num=566
                 if(l>=1.5 and l<3.5):
-                    num=1394
+                    num=567
                 if(l>=3.5 and l<=20.5):
-                    num=1396
+                    num=568
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1403
+                    num=569
                 if(l>=1.5 and l<3.5):
-                    num=1404
+                    num=570
                 if(l>=3.5 and l<=20.5):
-                    num=1406
+                    num=571
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1408
+                    num=572
                 if(l>=1.5 and l<3.5):
-                    num=1409
+                    num=573
                 if(l>=3.5 and l<=20.5):
-                    num=1411
+                    num=574
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1418
+                    num=575
                 if(l>=1.5 and l<3.5):
-                    num=1419
+                    num=576
                 if(l>=3.5 and l<=20.5):
-                    num=1421
+                    num=577
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1423
+                    num=578
                 if(l>=1.5 and l<3.5):
-                    num=1424
+                    num=579
                 if(l>=3.5 and l<=20.5):
-                    num=1426
+                    num=580
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1433
+                    num=581
                 if(l>=1.5 and l<3.5):
-                    num=1434
+                    num=582
                 if(l>=3.5 and l<=20.5):
-                    num=1436
+                    num=583
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1438
+                    num=584
                 if(l>=1.5 and l<3.5):
-                    num=1439
+                    num=585
                 if(l>=3.5 and l<=20.5):
-                    num=1441
+                    num=586
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1448
+                    num=587
                 if(l>=1.5 and l<3.5):
-                    num=1449
+                    num=588
                 if(l>=3.5 and l<=20.5):
-                    num=1451
+                    num=589
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1453
+                    num=590
                 if(l>=1.5 and l<3.5):
-                    num=1454
+                    num=591
                 if(l>=3.5 and l<=20.5):
-                    num=1456
+                    num=592
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1463
+                    num=593
                 if(l>=1.5 and l<3.5):
-                    num=1464
+                    num=594
                 if(l>=3.5 and l<=20.5):
-                    num=1466
+                    num=595
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1468
+                    num=596
                 if(l>=1.5 and l<3.5):
-                    num=1469
+                    num=597
                 if(l>=3.5 and l<=20.5):
-                    num=1471
+                    num=598
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=1478
+                    num=599
                 if(l>=1.5 and l<3.5):
-                    num=1479
+                    num=600
                 if(l>=3.5 and l<=20.5):
-                    num=1481
+                    num=601
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=1483
+                    num=602
                 if(l>=1.5 and l<3.5):
-                    num=1484
+                    num=603
                 if(l>=3.5 and l<=20.5):
-                    num=1486
+                    num=604
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1488
+                num=605
             if(l>=1.5 and l<3.5):
-                num=1489
+                num=606
             if(l>=3.5 and l<=20.5):
-                num=1491
+                num=607
 
 
 
     if(open>=9.94 and open <=10.6):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
-            num=1492
+            num=608
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1494
+                num=609
             if(l>=1.5 and l<3.5):
-                num=1495
+                num=610
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1497
+                num=611
             if(l>=1.5 and l<3.5):
-                num=1498
+                num=612
             if(l>=3.5 and l<20.5):
-                num=1499
+                num=613
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1501
+                num=614
             if(l>=1.5 and l<3.5):
-                num=1502
+                num=615
             if(l>=3.5 and l<=20.5):
-                num=1504
+                num=616
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1506
+                num=617
             if(l>=1.5 and l<3.5):
-                num=1507
+                num=618
             if(l>=3.5 and l<=20.5):
-                num=1509
+                num=619
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1511
+                num=620
             if(l>=1.5 and l<3.5):
-                num=1512
+                num=621
             if(l>=3.5 and l<=20.5):
-                num=1514
+                num=622
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1516
+                num=623
             if(l>=1.5 and l<3.5):
-                num=1517
+                num=624
             if(l>=3.5 and l<=20.5):
-                num=1519
+                num=625
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1521
+                num=626
             if(l>=1.5 and l<3.5):
-                num=1522
+                num=627
             if(l>=3.5 and l<=20.5):
-                num=1524
+                num=628
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1526
+                num=629
             if(l>=1.5 and l<3.5):
-                num=1527
+                num=630
             if(l>=3.5 and l<=20.5):
-                num=1529
+                num=631
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1531
+                num=632
             if(l>=1.5 and l<3.5):
-                num=1532
+                num=633
             if(l>=3.5 and l<=20.5):
-                num=1534
+                num=634
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1536
+                num=635
             if(l>=1.5 and l<3.5):
-                num=1537
+                num=636
             if(l>=3.5 and l<=20.5):
-                num=1539
+                num=637
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=1541
+                num=638
             if(l>=1.5 and l<3.5):
-                num=1542
+                num=639
             if(l>=3.5 and l<=20.5):
-                num=1544
+                num=640
     return num
 
 
