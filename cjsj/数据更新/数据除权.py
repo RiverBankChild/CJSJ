@@ -1834,7 +1834,7 @@ low_list=[]
 close_list=[]
 
 
-sql = "SELECT dm  FROM fzb where tag1='强庄' order by id "
+sql = "SELECT dm  FROM kxfzb where tag1='备选'  order by id "
 cursor.execute(sql)
 for a in cursor.fetchall():
     dm_list.append(a[0])

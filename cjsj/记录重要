@@ -181,6 +181,10 @@ alter table dpztb ADD COLUMN  gxsj  Timestamp default  CURRENT_TIMESTAMP on UPDA
 
 create table fzb (id int primary key auto_increment,dm varchar(8) unique ,name varchar(8) default'未知名称',tag1 varchar(250) default  "未知标签1",tag2 varchar(250) default  "未知标签2",tag3 varchar(250) default  "未知标签3");
 
+create table kxfzb (id int primary key auto_increment,dm varchar(8) unique ,name varchar(8) default'未知名称',tag1 varchar(250) default  "未知标签1",tag2 varchar(250) default  "未知标签2",tag3 varchar(250) default  "未知标签3");
+
+
+
 create table IF NOT EXISTS tb+dm (
 id int primary key auto_increment,
 dm varchar(8)  default '未知代码',
