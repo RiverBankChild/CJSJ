@@ -1834,6 +1834,8 @@ low_list=[]
 close_list=[]
 
 
+
+
 sql = "SELECT dm  FROM kxfzb where tag1='备选'  order by id "
 cursor.execute(sql)
 for a in cursor.fetchall():
