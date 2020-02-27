@@ -1994,6 +1994,7 @@ for q in range(0, len(dm_cq_list)):
         date_int_list.append(p) 
     for x in range(len(rq_list)): 
         ltgd_df=finance.run_query(jq.query(
+            
         finance.STK_SHAREHOLDER_FLOATING_TOP10.code,
         finance.STK_SHAREHOLDER_FLOATING_TOP10.shareholder_rank,
         finance.STK_SHAREHOLDER_FLOATING_TOP10.share_ratio
