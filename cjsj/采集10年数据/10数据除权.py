@@ -1831,8 +1831,15 @@ high_list=[]
 low_list=[]
 close_list=[]
 
-
+'''
 sql = "SELECT dm  FROM dmb  order by id "
+cursor.execute(sql)
+for a in cursor.fetchall():
+    dm_list.append(a[0])
+print(len(dm_list))
+'''
+
+sql = "SELECT dm  FROM kxfzb where tag1='备选'  order by id "
 cursor.execute(sql)
 for a in cursor.fetchall():
     dm_list.append(a[0])
@@ -1942,7 +1949,6 @@ for q in range(0, len(dm_cq_list)):
         connect.commit()
     print('TB'+dm_insert_sh_list[q][:6],'收盘价数据获取完成')
     
-    print('TB'+dm_insert_sh_list[q][:6],'流通股东数据获取完成')  
 print('除权所有数据插入完毕....................................')   
 print(d,'除权完成***********************************************')  
 
