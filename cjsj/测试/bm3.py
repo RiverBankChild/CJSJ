@@ -10,1738 +10,1744 @@ def js(open,high,low,close):
     
     h=high-d
     l=x-low
-    
+       
     return h,l
 
 
 #openzl=[[-10.6,-9.94],[-9.94,-7],[-7,-3],[-3,-1],[-1,1],[1,3],[3,7],[7,9.94],[9.94,10.6]]
 #closezl=[[-10.6,-9.94],[-9.94,-7],[-7,-4],[-4,-2],[-2,-1],[-1,0],[0,1],[1,2],[2,4],[4,7],[7,9.94],[9.94,10.6]]
 #normzl=[[0,1.5],[1.5,3.5],[3.5,20.5]]
+
+
 def bm(open,high,low,close):
-    num=0
-    if(open>=-10.6 and open <=-9.94):
+
+    if(open>=-10.6 and open<=-9.94):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
-            num=1
+            if(h>=0 and h<1.5):
+                num=-1.0
+            if(h>=1.5 and h<3.5):
+                num=-0.99688476
+            if(h>=3.5 and h<=20.5):
+                num=-0.9937695
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=2
+                num=-0.9906543
             if(h>=1.5 and h<3.5):
-                num=3
+                num=-0.98753905
             if(h>=3.5 and h<=20.5):
-                num=4
+                num=-0.9844238
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=5
+                num=-0.9813086
             if(h>=1.5 and h<3.5):
-                num=6
+                num=-0.97819334
             if(h>=3.5 and h<=20.5):
-                num=7
+                num=-0.9750781
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=8
+                num=-0.97196287
             if(h>=1.5 and h<3.5):
-                num=9
+                num=-0.96884763
             if(h>=3.5 and h<=20.5):
-                num=10
+                num=-0.9657324
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=11
+                num=-0.96261716
             if(h>=1.5 and h<3.5):
-                num=12
+                num=-0.9595019
             if(h>=3.5 and h<=20.5):
-                num=13
+                num=-0.9563867
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=14
+                num=-0.95327145
             if(h>=1.5 and h<3.5):
-                num=15
+                num=-0.9501562
             if(h>=3.5 and h<=20.5):
-                num=16
+                num=-0.947041
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=17
+                num=-0.94392574
             if(h>=1.5 and h<3.5):
-                num=18
+                num=-0.9408105
             if(h>=3.5 and h<=20.5):
-                num=19
+                num=-0.93769526
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=20
+                num=-0.93458
             if(h>=1.5 and h<3.5):
-                num=21
+                num=-0.9314648
             if(h>=3.5 and h<=20.5):
-                num=22
+                num=-0.92834955
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=23
+                num=-0.9252343
             if(h>=1.5 and h<3.5):
-                num=24
+                num=-0.9221191
             if(h>=3.5 and h<=20.5):
-                num=25
+                num=-0.91900384
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=26
+                num=-0.9158886
             if(h>=1.5 and h<3.5):
-                num=27
+                num=-0.9127734
             if(h>=3.5 and h<=20.5):
-                num=28
+                num=-0.90965813
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=29
+                num=-0.9065429
             if(h>=1.5 and h<3.5):
-                num=30
+                num=-0.90342766
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
-            num=31
+            num=-0.9003124
 
 
 
 
 
-    if(open>-9.94 and open <-7):
+    if(open>-9.94 and open<-7):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=32
+                num=-0.8971972
             if(h>=1.5 and h<3.5):
-                num=33
+                num=-0.89408195
             if(h>=3.5 and h<=20.5):
-                num=34
+                num=-0.8909667
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=35
+                    num=-0.8878515
                 if(l>=1.5 and l<3.5):
-                    num=36
+                    num=-0.88473624
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=37
+                    num=-0.881621
                 if(l>=1.5 and l<3.5):
-                    num=38
+                    num=-0.87850577
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=39
+                    num=-0.8753905
                 if(l>=1.5 and l<3.5):
-                    num=40
+                    num=-0.8722753
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=41
+                    num=-0.86916006
                 if(l>=1.5 and l<3.5):
-                    num=42
+                    num=-0.8660448
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=43
+                    num=-0.8629296
                 if(l>=1.5 and l<3.5):
-                    num=44
+                    num=-0.85981435
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=45
+                    num=-0.8566991
                 if(l>=1.5 and l<3.5):
-                    num=46
+                    num=-0.8535839
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=47
+                    num=-0.85046864
                 if(l>=1.5 and l<3.5):
-                    num=48
+                    num=-0.8473534
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=49
+                    num=-0.84423816
                 if(l>=1.5 and l<3.5):
-                    num=50
+                    num=-0.8411229
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=51
+                    num=-0.8380077
                 if(l>=1.5 and l<3.5):
-                    num=52
+                    num=-0.83489245
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=53
+                    num=-0.8317772
                 if(l>=1.5 and l<3.5):
-                    num=54
+                    num=-0.828662
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=55
+                    num=-0.82554674
                 if(l>=1.5 and l<3.5):
-                    num=56
+                    num=-0.8224315
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=57
+                    num=-0.81931627
                 if(l>=1.5 and l<3.5):
-                    num=58
+                    num=-0.81620103
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=59
+                    num=-0.8130858
                 if(l>=1.5 and l<3.5):
-                    num=60
+                    num=-0.80997056
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=61
+                    num=-0.8068553
                 if(l>=1.5 and l<3.5):
-                    num=62
+                    num=-0.8037401
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=63
+                    num=-0.80062485
                 if(l>=1.5 and l<3.5):
-                    num=64
+                    num=-0.7975096
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=65
+                    num=-0.7943944
                 if(l>=1.5 and l<3.5):
-                    num=66
+                    num=-0.79127914
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=67
+                    num=-0.7881639
                 if(l>=1.5 and l<3.5):
-                    num=68
+                    num=-0.78504866
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=69
+                    num=-0.7819334
                 if(l>=1.5 and l<3.5):
-                    num=70
+                    num=-0.7788182
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=71
+                    num=-0.77570295
                 if(l>=1.5 and l<3.5):
-                    num=72
+                    num=-0.7725877
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=73
+                    num=-0.7694725
                 if(l>=1.5 and l<3.5):
-                    num=74
+                    num=-0.76635724
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=75
+                    num=-0.763242
                 if(l>=1.5 and l<3.5):
-                    num=76
+                    num=-0.76012677
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=77
+                    num=-0.75701153
                 if(l>=1.5 and l<3.5):
-                    num=78
+                    num=-0.7538963
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=79
+                    num=-0.75078106
                 if(l>=1.5 and l<3.5):
-                    num=80
+                    num=-0.7476658
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=81
+                    num=-0.7445506
                 if(l>=1.5 and l<3.5):
-                    num=82
+                    num=-0.74143535
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=83
+                    num=-0.7383201
                 if(l>=1.5 and l<3.5):
-                    num=84
+                    num=-0.7352049
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=85
+                    num=-0.73208964
                 if(l>=1.5 and l<3.5):
-                    num=86
+                    num=-0.7289744
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=87
+                    num=-0.72585917
                 if(l>=1.5 and l<3.5):
-                    num=88
+                    num=-0.7227439
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=89
+                    num=-0.7196287
                 if(l>=1.5 and l<3.5):
-                    num=90
+                    num=-0.71651345
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=91
+                    num=-0.7133982
                 if(l>=1.5 and l<3.5):
-                    num=92
-        if(close>=9.94 and close<=10.6):
-            h,l=js(open,high,low,close)
-            if(l>=0 and l<1.5):
-                num=93
-            if(l>=1.5 and l<3.5):
-                num=94
-
-
-
-    if(open>=-7 and open <-3):
-        if(close>=-10.6 and close<=-9.94):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                num=95
-            if(h>=1.5 and h<3.5):
-                num=96
-            if(h>=3.5 and h<=20.5):
-                num=97
-        if(close>-9.94 and close<-7):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=98
-                if(l>=1.5 and l<3.5):
-                    num=99
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=100
-                if(l>=1.5 and l<3.5):
-                    num=101
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=102
-                if(l>=1.5 and l<3.5):
-                    num=103
-        if(close>=-7 and close<-4):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=104
-                if(l>=1.5 and l<3.5):
-                    num=105
-                if(l>=3.5 and l<20.5):
-                    num=106
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=107
-                if(l>=1.5 and l<3.5):
-                    num=108
-                if(l>=3.5 and l<20.5):
-                    num=109
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=110
-                if(l>=1.5 and l<3.5):
-                    num=111
-                if(l>=3.5 and l<20.5):
-                    num=112
-        if(close>=-4 and close<-2):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=113
-                if(l>=1.5 and l<3.5):
-                    num=114
-                if(l>=3.5 and l<=20.5):
-                    num=115
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=116
-                if(l>=1.5 and l<3.5):
-                    num=117
-                if(l>=3.5 and l<=20.5):
-                    num=118
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=119
-                if(l>=1.5 and l<3.5):
-                    num=120
-                if(l>=3.5 and l<=20.5):
-                    num=121
-        if(close>=-2 and close<-1):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=122
-                if(l>=1.5 and l<3.5):
-                    num=123
-                if(l>=3.5 and l<=20.5):
-                    num=124
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=125
-                if(l>=1.5 and l<3.5):
-                    num=126
-                if(l>=3.5 and l<=20.5):
-                    num=127
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=128
-                if(l>=1.5 and l<3.5):
-                    num=129
-                if(l>=3.5 and l<=20.5):
-                    num=130
-        if(close>=-1 and close<0):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=131
-                if(l>=1.5 and l<3.5):
-                    num=132
-                if(l>=3.5 and l<=20.5):
-                    num=133
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=134
-                if(l>=1.5 and l<3.5):
-                    num=135
-                if(l>=3.5 and l<=20.5):
-                    num=136
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=137
-                if(l>=1.5 and l<3.5):
-                    num=138
-                if(l>=3.5 and l<=20.5):
-                    num=139
-        if(close>=0 and close<1):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=140
-                if(l>=1.5 and l<3.5):
-                    num=141
-                if(l>=3.5 and l<=20.5):
-                    num=142
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=143
-                if(l>=1.5 and l<3.5):
-                    num=144
-                if(l>=3.5 and l<=20.5):
-                    num=145
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=146
-                if(l>=1.5 and l<3.5):
-                    num=147
-                if(l>=3.5 and l<=20.5):
-                    num=148
-        if(close>=1 and close<2):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=149
-                if(l>=1.5 and l<3.5):
-                    num=150
-                if(l>=3.5 and l<=20.5):
-                    num=151
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=152
-                if(l>=1.5 and l<3.5):
-                    num=153
-                if(l>=3.5 and l<=20.5):
-                    num=154
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=155
-                if(l>=1.5 and l<3.5):
-                    num=156
-                if(l>=3.5 and l<=20.5):
-                    num=157
-        if(close>=2 and close<4):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=158
-                if(l>=1.5 and l<3.5):
-                    num=159
-                if(l>=3.5 and l<=20.5):
-                    num=160
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=161
-                if(l>=1.5 and l<3.5):
-                    num=162
-                if(l>=3.5 and l<=20.5):
-                    num=163
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=164
-                if(l>=1.5 and l<3.5):
-                    num=165
-                if(l>=3.5 and l<=20.5):
-                    num=166
-        if(close>=4 and close<7):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=167
-                if(l>=1.5 and l<3.5):
-                    num=168
-                if(l>=3.5 and l<=20.5):
-                    num=169
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=170
-                if(l>=1.5 and l<3.5):
-                    num=171
-                if(l>=3.5 and l<=20.5):
-                    num=172
-            if(h>=3.5 and h<=20.5):
-                if(l>=0 and l<1.5):
-                    num=173
-                if(l>=1.5 and l<3.5):
-                    num=174
-                if(l>=3.5 and l<=20.5):
-                    num=175
-        if(close>=7 and close<9.94):
-            h,l=js(open,high,low,close)
-            if(h>=0 and h<1.5):
-                if(l>=0 and l<1.5):
-                    num=176
-                if(l>=1.5 and l<3.5):
-                    num=177
-                if(l>=3.5 and l<=20.5):
-                    num=178
-            if(h>=1.5 and h<3.5):
-                if(l>=0 and l<1.5):
-                    num=179
-                if(l>=1.5 and l<3.5):
-                    num=180
-                if(l>=3.5 and l<=20.5):
-                    num=181
+                    num=-0.710283
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=182
+                num=-0.70716774
             if(l>=1.5 and l<3.5):
-                num=183
+                num=-0.7040525
+
+
+
+    if(open>=-7 and open<-3):
+        if(close>=-10.6 and close<=-9.94):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                num=-0.7009373
+            if(h>=1.5 and h<3.5):
+                num=-0.69782203
+            if(h>=3.5 and h<=20.5):
+                num=-0.6947068
+        if(close>-9.94 and close<-7):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.69159156
+                if(l>=1.5 and l<3.5):
+                    num=-0.6884763
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.6853611
+                if(l>=1.5 and l<3.5):
+                    num=-0.68224585
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=-0.6791306
+                if(l>=1.5 and l<3.5):
+                    num=-0.6760154
+        if(close>=-7 and close<-4):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.67290014
+                if(l>=1.5 and l<3.5):
+                    num=-0.6697849
+                if(l>=3.5 and l<20.5):
+                    num=-0.66666967
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.66355443
+                if(l>=1.5 and l<3.5):
+                    num=-0.6604392
+                if(l>=3.5 and l<20.5):
+                    num=-0.65732396
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=-0.6542087
+                if(l>=1.5 and l<3.5):
+                    num=-0.6510935
+                if(l>=3.5 and l<20.5):
+                    num=-0.64797825
+        if(close>=-4 and close<-2):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.644863
+                if(l>=1.5 and l<3.5):
+                    num=-0.6417478
+                if(l>=3.5 and l<=20.5):
+                    num=-0.63863254
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.6355173
+                if(l>=1.5 and l<3.5):
+                    num=-0.63240206
+                if(l>=3.5 and l<=20.5):
+                    num=-0.6292868
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=-0.6261716
+                if(l>=1.5 and l<3.5):
+                    num=-0.62305635
+                if(l>=3.5 and l<=20.5):
+                    num=-0.6199411
+        if(close>=-2 and close<-1):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.6168259
+                if(l>=1.5 and l<3.5):
+                    num=-0.61371064
+                if(l>=3.5 and l<=20.5):
+                    num=-0.6105954
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.60748017
+                if(l>=1.5 and l<3.5):
+                    num=-0.60436493
+                if(l>=3.5 and l<=20.5):
+                    num=-0.6012497
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=-0.59813446
+                if(l>=1.5 and l<3.5):
+                    num=-0.5950192
+                if(l>=3.5 and l<=20.5):
+                    num=-0.591904
+        if(close>=-1 and close<0):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.58878875
+                if(l>=1.5 and l<3.5):
+                    num=-0.5856735
+                if(l>=3.5 and l<=20.5):
+                    num=-0.5825583
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.57944304
+                if(l>=1.5 and l<3.5):
+                    num=-0.5763278
+                if(l>=3.5 and l<=20.5):
+                    num=-0.57321256
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=-0.5700973
+                if(l>=1.5 and l<3.5):
+                    num=-0.5669821
+                if(l>=3.5 and l<=20.5):
+                    num=-0.56386685
+        if(close>=0 and close<1):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.5607516
+                if(l>=1.5 and l<3.5):
+                    num=-0.5576364
+                if(l>=3.5 and l<=20.5):
+                    num=-0.55452114
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.5514059
+                if(l>=1.5 and l<3.5):
+                    num=-0.54829067
+                if(l>=3.5 and l<=20.5):
+                    num=-0.54517543
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=-0.5420602
+                if(l>=1.5 and l<3.5):
+                    num=-0.53894496
+                if(l>=3.5 and l<=20.5):
+                    num=-0.5358297
+        if(close>=1 and close<2):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.5327145
+                if(l>=1.5 and l<3.5):
+                    num=-0.52959925
+                if(l>=3.5 and l<=20.5):
+                    num=-0.526484
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.5233688
+                if(l>=1.5 and l<3.5):
+                    num=-0.52025354
+                if(l>=3.5 and l<=20.5):
+                    num=-0.5171383
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=-0.51402307
+                if(l>=1.5 and l<3.5):
+                    num=-0.5109078
+                if(l>=3.5 and l<=20.5):
+                    num=-0.5077926
+        if(close>=2 and close<4):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.50467736
+                if(l>=1.5 and l<3.5):
+                    num=-0.5015621
+                if(l>=3.5 and l<=20.5):
+                    num=-0.49844685
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.4953316
+                if(l>=1.5 and l<3.5):
+                    num=-0.49221632
+                if(l>=3.5 and l<=20.5):
+                    num=-0.48910105
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=-0.4859858
+                if(l>=1.5 and l<3.5):
+                    num=-0.48287052
+                if(l>=3.5 and l<=20.5):
+                    num=-0.47975525
+        if(close>=4 and close<7):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.47664
+                if(l>=1.5 and l<3.5):
+                    num=-0.47352472
+                if(l>=3.5 and l<=20.5):
+                    num=-0.47040945
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.4672942
+                if(l>=1.5 and l<3.5):
+                    num=-0.46417892
+                if(l>=3.5 and l<=20.5):
+                    num=-0.46106365
+            if(h>=3.5 and h<=20.5):
+                if(l>=0 and l<1.5):
+                    num=-0.4579484
+                if(l>=1.5 and l<3.5):
+                    num=-0.45483312
+                if(l>=3.5 and l<=20.5):
+                    num=-0.45171785
+        if(close>=7 and close<9.94):
+            h,l=js(open,high,low,close)
+            if(h>=0 and h<1.5):
+                if(l>=0 and l<1.5):
+                    num=-0.4486026
+                if(l>=1.5 and l<3.5):
+                    num=-0.44548732
+                if(l>=3.5 and l<=20.5):
+                    num=-0.44237205
+            if(h>=1.5 and h<3.5):
+                if(l>=0 and l<1.5):
+                    num=-0.4392568
+                if(l>=1.5 and l<3.5):
+                    num=-0.43614152
+                if(l>=3.5 and l<=20.5):
+                    num=-0.43302625
+        if(close>=9.94 and close<=10.6):
+            h,l=js(open,high,low,close)
+            if(l>=0 and l<1.5):
+                num=-0.429911
+            if(l>=1.5 and l<3.5):
+                num=-0.42679572
             if(l>=3.5 and l<=20.5):
-                num=184
+                num=-0.42368045
 
 
 
 
-    if(open>=-3 and open <-1):
+    if(open>=-3 and open<-1):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=185
+                num=-0.4205652
             if(h>=1.5 and h<3.5):
-                num=186
+                num=-0.41744992
             if(h>=3.5 and h<=20.5):
-                num=187
+                num=-0.41433465
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=188
+                    num=-0.4112194
                 if(l>=1.5 and l<3.5):
-                    num=189
+                    num=-0.40810412
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=190
+                    num=-0.40498886
                 if(l>=1.5 and l<3.5):
-                    num=191
+                    num=-0.4018736
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=192
+                    num=-0.39875832
                 if(l>=1.5 and l<3.5):
-                    num=193
+                    num=-0.39564306
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=194
+                    num=-0.3925278
                 if(l>=1.5 and l<3.5):
-                    num=195
+                    num=-0.38941252
                 if(l>=3.5 and l<20.5):
-                    num=196
+                    num=-0.38629726
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=197
+                    num=-0.383182
                 if(l>=1.5 and l<3.5):
-                    num=198
+                    num=-0.38006672
                 if(l>=3.5 and l<20.5):
-                    num=199
+                    num=-0.37695146
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=200
+                    num=-0.3738362
                 if(l>=1.5 and l<3.5):
-                    num=201
+                    num=-0.37072092
                 if(l>=3.5 and l<20.5):
-                    num=202
+                    num=-0.36760566
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=203
+                    num=-0.3644904
                 if(l>=1.5 and l<3.5):
-                    num=204
+                    num=-0.36137512
                 if(l>=3.5 and l<=20.5):
-                    num=205
+                    num=-0.35825986
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=206
+                    num=-0.3551446
                 if(l>=1.5 and l<3.5):
-                    num=207
+                    num=-0.35202932
                 if(l>=3.5 and l<=20.5):
-                    num=208
+                    num=-0.34891406
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=209
+                    num=-0.3457988
                 if(l>=1.5 and l<3.5):
-                    num=210
+                    num=-0.34268352
                 if(l>=3.5 and l<=20.5):
-                    num=211
+                    num=-0.33956826
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=212
+                    num=-0.336453
                 if(l>=1.5 and l<3.5):
-                    num=213
+                    num=-0.33333772
                 if(l>=3.5 and l<=20.5):
-                    num=214
+                    num=-0.33022246
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=215
+                    num=-0.3271072
                 if(l>=1.5 and l<3.5):
-                    num=216
+                    num=-0.32399192
                 if(l>=3.5 and l<=20.5):
-                    num=217
+                    num=-0.32087666
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=218
+                    num=-0.3177614
                 if(l>=1.5 and l<3.5):
-                    num=219
+                    num=-0.31464612
                 if(l>=3.5 and l<=20.5):
-                    num=220
+                    num=-0.31153086
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=221
+                    num=-0.3084156
                 if(l>=1.5 and l<3.5):
-                    num=222
+                    num=-0.30530033
                 if(l>=3.5 and l<=20.5):
-                    num=223
+                    num=-0.30218506
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=224
+                    num=-0.2990698
                 if(l>=1.5 and l<3.5):
-                    num=225
+                    num=-0.29595453
                 if(l>=3.5 and l<=20.5):
-                    num=226
+                    num=-0.29283926
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=227
+                    num=-0.289724
                 if(l>=1.5 and l<3.5):
-                    num=228
+                    num=-0.28660873
                 if(l>=3.5 and l<=20.5):
-                    num=229
+                    num=-0.28349346
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=230
+                    num=-0.2803782
                 if(l>=1.5 and l<3.5):
-                    num=231
+                    num=-0.27726293
                 if(l>=3.5 and l<=20.5):
-                    num=232
+                    num=-0.27414766
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=233
+                    num=-0.2710324
                 if(l>=1.5 and l<3.5):
-                    num=234
+                    num=-0.26791713
                 if(l>=3.5 and l<=20.5):
-                    num=235
+                    num=-0.26480186
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=236
+                    num=-0.2616866
                 if(l>=1.5 and l<3.5):
-                    num=237
+                    num=-0.25857133
                 if(l>=3.5 and l<=20.5):
-                    num=238
+                    num=-0.25545606
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=239
+                    num=-0.2523408
                 if(l>=1.5 and l<3.5):
-                    num=240
+                    num=-0.24922553
                 if(l>=3.5 and l<=20.5):
-                    num=241
+                    num=-0.24611026
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=242
+                    num=-0.242995
                 if(l>=1.5 and l<3.5):
-                    num=243
+                    num=-0.23987973
                 if(l>=3.5 and l<=20.5):
-                    num=244
+                    num=-0.23676446
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=245
+                    num=-0.2336492
                 if(l>=1.5 and l<3.5):
-                    num=246
+                    num=-0.23053393
                 if(l>=3.5 and l<=20.5):
-                    num=247
+                    num=-0.22741866
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=248
+                    num=-0.2243034
                 if(l>=1.5 and l<3.5):
-                    num=249
+                    num=-0.22118813
                 if(l>=3.5 and l<=20.5):
-                    num=250
+                    num=-0.21807286
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=251
+                    num=-0.2149576
                 if(l>=1.5 and l<3.5):
-                    num=252
+                    num=-0.21184233
                 if(l>=3.5 and l<=20.5):
-                    num=253
+                    num=-0.20872706
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=254
+                    num=-0.2056118
                 if(l>=1.5 and l<3.5):
-                    num=255
+                    num=-0.20249653
                 if(l>=3.5 and l<=20.5):
-                    num=256
+                    num=-0.19938126
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=257
+                    num=-0.196266
                 if(l>=1.5 and l<3.5):
-                    num=258
+                    num=-0.19315073
                 if(l>=3.5 and l<=20.5):
-                    num=259
+                    num=-0.19003546
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=260
+                    num=-0.1869202
                 if(l>=1.5 and l<3.5):
-                    num=261
+                    num=-0.18380493
                 if(l>=3.5 and l<=20.5):
-                    num=262
+                    num=-0.18068966
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=263
+                    num=-0.1775744
                 if(l>=1.5 and l<3.5):
-                    num=264
+                    num=-0.17445913
                 if(l>=3.5 and l<=20.5):
-                    num=265
+                    num=-0.17134386
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=266
+                    num=-0.1682286
                 if(l>=1.5 and l<3.5):
-                    num=267
+                    num=-0.16511333
                 if(l>=3.5 and l<=20.5):
-                    num=268
+                    num=-0.16199806
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=269
+                    num=-0.1588828
                 if(l>=1.5 and l<3.5):
-                    num=270
+                    num=-0.15576753
                 if(l>=3.5 and l<=20.5):
-                    num=271
+                    num=-0.15265226
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=272
+                num=-0.149537
             if(l>=1.5 and l<3.5):
-                num=273
+                num=-0.14642173
             if(l>=3.5 and l<=20.5):
-                num=274
+                num=-0.14330646
 
 
 
-    if(open>=-1 and open <1):
+    if(open>=-1 and open<1):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=275
+                num=-0.1401912
             if(h>=1.5 and h<3.5):
-                num=276
+                num=-0.13707593
             if(h>=3.5 and h<=20.5):
-                num=277
+                num=-0.13396066
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=278
+                    num=-0.1308454
                 if(l>=1.5 and l<3.5):
-                    num=279
+                    num=-0.12773013
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=280
+                    num=-0.124614865
                 if(l>=1.5 and l<3.5):
-                    num=281
+                    num=-0.1214996
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=282
+                    num=-0.11838433
                 if(l>=1.5 and l<3.5):
-                    num=283
+                    num=-0.115269065
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=284
+                    num=-0.1121538
                 if(l>=1.5 and l<3.5):
-                    num=285
+                    num=-0.10903853
                 if(l>=3.5 and l<20.5):
-                    num=286
+                    num=-0.105923265
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=287
+                    num=-0.102808
                 if(l>=1.5 and l<3.5):
-                    num=288
+                    num=-0.09969273
                 if(l>=3.5 and l<20.5):
-                    num=289
+                    num=-0.096577466
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=290
+                    num=-0.0934622
                 if(l>=1.5 and l<3.5):
-                    num=291
+                    num=-0.09034693
                 if(l>=3.5 and l<20.5):
-                    num=292
+                    num=-0.087231666
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=293
+                    num=-0.0841164
                 if(l>=1.5 and l<3.5):
-                    num=294
+                    num=-0.08100113
                 if(l>=3.5 and l<=20.5):
-                    num=295
+                    num=-0.077885866
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=296
+                    num=-0.0747706
                 if(l>=1.5 and l<3.5):
-                    num=297
+                    num=-0.07165533
                 if(l>=3.5 and l<=20.5):
-                    num=298
+                    num=-0.06854007
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=299
+                    num=-0.0654248
                 if(l>=1.5 and l<3.5):
-                    num=300
+                    num=-0.062309533
                 if(l>=3.5 and l<=20.5):
-                    num=301
+                    num=-0.059194267
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=302
+                    num=-0.056079
                 if(l>=1.5 and l<3.5):
-                    num=303
+                    num=-0.052963734
                 if(l>=3.5 and l<=20.5):
-                    num=304
+                    num=-0.049848467
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=305
+                    num=-0.0467332
                 if(l>=1.5 and l<3.5):
-                    num=306
+                    num=-0.043617934
                 if(l>=3.5 and l<=20.5):
-                    num=307
+                    num=-0.040502667
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=308
+                    num=-0.0373874
                 if(l>=1.5 and l<3.5):
-                    num=309
+                    num=-0.034272134
                 if(l>=3.5 and l<=20.5):
-                    num=310
+                    num=-0.03115687
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=311
+                    num=-0.028041605
                 if(l>=1.5 and l<3.5):
-                    num=312
+                    num=-0.02492634
                 if(l>=3.5 and l<=20.5):
-                    num=313
+                    num=-0.021811076
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=314
+                    num=-0.01869581
                 if(l>=1.5 and l<3.5):
-                    num=315
+                    num=-0.015580546
                 if(l>=3.5 and l<=20.5):
-                    num=316
+                    num=-0.012465281
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=317
+                    num=-0.009350017
                 if(l>=1.5 and l<3.5):
-                    num=318
+                    num=-0.006234752
                 if(l>=3.5 and l<=20.5):
-                    num=319
+                    num=-0.0031194873
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=320
+                    num=0.0031152647
                 if(l>=1.5 and l<3.5):
-                    num=321
+                    num=0.0062305294
                 if(l>=3.5 and l<=20.5):
-                    num=322
+                    num=0.009345794
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=323
+                    num=0.012461059
                 if(l>=1.5 and l<3.5):
-                    num=324
+                    num=0.0155763235
                 if(l>=3.5 and l<=20.5):
-                    num=325
+                    num=0.018691588
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=326
+                    num=0.021806853
                 if(l>=1.5 and l<3.5):
-                    num=327
+                    num=0.024922118
                 if(l>=3.5 and l<=20.5):
-                    num=328
+                    num=0.028037382
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=329
+                    num=0.031152647
                 if(l>=1.5 and l<3.5):
-                    num=330
+                    num=0.03426791
                 if(l>=3.5 and l<=20.5):
-                    num=331
+                    num=0.037383176
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=332
+                    num=0.040498443
                 if(l>=1.5 and l<3.5):
-                    num=333
+                    num=0.04361371
                 if(l>=3.5 and l<=20.5):
-                    num=334
+                    num=0.046728976
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=335
+                    num=0.049844243
                 if(l>=1.5 and l<3.5):
-                    num=336
+                    num=0.05295951
                 if(l>=3.5 and l<=20.5):
-                    num=337
+                    num=0.056074776
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=338
+                    num=0.059190042
                 if(l>=1.5 and l<3.5):
-                    num=339
+                    num=0.06230531
                 if(l>=3.5 and l<=20.5):
-                    num=340
+                    num=0.065420575
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=341
+                    num=0.06853584
                 if(l>=1.5 and l<3.5):
-                    num=342
+                    num=0.07165111
                 if(l>=3.5 and l<=20.5):
-                    num=343
+                    num=0.074766375
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=344
+                    num=0.07788164
                 if(l>=1.5 and l<3.5):
-                    num=345
+                    num=0.08099691
                 if(l>=3.5 and l<=20.5):
-                    num=346
+                    num=0.084112175
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=347
+                    num=0.08722744
                 if(l>=1.5 and l<3.5):
-                    num=348
+                    num=0.09034271
                 if(l>=3.5 and l<=20.5):
-                    num=349
+                    num=0.093457974
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=350
+                    num=0.09657324
                 if(l>=1.5 and l<3.5):
-                    num=351
+                    num=0.09968851
                 if(l>=3.5 and l<=20.5):
-                    num=352
+                    num=0.102803774
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=353
+                    num=0.10591904
                 if(l>=1.5 and l<3.5):
-                    num=354
+                    num=0.10903431
                 if(l>=3.5 and l<=20.5):
-                    num=355
+                    num=0.112149574
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=356
+                    num=0.11526484
                 if(l>=1.5 and l<3.5):
-                    num=357
+                    num=0.11838011
                 if(l>=3.5 and l<=20.5):
-                    num=358
+                    num=0.12149537
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=359
+                    num=0.12461064
                 if(l>=1.5 and l<3.5):
-                    num=360
+                    num=0.1277259
                 if(l>=3.5 and l<=20.5):
-                    num=361
+                    num=0.13084117
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=362
+                num=0.13395643
             if(l>=1.5 and l<3.5):
-                num=363
+                num=0.1370717
             if(l>=3.5 and l<=20.5):
-                num=364
+                num=0.14018697
 
 
-    if(open>=1 and open <3):
+    if(open>=1 and open<3):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=365
+                num=0.14330223
             if(h>=1.5 and h<3.5):
-                num=366
+                num=0.1464175
             if(h>=3.5 and h<=20.5):
-                num=367
+                num=0.14953277
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=368
+                    num=0.15264803
                 if(l>=1.5 and l<3.5):
-                    num=369
+                    num=0.1557633
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=370
+                    num=0.15887856
                 if(l>=1.5 and l<3.5):
-                    num=371
+                    num=0.16199383
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=372
+                    num=0.1651091
                 if(l>=1.5 and l<3.5):
-                    num=373
+                    num=0.16822436
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=374
+                    num=0.17133963
                 if(l>=1.5 and l<3.5):
-                    num=375
+                    num=0.1744549
                 if(l>=3.5 and l<20.5):
-                    num=376
+                    num=0.17757016
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=377
+                    num=0.18068543
                 if(l>=1.5 and l<3.5):
-                    num=378
+                    num=0.1838007
                 if(l>=3.5 and l<20.5):
-                    num=379
+                    num=0.18691596
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=380
+                    num=0.19003123
                 if(l>=1.5 and l<3.5):
-                    num=381
+                    num=0.1931465
                 if(l>=3.5 and l<20.5):
-                    num=382
+                    num=0.19626176
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=383
+                    num=0.19937703
                 if(l>=1.5 and l<3.5):
-                    num=384
+                    num=0.2024923
                 if(l>=3.5 and l<=20.5):
-                    num=385
+                    num=0.20560756
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=386
+                    num=0.20872283
                 if(l>=1.5 and l<3.5):
-                    num=387
+                    num=0.2118381
                 if(l>=3.5 and l<=20.5):
-                    num=388
+                    num=0.21495336
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=389
+                    num=0.21806863
                 if(l>=1.5 and l<3.5):
-                    num=390
+                    num=0.2211839
                 if(l>=3.5 and l<=20.5):
-                    num=391
+                    num=0.22429916
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=392
+                    num=0.22741443
                 if(l>=1.5 and l<3.5):
-                    num=393
+                    num=0.2305297
                 if(l>=3.5 and l<=20.5):
-                    num=394
+                    num=0.23364496
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=395
+                    num=0.23676023
                 if(l>=1.5 and l<3.5):
-                    num=396
+                    num=0.2398755
                 if(l>=3.5 and l<=20.5):
-                    num=397
+                    num=0.24299076
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=398
+                    num=0.24610603
                 if(l>=1.5 and l<3.5):
-                    num=399
+                    num=0.2492213
                 if(l>=3.5 and l<=20.5):
-                    num=400
+                    num=0.25233656
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=401
+                    num=0.25545183
                 if(l>=1.5 and l<3.5):
-                    num=402
+                    num=0.2585671
                 if(l>=3.5 and l<=20.5):
-                    num=403
+                    num=0.26168236
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=404
+                    num=0.26479763
                 if(l>=1.5 and l<3.5):
-                    num=405
+                    num=0.2679129
                 if(l>=3.5 and l<=20.5):
-                    num=406
+                    num=0.27102816
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=407
+                    num=0.27414343
                 if(l>=1.5 and l<3.5):
-                    num=408
+                    num=0.2772587
                 if(l>=3.5 and l<=20.5):
-                    num=409
+                    num=0.28037396
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=410
+                    num=0.28348923
                 if(l>=1.5 and l<3.5):
-                    num=411
+                    num=0.2866045
                 if(l>=3.5 and l<=20.5):
-                    num=412
+                    num=0.28971976
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=413
+                    num=0.29283503
                 if(l>=1.5 and l<3.5):
-                    num=414
+                    num=0.2959503
                 if(l>=3.5 and l<=20.5):
-                    num=415
+                    num=0.29906556
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=416
+                    num=0.30218083
                 if(l>=1.5 and l<3.5):
-                    num=417
+                    num=0.3052961
                 if(l>=3.5 and l<=20.5):
-                    num=418
+                    num=0.30841136
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=419
+                    num=0.31152663
                 if(l>=1.5 and l<3.5):
-                    num=420
+                    num=0.3146419
                 if(l>=3.5 and l<=20.5):
-                    num=421
+                    num=0.31775716
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=422
+                    num=0.32087243
                 if(l>=1.5 and l<3.5):
-                    num=423
+                    num=0.3239877
                 if(l>=3.5 and l<=20.5):
-                    num=424
+                    num=0.32710296
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=425
+                    num=0.33021823
                 if(l>=1.5 and l<3.5):
-                    num=426
+                    num=0.3333335
                 if(l>=3.5 and l<=20.5):
-                    num=427
+                    num=0.33644876
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=428
+                    num=0.33956403
                 if(l>=1.5 and l<3.5):
-                    num=429
+                    num=0.3426793
                 if(l>=3.5 and l<=20.5):
-                    num=430
+                    num=0.34579456
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=431
+                    num=0.34890983
                 if(l>=1.5 and l<3.5):
-                    num=432
+                    num=0.3520251
                 if(l>=3.5 and l<=20.5):
-                    num=433
+                    num=0.35514036
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=434
+                    num=0.35825562
                 if(l>=1.5 and l<3.5):
-                    num=435
+                    num=0.3613709
                 if(l>=3.5 and l<=20.5):
-                    num=436
+                    num=0.36448616
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=437
+                    num=0.36760142
                 if(l>=1.5 and l<3.5):
-                    num=438
+                    num=0.3707167
                 if(l>=3.5 and l<=20.5):
-                    num=439
+                    num=0.37383196
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=440
+                    num=0.37694722
                 if(l>=1.5 and l<3.5):
-                    num=441
+                    num=0.3800625
                 if(l>=3.5 and l<=20.5):
-                    num=442
+                    num=0.38317776
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=443
+                    num=0.38629302
                 if(l>=1.5 and l<3.5):
-                    num=444
+                    num=0.3894083
                 if(l>=3.5 and l<=20.5):
-                    num=445
+                    num=0.39252356
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=446
+                    num=0.39563882
                 if(l>=1.5 and l<3.5):
-                    num=447
+                    num=0.3987541
                 if(l>=3.5 and l<=20.5):
-                    num=448
+                    num=0.40186936
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=449
+                    num=0.40498462
                 if(l>=1.5 and l<3.5):
-                    num=450
+                    num=0.4080999
                 if(l>=3.5 and l<=20.5):
-                    num=451
+                    num=0.41121516
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=452
+                num=0.41433042
             if(l>=1.5 and l<3.5):
-                num=453
+                num=0.4174457
             if(l>=3.5 and l<=20.5):
-                num=454
+                num=0.42056096
 
 
 
 
-    if(open>=3 and open <7):
+    if(open>=3 and open<7):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=455
+                num=0.42367622
             if(h>=1.5 and h<3.5):
-                num=456
+                num=0.4267915
             if(h>=3.5 and h<=20.5):
-                num=457
+                num=0.42990676
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=458
+                    num=0.43302202
                 if(l>=1.5 and l<3.5):
-                    num=459
+                    num=0.4361373
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=460
+                    num=0.43925256
                 if(l>=1.5 and l<3.5):
-                    num=461
+                    num=0.44236782
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=462
+                    num=0.4454831
                 if(l>=1.5 and l<3.5):
-                    num=463
+                    num=0.44859836
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=464
+                    num=0.45171362
                 if(l>=1.5 and l<3.5):
-                    num=465
+                    num=0.4548289
                 if(l>=3.5 and l<20.5):
-                    num=466
+                    num=0.45794415
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=467
+                    num=0.46105942
                 if(l>=1.5 and l<3.5):
-                    num=468
+                    num=0.4641747
                 if(l>=3.5 and l<20.5):
-                    num=469
+                    num=0.46728995
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=470
+                    num=0.47040522
                 if(l>=1.5 and l<3.5):
-                    num=471
+                    num=0.4735205
                 if(l>=3.5 and l<20.5):
-                    num=472
+                    num=0.47663575
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=473
+                    num=0.47975102
                 if(l>=1.5 and l<3.5):
-                    num=474
+                    num=0.4828663
                 if(l>=3.5 and l<=20.5):
-                    num=475
+                    num=0.48598155
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=476
+                    num=0.48909682
                 if(l>=1.5 and l<3.5):
-                    num=477
+                    num=0.4922121
                 if(l>=3.5 and l<=20.5):
-                    num=478
+                    num=0.49532735
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=479
+                    num=0.49844262
                 if(l>=1.5 and l<3.5):
-                    num=480
+                    num=0.5015579
                 if(l>=3.5 and l<=20.5):
-                    num=481
+                    num=0.5046731
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=482
+                    num=0.50778836
                 if(l>=1.5 and l<3.5):
-                    num=483
+                    num=0.5109036
                 if(l>=3.5 and l<=20.5):
-                    num=484
+                    num=0.51401883
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=485
+                    num=0.5171341
                 if(l>=1.5 and l<3.5):
-                    num=486
+                    num=0.5202493
                 if(l>=3.5 and l<=20.5):
-                    num=487
+                    num=0.52336454
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=488
+                    num=0.5264798
                 if(l>=1.5 and l<3.5):
-                    num=489
+                    num=0.529595
                 if(l>=3.5 and l<=20.5):
-                    num=490
+                    num=0.53271025
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=491
+                    num=0.5358255
                 if(l>=1.5 and l<3.5):
-                    num=492
+                    num=0.5389407
                 if(l>=3.5 and l<=20.5):
-                    num=493
+                    num=0.54205596
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=494
+                    num=0.5451712
                 if(l>=1.5 and l<3.5):
-                    num=495
+                    num=0.54828644
                 if(l>=3.5 and l<=20.5):
-                    num=496
+                    num=0.5514017
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=497
+                    num=0.5545169
                 if(l>=1.5 and l<3.5):
-                    num=498
+                    num=0.55763215
                 if(l>=3.5 and l<=20.5):
-                    num=499
+                    num=0.5607474
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=500
+                    num=0.5638626
                 if(l>=1.5 and l<3.5):
-                    num=501
+                    num=0.56697786
                 if(l>=3.5 and l<=20.5):
-                    num=502
+                    num=0.5700931
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=503
+                    num=0.57320833
                 if(l>=1.5 and l<3.5):
-                    num=504
+                    num=0.57632357
                 if(l>=3.5 and l<=20.5):
-                    num=505
+                    num=0.5794388
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=506
+                    num=0.58255404
                 if(l>=1.5 and l<3.5):
-                    num=507
+                    num=0.5856693
                 if(l>=3.5 and l<=20.5):
-                    num=508
+                    num=0.5887845
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=509
+                    num=0.59189975
                 if(l>=1.5 and l<3.5):
-                    num=510
+                    num=0.595015
                 if(l>=3.5 and l<=20.5):
-                    num=511
+                    num=0.5981302
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=512
+                    num=0.60124546
                 if(l>=1.5 and l<3.5):
-                    num=513
+                    num=0.6043607
                 if(l>=3.5 and l<=20.5):
-                    num=514
+                    num=0.60747594
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=515
+                    num=0.6105912
                 if(l>=1.5 and l<3.5):
-                    num=516
+                    num=0.6137064
                 if(l>=3.5 and l<=20.5):
-                    num=517
+                    num=0.61682165
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=518
+                    num=0.6199369
                 if(l>=1.5 and l<3.5):
-                    num=519
+                    num=0.6230521
                 if(l>=3.5 and l<=20.5):
-                    num=520
+                    num=0.62616736
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=521
+                    num=0.6292826
                 if(l>=1.5 and l<3.5):
-                    num=522
+                    num=0.63239783
                 if(l>=3.5 and l<=20.5):
-                    num=523
+                    num=0.63551307
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=524
+                    num=0.6386283
                 if(l>=1.5 and l<3.5):
-                    num=525
+                    num=0.64174354
                 if(l>=3.5 and l<=20.5):
-                    num=526
+                    num=0.6448588
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=527
+                    num=0.647974
                 if(l>=1.5 and l<3.5):
-                    num=528
+                    num=0.65108925
                 if(l>=3.5 and l<=20.5):
-                    num=529
+                    num=0.6542045
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=530
+                    num=0.6573197
                 if(l>=1.5 and l<3.5):
-                    num=531
+                    num=0.66043496
                 if(l>=3.5 and l<=20.5):
-                    num=532
+                    num=0.6635502
             if(h>=3.5 and h<=20.5):
                 if(l>=0 and l<1.5):
-                    num=533
+                    num=0.66666543
                 if(l>=1.5 and l<3.5):
-                    num=534
+                    num=0.6697807
                 if(l>=3.5 and l<=20.5):
-                    num=535
+                    num=0.6728959
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=536
+                    num=0.67601115
                 if(l>=1.5 and l<3.5):
-                    num=537
+                    num=0.6791264
                 if(l>=3.5 and l<=20.5):
-                    num=538
+                    num=0.6822416
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=539
+                    num=0.68535686
                 if(l>=1.5 and l<3.5):
-                    num=540
+                    num=0.6884721
                 if(l>=3.5 and l<=20.5):
-                    num=541
+                    num=0.6915873
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=542
+                num=0.69470257
             if(l>=1.5 and l<3.5):
-                num=543
+                num=0.6978178
             if(l>=3.5 and l<=20.5):
-                num=544
+                num=0.70093304
 
 
 
-    if(open>=7 and open <9.94):
+    if(open>=7 and open<9.94):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
-                num=545
+                num=0.7040483
             if(h>=1.5 and h<3.5):
-                num=546
+                num=0.7071635
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=547
+                    num=0.71027875
                 if(l>=1.5 and l<3.5):
-                    num=548
+                    num=0.713394
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=549
+                    num=0.7165092
                 if(l>=1.5 and l<3.5):
-                    num=550
+                    num=0.71962446
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=551
+                    num=0.7227397
                 if(l>=1.5 and l<3.5):
-                    num=552
+                    num=0.72585493
                 if(l>=3.5 and l<20.5):
-                    num=553
+                    num=0.72897017
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=554
+                    num=0.7320854
                 if(l>=1.5 and l<3.5):
-                    num=555
+                    num=0.73520064
                 if(l>=3.5 and l<20.5):
-                    num=556
+                    num=0.7383159
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=557
+                    num=0.7414311
                 if(l>=1.5 and l<3.5):
-                    num=558
+                    num=0.74454635
                 if(l>=3.5 and l<=20.5):
-                    num=559
+                    num=0.7476616
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=560
+                    num=0.7507768
                 if(l>=1.5 and l<3.5):
-                    num=561
+                    num=0.75389206
                 if(l>=3.5 and l<=20.5):
-                    num=562
+                    num=0.7570073
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=563
+                    num=0.76012254
                 if(l>=1.5 and l<3.5):
-                    num=564
+                    num=0.7632378
                 if(l>=3.5 and l<=20.5):
-                    num=565
+                    num=0.766353
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=566
+                    num=0.76946825
                 if(l>=1.5 and l<3.5):
-                    num=567
+                    num=0.7725835
                 if(l>=3.5 and l<=20.5):
-                    num=568
+                    num=0.7756987
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=569
+                    num=0.77881396
                 if(l>=1.5 and l<3.5):
-                    num=570
+                    num=0.7819292
                 if(l>=3.5 and l<=20.5):
-                    num=571
+                    num=0.78504443
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=572
+                    num=0.78815967
                 if(l>=1.5 and l<3.5):
-                    num=573
+                    num=0.7912749
                 if(l>=3.5 and l<=20.5):
-                    num=574
+                    num=0.79439014
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=575
+                    num=0.7975054
                 if(l>=1.5 and l<3.5):
-                    num=576
+                    num=0.8006206
                 if(l>=3.5 and l<=20.5):
-                    num=577
+                    num=0.80373585
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=578
+                    num=0.8068511
                 if(l>=1.5 and l<3.5):
-                    num=579
+                    num=0.8099663
                 if(l>=3.5 and l<=20.5):
-                    num=580
+                    num=0.81308156
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=581
+                    num=0.8161968
                 if(l>=1.5 and l<3.5):
-                    num=582
+                    num=0.81931204
                 if(l>=3.5 and l<=20.5):
-                    num=583
+                    num=0.8224273
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=584
+                    num=0.8255425
                 if(l>=1.5 and l<3.5):
-                    num=585
+                    num=0.82865775
                 if(l>=3.5 and l<=20.5):
-                    num=586
+                    num=0.831773
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=587
+                    num=0.8348882
                 if(l>=1.5 and l<3.5):
-                    num=588
+                    num=0.83800346
                 if(l>=3.5 and l<=20.5):
-                    num=589
+                    num=0.8411187
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=590
+                    num=0.84423393
                 if(l>=1.5 and l<3.5):
-                    num=591
+                    num=0.84734917
                 if(l>=3.5 and l<=20.5):
-                    num=592
+                    num=0.8504644
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=593
+                    num=0.85357964
                 if(l>=1.5 and l<3.5):
-                    num=594
+                    num=0.8566949
                 if(l>=3.5 and l<=20.5):
-                    num=595
+                    num=0.8598101
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=596
+                    num=0.86292535
                 if(l>=1.5 and l<3.5):
-                    num=597
+                    num=0.8660406
                 if(l>=3.5 and l<=20.5):
-                    num=598
+                    num=0.8691558
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 if(l>=0 and l<1.5):
-                    num=599
+                    num=0.87227106
                 if(l>=1.5 and l<3.5):
-                    num=600
+                    num=0.8753863
                 if(l>=3.5 and l<=20.5):
-                    num=601
+                    num=0.87850153
             if(h>=1.5 and h<3.5):
                 if(l>=0 and l<1.5):
-                    num=602
+                    num=0.8816168
                 if(l>=1.5 and l<3.5):
-                    num=603
+                    num=0.884732
                 if(l>=3.5 and l<=20.5):
-                    num=604
+                    num=0.88784724
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=605
+                num=0.8909625
             if(l>=1.5 and l<3.5):
-                num=606
+                num=0.8940777
             if(l>=3.5 and l<=20.5):
-                num=607
+                num=0.89719296
 
 
 
-    if(open>=9.94 and open <=10.6):
+    if(open>=9.94 and open<=10.6):
         if(close>=-10.6 and close<=-9.94):
             h,l=js(open,high,low,close)
-            num=608
+            num=0.9003082
         if(close>-9.94 and close<-7):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=609
+                num=0.9034234
             if(l>=1.5 and l<3.5):
-                num=610
+                num=0.90653867
         if(close>=-7 and close<-4):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=611
+                num=0.9096539
             if(l>=1.5 and l<3.5):
-                num=612
+                num=0.91276914
             if(l>=3.5 and l<20.5):
-                num=613
+                num=0.9158844
         if(close>=-4 and close<-2):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=614
+                num=0.9189996
             if(l>=1.5 and l<3.5):
-                num=615
+                num=0.92211485
             if(l>=3.5 and l<=20.5):
-                num=616
+                num=0.9252301
         if(close>=-2 and close<-1):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=617
+                num=0.9283453
             if(l>=1.5 and l<3.5):
-                num=618
+                num=0.93146056
             if(l>=3.5 and l<=20.5):
-                num=619
+                num=0.9345758
         if(close>=-1 and close<0):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=620
+                num=0.93769103
             if(l>=1.5 and l<3.5):
-                num=621
+                num=0.94080627
             if(l>=3.5 and l<=20.5):
-                num=622
+                num=0.9439215
         if(close>=0 and close<1):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=623
+                num=0.94703674
             if(l>=1.5 and l<3.5):
-                num=624
+                num=0.950152
             if(l>=3.5 and l<=20.5):
-                num=625
+                num=0.9532672
         if(close>=1 and close<2):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=626
+                num=0.95638245
             if(l>=1.5 and l<3.5):
-                num=627
+                num=0.9594977
             if(l>=3.5 and l<=20.5):
-                num=628
+                num=0.9626129
         if(close>=2 and close<4):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=629
+                num=0.96572816
             if(l>=1.5 and l<3.5):
-                num=630
+                num=0.9688434
             if(l>=3.5 and l<=20.5):
-                num=631
+                num=0.97195864
         if(close>=4 and close<7):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=632
+                num=0.9750739
             if(l>=1.5 and l<3.5):
-                num=633
+                num=0.9781891
             if(l>=3.5 and l<=20.5):
-                num=634
+                num=0.98130435
         if(close>=7 and close<9.94):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=635
+                num=0.9844196
             if(l>=1.5 and l<3.5):
-                num=636
+                num=0.9875348
             if(l>=3.5 and l<=20.5):
-                num=637
+                num=0.99065006
         if(close>=9.94 and close<=10.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
-                num=638
+                num=0.9937653
             if(l>=1.5 and l<3.5):
-                num=639
+                num=0.99688053
             if(l>=3.5 and l<=20.5):
-                num=640
+                num=0.99999577
+                
     return num
-
-
