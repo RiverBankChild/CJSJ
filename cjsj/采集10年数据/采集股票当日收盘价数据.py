@@ -12,7 +12,7 @@ from _datetime import datetime
  
 #超参
 ksrq='2009-11-05'
-jsrq='2019-12-07'  
+jsrq='2020-04-29'  
  
  
  
@@ -39,6 +39,7 @@ cursor = connect.cursor()
 dm_list=[]
 sql3 = "SELECT dm FROM dmb order by id "
 cursor.execute(sql3)
+
 for row in cursor.fetchall():
     if row[0].startswith('6'):
         r=row[0]+'.XSHG'
@@ -46,6 +47,7 @@ for row in cursor.fetchall():
         r=row[0]+'.XSHE'        
     dm_list.append(r)  
 
+#dm_list=['603577.XSHG']
 for i in range(0, len(dm_list)):
     df1=jq.get_price(dm_list[i],  start_date=ksrq, end_date=jsrq, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
     df1.reset_index(inplace=True,drop=False)

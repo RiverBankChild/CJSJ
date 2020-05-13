@@ -1925,8 +1925,8 @@ for v in range(len(dm_cq_list)):
     else:
         connect.commit()  # 事务提交
         print('TB'+dm_cq_list[v],'数据清空成功')
-
-
+ 
+ 
 #3.向新增加的表中插入数据
 print("开始向除权表中插入数据...................................................")
 dm_insert_sh_list=[]

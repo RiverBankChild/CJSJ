@@ -1872,7 +1872,7 @@ for k in range(0,len(dm_list)) :
     cursor.execute(sql % data)
     for a in cursor.fetchall():
         qyt_close_list.append(a[0]) 
-
+ 
     sql = "select t.open,t.high,t.low,t.close,t.date from (select id,date,open,high,low,close from %s order by id desc limit %d) t order by t.id "
     data = (dm,tjts)
     cursor.execute(sql % data)
@@ -1882,14 +1882,14 @@ for k in range(0,len(dm_list)) :
         dt_low_list.append(a[2])
         dt_close_list.append(a[3])
         date_dt_list.append(a[4])
-
+ 
     for i in range(tjts):
         open_list.append((dt_open_list[i]-qyt_close_list[i])*100/qyt_close_list[i])
         high_list.append((dt_high_list[i]-qyt_close_list[i])*100/qyt_close_list[i])
         low_list.append((dt_low_list[i]-qyt_close_list[i])*100/qyt_close_list[i])
         close_list.append((dt_close_list[i]-qyt_close_list[i])*100/qyt_close_list[i])
-
-
+ 
+ 
     for i in range(tjts):
         open=open_list[i]
         high=high_list[i]
@@ -1897,7 +1897,7 @@ for k in range(0,len(dm_list)) :
         close=close_list[i]
         num=0
         num=bm(open,high,low,close)
-
+ 
         if(num==0):
             print(dm,date_dt_list[i],open,high,low,close)
             dm_update_list.append(dm[2:])
@@ -1906,7 +1906,7 @@ for k in range(0,len(dm_list)) :
 dm_cq_list=[]
 dm_cq_list=dm_update_list
 
-#dm_cq_list=['603909']
+#dm_cq_list=['603214','603360','603577']
 print(dm_cq_list)        
 print("共需要更新",len(dm_cq_list),'张表')
 
