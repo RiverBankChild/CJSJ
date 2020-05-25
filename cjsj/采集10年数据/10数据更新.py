@@ -173,6 +173,7 @@ for m in range(len(dm_insert_list)):
     connect.commit()
     total=total+cursor.rowcount
 print('成功插入代码表', total, '支股票')
+
 total=0
 for n in range(len(dm_delete_list)):
     sql = "delete from dmb where dm='%s'"
@@ -181,6 +182,15 @@ for n in range(len(dm_delete_list)):
     connect.commit()
     total=total+cursor.rowcount
 print('成功删除代码表', total, '支股票')
+
+total=0
+for n in range(len(dm_delete_list)):
+    sql = "delete from kxfzb where dm='%s'"
+    data = (dm_delete_list[n][0])
+    cursor.execute(sql % data)
+    connect.commit()
+    total=total+cursor.rowcount
+print('成功删除可选分组表', total, '支股票')
 
 
 #更新股票表  
