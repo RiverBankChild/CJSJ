@@ -172,8 +172,18 @@ qjzf2ts int(2) default  0
      ADD COLUMN  ddfdx  Float(5,2) default  0.00  comment '高低点的幅度范围下边界',
      ADD COLUMN  ddfdd  Float(5,2) default  0.00  comment '高低点的幅度范围上边界';
      
+     
+     
 alter table clb ADD COLUMN  gxsj  Timestamp default  CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP  comment '更新时间';
 alter table clb ADD COLUMN  dltjts  int(3) default  0 comment '地量统计天数';
+
+ ALTER TABLE clb 
+     ADD COLUMN  sxkx1  int(3) default  0 comment 'k线1',
+     ADD COLUMN  sxkx2  int(3) default  0 comment 'k线2',
+     ADD COLUMN  sxkx3  int(3) default  0 comment 'k线3',
+     ADD COLUMN  sxkssj  int(3) default  0 comment '三线开始时间',
+     ADD COLUMN  sxjssj  int(3) default  0 comment '三线结束时间',
+     ADD COLUMN  sxsj  varchar(16) default  '未知事件' comment '三线事件';
 
 
 create table dpztb (id int primary key auto_increment,date varchar(16) unique default '未知',close Float(7,2) default  0.00,ylw Float(7,2) default  0.00,zcw Float(7,2) default  0.00,dpzt int(2) default  0,czzn varchar(250) default  "未知操作指南",tag varchar(250) default  "未知标签");
