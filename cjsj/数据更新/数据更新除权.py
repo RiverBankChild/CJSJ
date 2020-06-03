@@ -2217,7 +2217,7 @@ def bm(open,high,low,close):
 
 #定义当前日期
 d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
-print('今天是'+d)
+#print('今天是'+d)
 
 #获取最新日期表
 date_new_list=[]
@@ -2455,6 +2455,7 @@ cursor.execute(sqll)
 for row in cursor.fetchall():
     yz = row[0]
 
+
 print(yz)
 
 df1=jq.get_price("603986.XSHG",  end_date=d, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
@@ -2467,6 +2468,7 @@ print(mbz)
 if(yz==mbz):
     print("数据校验成功")
     print('**************************恭喜！所有数据为最新******************************') 
+    print("job done")
     pass
 else:
     print("数据校验失败，请检查")
