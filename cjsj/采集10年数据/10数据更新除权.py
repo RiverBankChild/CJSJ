@@ -295,6 +295,7 @@ for at in range(len(dm_update_list)):
     else:
         th=dm_update_list[at][0]+'.XSHE'        
     dm_sh_list.append(th)
+    
 for q in range(0, len(dm_update_list)):
     #更新收盘价
     total_df=jq.get_price(dm_sh_list[q],start_date=date_insert_list[0] , end_date=date_insert_list[-1], frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
