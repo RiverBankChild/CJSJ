@@ -139,21 +139,8 @@ for c in cursor.fetchall():
 
 #获取报告期数据
 
-rq_list=['2015-03-31','2015-06-30','2015-09-30','2015-12-31',
-         '2016-03-31','2016-06-30','2016-09-30','2016-12-31',
-         '2017-03-31','2017-06-30','2017-09-30','2017-12-31',
-         '2018-03-31','2018-06-30','2018-09-30','2018-12-31',
-         '2019-03-31','2019-06-30','2019-09-30','2019-12-31',
-         '2020-03-31','2020-06-30','2020-09-30','2020-12-31',
-         '2021-03-31','2021-06-30','2021-09-30','2021-12-31']
-
-rq_int_list=[20150331,20150630,20150930,20151231,
-         20160331,20160630,20160930,20161231,
-         20170331,20170630,20170930,20171231,
-         20180331,20180630,20180930,20181231,
-         20190331,20190630,20190930,20191231,
-         20200331,20200630,20200930,20201231,
-         20210331,20210630,20210930,20211231]
+rq_list=['2019-12-31','2020-03-31','2020-06-30','2020-09-30','2020-12-31','2021-03-31','2021-06-30','2021-09-30','2021-12-31']
+rq_int_list=[20191231,20200331,20200630,20200930,20201231,20210331,20210630,20210930,20211231]
  
  
     
@@ -550,22 +537,22 @@ for x in range(0,len(dm_sh_list)):
     df=finance.run_query(
         jq.query(finance.STK_XR_XD.code,finance.STK_XR_XD.a_xr_date,finance.STK_XR_XD.dividend_ratio,finance.STK_XR_XD.transfer_ratio).filter(finance.STK_XR_XD.code==dm_sh_list[x]).order_by(finance.STK_XR_XD.report_date.desc()).limit(1)
         )
-    print(df)
+    #print(df)
     if(df.empty):
-        print('empty')
+        #print('empty')
         pass
     else:   
         for i in range(0, 1):
             if(str(df.iloc[i]['a_xr_date'])=='None'):
-                print('NONE')
+                #print('NONE')
                 pass
             else:
-                if(int(str(df.iloc[i]['a_xr_date']).replace('-',''))>int(d.replace('-','')) or int(str(df.iloc[i]['a_xr_date']).replace('-',''))<int(syccqrq.replace('-',''))):
-                    print('未来除权或者已经除权')
+                if(int(str(df.iloc[i]['a_xr_date']).replace('-',''))>int(d.replace('-','')) or int(str(df.iloc[i]['a_xr_date']).replace('-',''))<=int(syccqrq.replace('-',''))):
+                    #print('未来除权或者已经除权')
                     pass
                 else:
-                    if((str(df.iloc[i]['dividend_ratio'])!='None' or str(df.iloc[i]['transfer_ratio'])!='None')):
-                        dm_cq_list.append(df.iloc[i]['code'][:6])
+                    #if((str(df.iloc[i]['dividend_ratio'])!='None' or str(df.iloc[i]['transfer_ratio'])!='None')):
+                    dm_cq_list.append(df.iloc[i]['code'][:6])
     
 
 

@@ -8,6 +8,9 @@ import jqdatasdk as jq
 import time
 from _datetime import datetime
  
+#超参
+jzrq='2020-06-05'
+ 
 #jqdata认证
 jq.auth('13401179853','king179853')
 
@@ -37,8 +40,8 @@ for row in cursor.fetchall():
         r=row[0]+'.XSHE'        
     dm_list.append(r)  
 
-for i in range(0, len(dm_list)):
-    df1=jq.get_price(dm_list[i],  end_date='2019-05-10', frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
+for i in range(771, len(dm_list)):
+    df1=jq.get_price(dm_list[i],  end_date=jzrq, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
     df1.reset_index(inplace=True,drop=False)
     list=df1.values.tolist()
     for j in range(len(list)):

@@ -8,6 +8,9 @@ import jqdatasdk as jq
 import time
 from _datetime import datetime
  
+#超参
+jzrq='2020-06-05'
+ 
 #jqdata认证
 jq.auth('13401179853','king179853')
 
@@ -29,7 +32,7 @@ connect = pymysql.Connect(
 # 获取游标
 cursor = connect.cursor()
 
-df1=jq.get_price('000001.XSHG',  end_date='2019-05-10', frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
+df1=jq.get_price('000001.XSHG',  end_date=jzrq, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
 df1.reset_index(inplace=True,drop=False)
 list=df1.values.tolist()
 #插入数据 
