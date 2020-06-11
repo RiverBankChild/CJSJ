@@ -40,7 +40,7 @@ for row in cursor.fetchall():
         r=row[0]+'.XSHE'        
     dm_list.append(r)  
 
-for i in range(771, len(dm_list)):
+for i in range(2666, len(dm_list)):
     df1=jq.get_price(dm_list[i],  end_date=jzrq, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
     df1.reset_index(inplace=True,drop=False)
     list=df1.values.tolist()

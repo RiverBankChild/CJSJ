@@ -8,6 +8,11 @@ import jqdatasdk as jq
 from _datetime import datetime
 import time
  
+#超参
+jzrq='2020-06-05'
+ 
+ 
+ 
 #jqdata认证
 jq.auth('13401179853','king179853')
 
@@ -37,8 +42,8 @@ for row in cursor.fetchall():
         r=row[0]+'.XSHE'        
     dmb_list.append(r)       
 
-for o in range(0,len(dmb_list)):
-    zjl_df=jq.get_money_flow([dmb_list[o]], start_date='2015-01-01', end_date='2019-05-10', fields=['date','change_pct','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
+for o in range(3737,len(dmb_list)):
+    zjl_df=jq.get_money_flow([dmb_list[o]], start_date='2015-01-01', end_date=jzrq, fields=['date','change_pct','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
     zjl_list=zjl_df.values.tolist()
 
     total=0;
