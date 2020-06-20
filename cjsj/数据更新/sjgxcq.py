@@ -36,7 +36,7 @@ cursor = connect.cursor()
 #判断是否为节假日或者工作日六点以后
 d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
 print('今天是'+d)
-start_time = dt.datetime.strptime(str(dt.datetime.now().date())+'18:00', '%Y-%m-%d%H:%M')
+start_time = dt.datetime.strptime(str(dt.datetime.now().date())+'20:00', '%Y-%m-%d%H:%M')
 n_time = dt.datetime.now()
 if chinese_calendar.is_holiday(n_time):
     pass
