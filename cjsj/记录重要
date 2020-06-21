@@ -202,19 +202,7 @@ alter table clb ADD COLUMN  dltjts  int(3) default  0 comment '地量统计天�
      
      
      
-ALTER TABLE clb  DROP COLUMN  2xk1;
-ALTER TABLE clb  DROP COLUMN  2xk2;
-ALTER TABLE clb  DROP COLUMN  2xkssj;
-ALTER TABLE clb  DROP COLUMN  2xjssj;
-ALTER TABLE clb  DROP COLUMN  2xsj;
-
-ALTER TABLE clb  DROP COLUMN  4xk1;
-ALTER TABLE clb  DROP COLUMN  4xk2;
-ALTER TABLE clb  DROP COLUMN  4xk3;
-ALTER TABLE clb  DROP COLUMN  4xk4;
-ALTER TABLE clb  DROP COLUMN  4xkssj;
-ALTER TABLE clb  DROP COLUMN  4xjssj;
-ALTER TABLE clb  DROP COLUMN  4xsj;
+//ALTER TABLE clb  DROP COLUMN  2xk1;
 
 
 

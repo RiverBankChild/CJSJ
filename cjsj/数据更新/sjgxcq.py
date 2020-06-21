@@ -17,6 +17,7 @@ import datetime as dt
 #认证
 jq.auth('13401179853','king179853')
 
+d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
 
 #建立连接 获取游标
 connect = pymysql.Connect(
@@ -30,11 +31,9 @@ connect = pymysql.Connect(
 cursor = connect.cursor()
 
 
-
 #----------------------------------------------------------------------数据更新
 
 #判断是否为节假日或者工作日六点以后
-d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
 print('今天是'+d)
 start_time = dt.datetime.strptime(str(dt.datetime.now().date())+'20:00', '%Y-%m-%d%H:%M')
 n_time = dt.datetime.now()
@@ -46,24 +45,24 @@ else:
     else:
         print('当前时间段不允许更新数据')
         os._exit(0)
-
-
-
+ 
+ 
+ 
 #获取现有代码表
 dm_old_list=[]
 sql = "SELECT dm ,name FROM dmb order by id "
 cursor.execute(sql)
 for a in cursor.fetchall():
     dm_old_list.append(list(a))     
-    
+     
 #获取现有日期表
 date_old_list=[]
 sql = "SELECT date FROM rqb order by id "
 cursor.execute(sql)
 for b in cursor.fetchall():
     date_old_list.append(b[0]) 
-
-
+ 
+ 
 #获取最新代码表
 dm_new_list=[]
 df_new=jq.get_all_securities(date=d );
@@ -74,8 +73,8 @@ df_new.rename(columns={'index':'dm'},inplace=True)
 for i in range(0, len(df_new)):
     df_new.iloc[i]['dm']=df_new.iloc[i]['dm'][:6] 
 dm_new_list=df_new.values.tolist()  
-
-
+ 
+ 
 #获取最新日期表
 #1.更新上证指数 
 szzs_df=jq.get_price('000001.XSHG',  end_date=d, frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
@@ -98,8 +97,8 @@ for j in range(len(szzs_list)):
         connect.commit()  # 事务提交
         total=total+cursor.rowcount
 print('上证指数历史数据更新完成，共更新了',total,'条数据')
-
-
+ 
+ 
 #2.更新日期表
 total=0;
 date_list=[]
@@ -107,11 +106,11 @@ sql = "SELECT date FROM szzs order by id "
 cursor.execute(sql)
 for row in cursor.fetchall():
     date_list.append(row)
-    
+     
 sql11="truncate table rqb"
 cursor.execute(sql11)
 connect.commit() 
-   
+    
 for k in range(0,len(date_list)):
     try:
         sql = "INSERT INTO rqb (date) VALUES ( '%s')"
@@ -125,25 +124,25 @@ for k in range(0,len(date_list)):
         connect.commit()  # 事务提交
         total=total+cursor.rowcount
 print('日期表更新完成，共更新了',total,'条数据')
-
-
-
+ 
+ 
+ 
 #3.获取最新日期表
 date_new_list=[]
 sql = "SELECT date FROM rqb order by id "
 cursor.execute(sql)
 for c in cursor.fetchall():
     date_new_list.append(c[0]) 
-
-
-
+ 
+ 
+ 
 #获取报告期数据
-
+ 
 rq_list=['2019-12-31','2020-03-31','2020-06-30','2020-09-30','2020-12-31']
 rq_int_list=[20191231,20200331,20200630,20200930,20201231]
- 
- 
-    
+  
+  
+     
 #对比新老代码表和日期表
 date_insert_list=[]
 dm_insert_list=[]
@@ -151,30 +150,30 @@ dm_delete_list=[]
 dm_update_list=[]
 dm_old_int_list=[]
 dm_new_int_list=[]
-
+ 
 for a0 in range(len(dm_old_list)):
     dm_old_int_list.append(dm_old_list[a0][0])
 for b0 in range(len(dm_new_list)):
     dm_new_int_list.append(dm_new_list[b0][0])
-    
+     
 for f in range(len(date_new_list)):
     if date_new_list[f] in date_old_list:
         pass
     else:
         date_insert_list.append(date_new_list[f])
-        
+         
 for g in range(len(dm_new_list)):
     if dm_new_int_list[g] in dm_old_int_list:
         pass
     else:
         dm_insert_list.append(dm_new_list[g])
-        
+         
 for h in range(len(dm_old_list)):
     if dm_old_int_list[h] in dm_new_int_list:
         pass
     else:
         dm_delete_list.append(dm_old_list[h])
-
+ 
 for ee in range(len(dm_old_list)):
     if dm_old_list[ee] in dm_delete_list:
         pass
@@ -183,14 +182,14 @@ for ee in range(len(dm_old_list)):
 print('需要更新的日期：',date_insert_list)       
 print('新上市：',dm_insert_list)
 print('退市：',dm_delete_list)
-    
-
+     
+ 
 if(date_insert_list==[]):
     print('当前数据已为最新')
     os._exit(0)
-
-
-
+ 
+ 
+ 
 #更新代码表
 total=0
 for m in range(len(dm_insert_list)):
@@ -200,7 +199,7 @@ for m in range(len(dm_insert_list)):
     connect.commit()
     total=total+cursor.rowcount
 print('成功插入代码表', total, '支股票')
-
+ 
 total=0
 for n in range(len(dm_delete_list)):
     sql = "delete from dmb where dm='%s'"
@@ -209,7 +208,7 @@ for n in range(len(dm_delete_list)):
     connect.commit()
     total=total+cursor.rowcount
 print('成功删除代码表', total, '支股票')
-
+ 
 total=0
 for n in range(len(dm_delete_list)):
     sql = "delete from kxfzb where dm='%s'"
@@ -218,8 +217,8 @@ for n in range(len(dm_delete_list)):
     connect.commit()
     total=total+cursor.rowcount
 print('成功删除可选分组表', total, '支股票')
-
-
+ 
+ 
 total=0
 for n in range(len(dm_delete_list)):
     sql = "delete from fzb where dm='%s'"
@@ -228,23 +227,23 @@ for n in range(len(dm_delete_list)):
     connect.commit()
     total=total+cursor.rowcount
 print('成功删除强庄分组表', total, '支股票')
-
-
-
-
+ 
+ 
+ 
+ 
 #更新股票表  
 #1.删除停止上市的表
-
+ 
 for o in range(len(dm_delete_list)):
     sql = " drop table %s "
     data = ('TB'+dm_delete_list[o][0])
     cursor.execute(sql%data)
     connect.commit()
     print('成功删除', 'TB'+dm_delete_list[o][0])
-
-
+ 
+ 
 #2.插入新上市的表
-
+ 
 for p in range(0, len(dm_insert_list)):
     sql = "create table IF NOT EXISTS %s (\
     id int primary key auto_increment,\
@@ -279,8 +278,8 @@ for p in range(0, len(dm_insert_list)):
     cursor.execute(sql % data)
     connect.commit()
     print('成功创建','TB'+dm_insert_list[p][0])
-    
-
+     
+ 
 #3.向新增加的表中插入数据
 print("开始向新上市的表中插入数据...................................................")
 dm_insert_sh_list=[]
@@ -302,7 +301,7 @@ for q in range(0, len(dm_insert_sh_list)):
         cursor.execute(sql % data)
         connect.commit()
     print('TB'+dm_insert_sh_list[q][:6],'收盘价数据获取完成')
-    
+     
     #获取市值
     for u in range(len(date_new_list)):
         df_volandincome = jq.get_fundamentals(jq.query(
@@ -325,8 +324,8 @@ for q in range(0, len(dm_insert_sh_list)):
         else:
             connect.commit()  # 事务提交
     print('TB'+dm_insert_sh_list[q][:6],'市值数据获取完成')
-    
-    
+     
+     
     #获取资金流向
     zjl_df=jq.get_money_flow(dm_insert_sh_list[q], start_date='2015-01-01', end_date=d, fields=['date','change_pct','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
     zjl_list=zjl_df.values.tolist()
@@ -336,9 +335,9 @@ for q in range(0, len(dm_insert_sh_list)):
         cursor.execute(sql % data)
         connect.commit()  # 事务提交
     print('TB'+dm_insert_sh_list[q][:6],'资金流数据获取完成')
-    
-    
-    
+     
+     
+     
     #获取流通股东   
     date_int_list=[]
     sql2 = "SELECT date FROM rqb order by id "
@@ -367,8 +366,8 @@ for q in range(0, len(dm_insert_sh_list)):
                     connect.commit()  # 事务提交
     print('TB'+dm_insert_sh_list[q][:6],'流通股东数据获取完成')  
 print('新表所有数据插入完毕....................................')   
-
-
+ 
+ 
 #更新老表数据
 print("开始向老表更新数据...................................")
 dm_sh_list=[]
@@ -394,7 +393,7 @@ for q in range(0, len(dm_update_list)):
             continue
         else:
             connect.commit()  # 事务提交
-    
+     
     #更新市值
     for u in range(0,len(date_insert_list)):
         df_total_volandincome = jq.get_fundamentals(jq.query(
@@ -416,8 +415,8 @@ for q in range(0, len(dm_update_list)):
             continue
         else:
             connect.commit()  # 事务提交
-
-    
+ 
+     
     #更新资金流向
     zjl_df=jq.get_money_flow(dm_sh_list[q], start_date=date_insert_list[0] , end_date=date_insert_list[-1], fields=['date','change_pct','net_amount_xl','net_amount_l','net_amount_m','net_amount_s'])
     zjl_list=zjl_df.values.tolist()
@@ -431,7 +430,7 @@ for q in range(0, len(dm_update_list)):
             continue
         else:
             connect.commit()  # 事务提交
-        
+         
     #获取流通股东   
     date_insert_int_list=[]
     for row in range(0,len(date_insert_list)):
@@ -480,7 +479,6 @@ cursor.execute(sql)
  
 syccqrq=cursor.fetchall()[0][0]
 
-print("第一次除权开始")
 print("上一次除权日期为",syccqrq)
 
 
@@ -517,20 +515,20 @@ rq_int_list=[20150331,20150630,20150930,20151231,
 dm_list=[]
 dm_sh_list=[]
 dm_cq_list=[]
-
+ 
 sql = "SELECT dm  FROM dmb  order by id "
 cursor.execute(sql)
 for row in cursor.fetchall():
     dm_list.append(row) 
-    
+     
 for s in range(len(dm_list)):
     if dm_list[s][0].startswith('6'):
         t=dm_list[s][0]+'.XSHG'
     else:
         t=dm_list[s][0]+'.XSHE'        
     dm_sh_list.append(t)
-    
-    
+     
+     
 for x in range(0,len(dm_sh_list)):
     df=finance.run_query(
         jq.query(finance.STK_XR_XD.code,finance.STK_XR_XD.a_xr_date,finance.STK_XR_XD.dividend_ratio,finance.STK_XR_XD.transfer_ratio).filter(finance.STK_XR_XD.code==dm_sh_list[x]).order_by(finance.STK_XR_XD.report_date.desc()).limit(1)
@@ -555,7 +553,9 @@ for x in range(0,len(dm_sh_list)):
 
 
 
-#dm_cq_list=['603909']
+#dm_cq_list=['603861','603871','603877','603880','603887','603889','603893','603901','603928','603929','603963','603968','603979','603985','603989','603995','603998','688002','688006','688020','688021','688022','688030','688036','688080','688088','688098','688100','688101','688122','688128','688138','688166','688168','688181','688199','688268','688298','688310','688358','688365','688368','688369','688396']
+
+
 print(dm_cq_list)        
 print("共需要更新",len(dm_cq_list),'张表')
 
