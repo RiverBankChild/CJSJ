@@ -696,6 +696,35 @@ connect.commit()
 print(d,'除权完成***********************************************')  
 
 
+#----------------------------------------------------代码修复
+
+print('开始代码修复.......................')  
+dm_list=[]
+
+sql = "SELECT dm  FROM dmb  "
+cursor.execute(sql)
+for a in cursor.fetchall():
+    dm_list.append(a[0])
+print(len(dm_list))
+
+
+for s in range(0,len(dm_list)):
+
+    sql = " update  %s set dm='%s'" 
+    try:     
+        data = ('TB'+dm_list[s],dm_list[s])
+        cursor.execute(sql % data) 
+    except Exception as e:
+        connect.rollback()  # 事务回滚
+        continue
+    else:
+        connect.commit()  # 事务提交
+
+
+
+print('代码修复完成*****************')  
+
+
 
 
 #----------------------------------------------------数据校验

@@ -202,6 +202,19 @@ alter table clb ADD COLUMN  dltjts  int(3) default  0 comment '地量统计天�
      
      
      
+ ALTER TABLE clb 
+     ADD COLUMN  djt  int(3) default  0 comment '第几天',
+     ADD COLUMN  dsrjx  int(3) default  0 comment '多少日均线',
+     ADD COLUMN  ggjxgx  varchar(16) default  '未知事件'  comment '个股均线关系';
+     
+     
+ ALTER TABLE clb 
+     ADD COLUMN  cgl0 Float(5,2) default  0.00 comment '小于0成功率',
+     ADD COLUMN  cgl1 Float(5,2) default  0.00 comment '0到5成功率',
+     ADD COLUMN  cgl5 Float(5,2) default  0.00 comment '5到10成功率';
+     
+     
+     
 //ALTER TABLE clb  DROP COLUMN  2xk1;
 
 
