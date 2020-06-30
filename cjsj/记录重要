@@ -214,6 +214,16 @@ alter table clb ADD COLUMN  dltjts  int(3) default  0 comment '地量统计天�
      ADD COLUMN  cgl5 Float(5,2) default  0.00 comment '5到10成功率';
      
      
+ 
+ALTER TABLE clb  
+     ADD COLUMN  dfgs  int(2) default  0 comment '凸起2的个数',
+     ADD COLUMN  dfkssj int(2) default  0 comment '凸起2从第几天开始计算',
+     ADD COLUMN  dftjts int(2) default  0 comment '凸起2的天数',
+     ADD COLUMN  dffd Float(5,2) default  0.00 comment '凸起2的正负幅度';
+ 
+
+ 
+ 
      
 //ALTER TABLE clb  DROP COLUMN  2xk1;
 
