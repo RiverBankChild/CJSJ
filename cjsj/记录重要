@@ -1,13 +1,13 @@
-//jqdata安装
-pip install git+https://github.com/JoinQuant/jqdatasdk.git -i https://mirrors.aliyun.com/pypi/simple/
-pip install --user jqdatasdk
+
+pip install jqdatasdk -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 pip install -U jqdatasdk
-//
-pip install matplotlib -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 pip install numpy -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+pip install chinesecalendar -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+pip install -U chinesecalendar
 pip install pandas -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
-pip install seaborn scipy  -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 pip install pymysql -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+pip install matplotlib -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+pip install seaborn scipy  -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 
 //自动交易界面
 pip install tushare -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
@@ -221,11 +221,28 @@ ALTER TABLE clb
      ADD COLUMN  dftjts int(2) default  0 comment '凸起2的天数',
      ADD COLUMN  dffd Float(5,2) default  0.00 comment '凸起2的正负幅度';
  
-
  
+ 
+ALTER TABLE clb  
+     ADD COLUMN  jkxx  int(2) default  0 comment '几颗星星',
+     ADD COLUMN  xxksr int(2) default  0 comment '星星开始日',
+     ADD COLUMN  xxtjts int(2) default  0 comment '星星统计天数';
+
+
+
+ALTER TABLE clb  
+     ADD COLUMN  lswbz  Float(5,2) default  0 comment '历史位比值';
+
+
+
+
+ALTER TABLE clb  
+     ADD COLUMN  sfst  varchar(16)  default  '都可以'  comment '是否为st';
+
  
      
 //ALTER TABLE clb  DROP COLUMN  2xk1;
+
 
 
 
