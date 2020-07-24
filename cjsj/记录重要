@@ -237,7 +237,51 @@ ALTER TABLE clb
 
 
 ALTER TABLE clb  
-     ADD COLUMN  sfst  varchar(16)  default  '都可以'  comment '是否为st';
+     ADD COLUMN  sfst  varchar(16)  default  '不限'  comment '是否为st';
+
+
+
+
+ALTER TABLE clb  
+     ADD COLUMN  day1kpx  Float(5,2) default  0.00 comment '开盘小',
+     ADD COLUMN  day1kpd  Float(5,2) default  0.00 comment '开盘大',
+     ADD COLUMN  day1ddx  int(8) default  0.00 comment '大单小',
+     ADD COLUMN  day1ddd  int(8) default  0.00 comment '大单大',
+     
+     ADD COLUMN  day2kpx  Float(5,2) default  0.00 comment '开盘小',
+     ADD COLUMN  day2kpd  Float(5,2) default  0.00 comment '开盘大',
+     ADD COLUMN  day2ddx  int(8) default  0.00 comment '大单小',
+     ADD COLUMN  day2ddd  int(8) default  0.00 comment '大单大',
+     
+     ADD COLUMN  day3kpx  Float(5,2) default  0.00 comment '开盘小',
+     ADD COLUMN  day3kpd  Float(5,2) default  0.00 comment '开盘大',
+     ADD COLUMN  day3ddx  int(8) default  0.00 comment '大单小',
+     ADD COLUMN  day3ddd  int(8) default  0.00 comment '大单大',
+     
+     ADD COLUMN  day4kpx  Float(5,2) default  0.00 comment '开盘小',
+     ADD COLUMN  day4kpd  Float(5,2) default  0.00 comment '开盘大',
+     ADD COLUMN  day4ddx  int(8) default  0.00 comment '大单小',
+     ADD COLUMN  day4ddd  int(8) default  0.00 comment '大单大',
+     
+     ADD COLUMN  day5kpx  Float(5,2) default  0.00 comment '开盘小',
+     ADD COLUMN  day5kpd  Float(5,2) default  0.00 comment '开盘大',
+     ADD COLUMN  day5ddx  int(8) default  0.00 comment '大单小',
+     ADD COLUMN  day5ddd  int(8) default  0.00 comment '大单大',
+     
+     ADD COLUMN  daylast1kpx  Float(5,2) default  0.00 comment '开盘小',
+     ADD COLUMN  daylast1kpd  Float(5,2) default  0.00 comment '开盘大',
+     ADD COLUMN  daylast1ddx  int(8) default  0.00 comment '大单小',
+     ADD COLUMN  daylast1ddd  int(8) default  0.00 comment '大单大',
+     
+     ADD COLUMN  daylast2kpx  Float(5,2) default  0.00 comment '开盘小',
+     ADD COLUMN  daylast2kpd  Float(5,2) default  0.00 comment '开盘大',
+     ADD COLUMN  daylast2ddx  int(8) default  0.00 comment '大单小',
+     ADD COLUMN  daylast2ddd  int(8) default  0.00 comment '大单大',
+     
+     ADD COLUMN  daynkpx  Float(5,2) default  0.00 comment '开盘小',
+     ADD COLUMN  daynkpd  Float(5,2) default  0.00 comment '开盘大',
+     ADD COLUMN  daynddx  int(8) default  0.00 comment '大单小',
+     ADD COLUMN  daynddd  int(8) default  0.00 comment '大单大';
 
  
      

@@ -1,57 +1,95 @@
+'''
+Created on 2019年5月1日
+# -*- coding:utf-8 -*-
+更新时间必须是下午5点以后或者是周末
+@author: Administrator
+'''
+import pymysql
+import jqdatasdk as jq
 import time
+from _datetime import datetime
+from jqdatasdk import finance
+import chinese_calendar
+from os.path import  os
+import datetime as dt
 
-#获取报告期数据
 
-
-rq_list_d=['2014-12-31',
-         '2015-03-31','2015-06-30','2015-09-30','2015-12-31',
-         '2016-03-31','2016-06-30','2016-09-30','2016-12-31',
-         '2017-03-31','2017-06-30','2017-09-30','2017-12-31',
-         '2018-03-31','2018-06-30','2018-09-30','2018-12-31',
-         '2019-03-31','2019-06-30','2019-09-30','2019-12-31',
-         '2020-03-31','2020-06-30','2020-09-30','2020-12-31',
-         '2021-03-31','2021-06-30','2021-09-30','2021-12-31',
-         '2022-03-31','2022-06-30','2022-09-30','2022-12-31']
-
-rq_int_list_d=[20141231,
-         20150331,20150630,20150930,20151231,
-         20160331,20160630,20160930,20161231,
-         20170331,20170630,20170930,20171231,
-         20180331,20180630,20180930,20181231,
-         20190331,20190630,20190930,20191231,
-         20200331,20200630,20200930,20201231,
-         20210331,20210630,20210930,20211231,
-         20220331,20220630,20220930,20221231]
-
+#认证
+jq.auth('13401179853','king179853')
 
 d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
 
-
-for i in range(0,len(rq_int_list_d)-1):
-    if(int(d.replace('-',''))>rq_int_list_d[i] and int(d.replace('-',''))<=rq_int_list_d[i+1]):
-        rq_list=[rq_list_d[i-1],rq_list_d[i],rq_list_d[i+1]]
-        rq_int_list=[rq_int_list_d[i-1],rq_int_list_d[i],rq_int_list_d[i+1]]
-        break
-    else:
-        pass
-    
-
-print(rq_list)
-print(rq_int_list)
-#rq_list=['2019-12-31','2020-03-31','2020-06-30','2020-09-30','2020-12-31']
-#rq_int_list=[20191231,20200331,20200630,20200930,20201231]
+#建立连接 获取游标
+connect = pymysql.Connect(
+    host='localhost',
+    port=3306,
+    user='root',
+    passwd='123456',
+    db='xg',
+    charset='utf8'
+)
+cursor = connect.cursor()
 
 
-for i in range(0,len(rq_int_list_d)-1):
-    if(int(d.replace('-',''))>rq_int_list_d[i] and int(d.replace('-',''))<=rq_int_list_d[i+1]):
-        rq_list=rq_list_d[0:i+2]
-        rq_int_list=rq_int_list_d[0:i+2]
-        break
-    else:
-        pass
-    
-print(rq_list)
-print(rq_int_list)
-    
 
+
+print("...............开始修正除权数据..............................")
+
+syccqrq=''
+
+sql = "SELECT cqrq FROM cqrqb where id =1 "
+cursor.execute(sql)
  
+syccqrq=cursor.fetchall()[0][0]
+
+print("上一次除权日期为",syccqrq)
+
+#获取需要除权的表
+dm_list=[]
+dm_sh_list=[]
+dm_cq_list=[]
+ 
+sql = "SELECT dm  FROM dmb  order by id "
+cursor.execute(sql)
+for row in cursor.fetchall():
+    dm_list.append(row) 
+     
+for s in range(len(dm_list)):
+    if dm_list[s][0].startswith('6'):
+        t=dm_list[s][0]+'.XSHG'
+    else:
+        t=dm_list[s][0]+'.XSHE'        
+    dm_sh_list.append(t)
+     
+     
+for x in range(0,len(dm_sh_list)):
+    df=finance.run_query(
+        jq.query(finance.STK_XR_XD.code,finance.STK_XR_XD.a_xr_date,finance.STK_XR_XD.dividend_ratio,finance.STK_XR_XD.transfer_ratio).filter(finance.STK_XR_XD.code==dm_sh_list[x]).order_by(finance.STK_XR_XD.report_date.desc()).limit(1)
+        )
+    print(df)
+    if(df.empty):
+        print('empty')
+        pass
+    else:   
+        for i in range(0, 1):
+            if(str(df.iloc[i]['a_xr_date'])=='None'):
+                print('NONE')
+                pass
+            else:
+                if(int(str(df.iloc[i]['a_xr_date']).replace('-',''))>int(d.replace('-','')) or int(str(df.iloc[i]['a_xr_date']).replace('-',''))<=int(syccqrq.replace('-',''))):
+                    print('未来除权或者已经除权')
+                    pass
+                else:
+                    #if((str(df.iloc[i]['dividend_ratio'])!='None' or str(df.iloc[i]['transfer_ratio'])!='None')):
+                    dm_cq_list.append(df.iloc[i]['code'][:6])
+    
+
+
+
+
+
+  
+
+# 关闭连接
+cursor.close()
+connect.close()
