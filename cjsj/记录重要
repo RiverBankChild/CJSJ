@@ -288,6 +288,18 @@ ALTER TABLE clb
 //ALTER TABLE clb  DROP COLUMN  2xk1;
 
 
+ALTER TABLE clb  
+     ADD COLUMN  sfqcylw  varchar(16) default  '去除压力位股票'   comment '是否去除压力位股票',
+     ADD COLUMN  kphsspmc  varchar(16) default  '开盘卖出'   comment '开盘还是收盘卖出',
+     ADD COLUMN  zjbzpm int(4) default  0 comment '资金比值排名',
+     ADD COLUMN  sfdtmr varchar(16) default  '隔天买入'  comment '是否当天买入',
+     ADD COLUMN  hcjg varchar(16) default  '未知'  comment '最优卖出天数和最大日涨幅天数';
+     
+
+
+//alter table clb  modify column hcjg varchar(1000);
+
+
 
 
 create table dpztb (id int primary key auto_increment,date varchar(16) unique default '未知',close Float(7,2) default  0.00,ylw Float(7,2) default  0.00,zcw Float(7,2) default  0.00,dpzt int(2) default  0,czzn varchar(250) default  "未知操作指南",tag varchar(250) default  "未知标签");
