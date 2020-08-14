@@ -295,6 +295,10 @@ ALTER TABLE clb
      ADD COLUMN  sfdtmr varchar(16) default  '隔天买入'  comment '是否当天买入',
      ADD COLUMN  hcjg varchar(16) default  '未知'  comment '最优卖出天数和最大日涨幅天数';
      
+     
+     
+ALTER TABLE clb  ADD COLUMN  zjt  int(8) default  0  comment '资金指定天';
+     
 
 
 //alter table clb  modify column hcjg varchar(1000);
@@ -302,8 +306,6 @@ ALTER TABLE clb
 
 
 
-create table dpztb (id int primary key auto_increment,date varchar(16) unique default '未知',close Float(7,2) default  0.00,ylw Float(7,2) default  0.00,zcw Float(7,2) default  0.00,dpzt int(2) default  0,czzn varchar(250) default  "未知操作指南",tag varchar(250) default  "未知标签");
-alter table dpztb ADD COLUMN  gxsj  Timestamp default  CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP  comment '更新时间';
 
 create table fzb (id int primary key auto_increment,dm varchar(8) unique ,name varchar(8) default'未知名称',tag1 varchar(250) default  "未知标签1",tag2 varchar(250) default  "未知标签2",tag3 varchar(250) default  "未知标签3");
 
