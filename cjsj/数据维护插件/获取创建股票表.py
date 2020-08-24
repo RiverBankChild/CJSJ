@@ -45,7 +45,7 @@ for i in range(len(dm_list)):
     close Float(7,2) default  0.00,\
     high Float(7,2) default  0.00,\
     low Float(7,2) default  0.00,\
-    zdf  Float(5,2) default  0.00,\
+    zdf  Float(6,2) default  0.00,\
     cjl Float(14,2) default  0.00,\
     ltsz   Float(14,2) default  0.00,\
     syl    Float(10,2)  default  0.00,\
