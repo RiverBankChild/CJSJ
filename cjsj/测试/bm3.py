@@ -14,15 +14,15 @@ def js(open,high,low,close):
     return h,l
 
 
-#openzl=[[-10.6,-9.94],[-9.94,-7],[-7,-3],[-3,-1],[-1,1],[1,3],[3,7],[7,9.94],[9.94,10.6]]
-#closezl=[[-10.6,-9.94],[-9.94,-7],[-7,-4],[-4,-2],[-2,-1],[-1,0],[0,1],[1,2],[2,4],[4,7],[7,9.94],[9.94,10.6]]
+#openzl=[[-20.6,-9.94],[-9.94,-7],[-7,-3],[-3,-1],[-1,1],[1,3],[3,7],[7,9.94],[9.94,20.6]]
+#closezl=[[-20.6,-9.94],[-9.94,-7],[-7,-4],[-4,-2],[-2,-1],[-1,0],[0,1],[1,2],[2,4],[4,7],[7,9.94],[9.94,20.6]]
 #normzl=[[0,1.5],[1.5,3.5],[3.5,20.5]]
 
 
 def bm(open,high,low,close):
     num=0
-    if(open>=-10.6 and open<=-9.94):
-        if(close>=-10.6 and close<=-9.94):
+    if(open>=-20.6 and open<=-9.94):
+        if(close>=-20.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=1
@@ -108,7 +108,7 @@ def bm(open,high,low,close):
                 num=31
             if(h>=1.5 and h<3.5):
                 num=32
-        if(close>=9.94 and close<=10.6):
+        if(close>=9.94 and close<=20.6):
             h,l=js(open,high,low,close)
             num=33
 
@@ -117,7 +117,7 @@ def bm(open,high,low,close):
 
 
     if(open>-9.94 and open<-7):
-        if(close>=-10.6 and close<=-9.94):
+        if(close>=-20.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=34
@@ -290,7 +290,7 @@ def bm(open,high,low,close):
                     num=93
                 if(l>=1.5 and l<3.5):
                     num=94
-        if(close>=9.94 and close<=10.6):
+        if(close>=9.94 and close<=20.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
                 num=95
@@ -300,7 +300,7 @@ def bm(open,high,low,close):
 
 
     if(open>=-7 and open<-3):
-        if(close>=-10.6 and close<=-9.94):
+        if(close>=-20.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=97
@@ -525,7 +525,7 @@ def bm(open,high,low,close):
                     num=182
                 if(l>=3.5 and l<=20.5):
                     num=183
-        if(close>=9.94 and close<=10.6):
+        if(close>=9.94 and close<=20.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
                 num=184
@@ -538,7 +538,7 @@ def bm(open,high,low,close):
 
 
     if(open>=-3 and open<-1):
-        if(close>=-10.6 and close<=-9.94):
+        if(close>=-20.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=187
@@ -763,7 +763,7 @@ def bm(open,high,low,close):
                     num=272
                 if(l>=3.5 and l<=20.5):
                     num=273
-        if(close>=9.94 and close<=10.6):
+        if(close>=9.94 and close<=20.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
                 num=274
@@ -775,7 +775,7 @@ def bm(open,high,low,close):
 
 
     if(open>=-1 and open<1):
-        if(close>=-10.6 and close<=-9.94):
+        if(close>=-20.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=277
@@ -1000,7 +1000,7 @@ def bm(open,high,low,close):
                     num=362
                 if(l>=3.5 and l<=20.5):
                     num=363
-        if(close>=9.94 and close<=10.6):
+        if(close>=9.94 and close<=20.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
                 num=364
@@ -1011,7 +1011,7 @@ def bm(open,high,low,close):
 
 
     if(open>=1 and open<3):
-        if(close>=-10.6 and close<=-9.94):
+        if(close>=-20.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=367
@@ -1236,7 +1236,7 @@ def bm(open,high,low,close):
                     num=452
                 if(l>=3.5 and l<=20.5):
                     num=453
-        if(close>=9.94 and close<=10.6):
+        if(close>=9.94 and close<=20.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
                 num=454
@@ -1249,7 +1249,7 @@ def bm(open,high,low,close):
 
 
     if(open>=3 and open<7):
-        if(close>=-10.6 and close<=-9.94):
+        if(close>=-20.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=457
@@ -1474,7 +1474,7 @@ def bm(open,high,low,close):
                     num=542
                 if(l>=3.5 and l<=20.5):
                     num=543
-        if(close>=9.94 and close<=10.6):
+        if(close>=9.94 and close<=20.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
                 num=544
@@ -1486,7 +1486,7 @@ def bm(open,high,low,close):
 
 
     if(open>=7 and open<9.94):
-        if(close>=-10.6 and close<=-9.94):
+        if(close>=-20.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             if(h>=0 and h<1.5):
                 num=547
@@ -1648,7 +1648,7 @@ def bm(open,high,low,close):
                     num=605
                 if(l>=3.5 and l<=20.5):
                     num=606
-        if(close>=9.94 and close<=10.6):
+        if(close>=9.94 and close<=20.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
                 num=607
@@ -1659,8 +1659,8 @@ def bm(open,high,low,close):
 
 
 
-    if(open>=9.94 and open<=10.6):
-        if(close>=-10.6 and close<=-9.94):
+    if(open>=9.94 and open<=20.6):
+        if(close>=-20.6 and close<=-9.94):
             h,l=js(open,high,low,close)
             num=610
         if(close>-9.94 and close<-7):
@@ -1741,7 +1741,7 @@ def bm(open,high,low,close):
                 num=638
             if(l>=3.5 and l<=20.5):
                 num=639
-        if(close>=9.94 and close<=10.6):
+        if(close>=9.94 and close<=20.6):
             h,l=js(open,high,low,close)
             if(l>=0 and l<1.5):
                 num=640
