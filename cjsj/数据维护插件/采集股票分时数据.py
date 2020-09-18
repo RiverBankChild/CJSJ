@@ -10,8 +10,8 @@ import time
  
  
 #jqdata认证
-#jq.auth('13401179853','king179853')
-jq.auth('18818807170','123123Zjy')
+jq.auth('13401179853','king179853')
+#jq.auth('18818807170','123123Zjy')
 
 #定义当前日期
 d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
