@@ -443,7 +443,9 @@ for at in range(len(dm_update_list)):
     else:
         th=dm_update_list[at][0]+'.XSHE'        
     dm_sh_list.append(th)
-for q in range(0, len(dm_update_list)):
+    
+#dm_sh_list=['000001.XSHE']
+for q in range(0, len(dm_sh_list)):
     #更新收盘价
     total_df=jq.get_price(dm_sh_list[q],start_date=date_insert_list[0] , end_date=date_insert_list[-1], frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
     total_df.reset_index(inplace=True,drop=False)
@@ -646,17 +648,17 @@ for x in range(0,len(dm_sh_list)):
                 else:
                     #if((str(df.iloc[i]['dividend_ratio'])!='None' or str(df.iloc[i]['transfer_ratio'])!='None')):
                     dm_cq_list.append(df.iloc[i]['code'][:6])
-    
-
-
-
+     
+ 
+ 
+ 
 #dm_cq_list=['603861','603871','603877','603880','603887','603889','603893','603901','603928','603929','603963','603968','603979','603985','603989','603995','603998','688002','688006','688020','688021','688022','688030','688036','688080','688088','688098','688100','688101','688122','688128','688138','688166','688168','688181','688199','688268','688298','688310','688358','688365','688368','688369','688396']
-
-
+ 
+ 
 print(dm_cq_list)        
 print("共需要更新",len(dm_cq_list),'张表')
 
-
+#dm_cq_list=['300089']
 
 #清空除权表
 print("开始清空除权表数据....................")
@@ -702,10 +704,17 @@ for q in range(0, len(dm_cq_list)):
     fs = '';
     dm = '';
     time = '';
-    for u in range(len(date_new_list)):
+    dm = dm_insert_sh_list[q] 
+    date_temp_list=[]
+    sql3 = "SELECT date FROM %s order by id "
+    data = ('TB'+dm[:6])
+    cursor.execute(sql3 % data)
+    for it in cursor.fetchall():
+        date_temp_list.append(it[0]) 
+        
+    for u in range(len(date_temp_list)):
         fs = '';
-        end_date = date_new_list[u] + " 23:00:00"
-        dm = dm_insert_sh_list[q]
+        end_date = date_temp_list[u] + " 23:00:00"
         df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
         df1.reset_index(inplace=True,drop=False)
         list=df1.values.tolist()
@@ -719,7 +728,7 @@ for q in range(0, len(dm_cq_list)):
                     fs+=time
             
             sql = "update %s  set fs = '%s' where date = '%s'"
-            data = ('TB'+dm[:6],fs,date_new_list[u])
+            data = ('TB'+dm[:6],fs,date_temp_list[u])
             cursor.execute(sql % data)
             connect.commit()  # 事务提交  
         else:
