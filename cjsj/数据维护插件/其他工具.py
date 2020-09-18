@@ -37,43 +37,13 @@ for a in cursor.fetchall():
 total=0;
 for i in range(len(dm_list)):
     #TIMESTAMP(8)　| YYYYMMDD
-    sql = "create table IF NOT EXISTS %s (\
-    id int primary key auto_increment,\
-    dm varchar(8)  ,\
-    date varchar(16) unique ,\
-    zs Float(7,2),\
-    open Float(7,2) ,\
-    close Float(7,2) ,\
-    high Float(7,2) ,\
-    low Float(7,2) ,\
-    zdf  Float(6,2) ,\
-    cjl Float(14,2) ,\
-    ltsz   Float(14,2) ,\
-    syl    Float(10,2)  ,\
-    ys     Float(14,2) ,\
-    jlr    Float(14,2) ,\
-    cdd    Float(14,2) ,\
-    dd    Float(14,2) ,\
-    zd    Float(14,2) ,\
-    xd    Float(14,2) ,\
-    lt_1  Float(5,2) ,\
-    lt_2  Float(5,2) ,\
-    lt_3  Float(5,2) ,\
-    lt_4  Float(5,2) ,\
-    lt_5  Float(5,2) ,\
-    lt_6  Float(5,2) ,\
-    lt_7  Float(5,2) ,\
-    lt_8  Float(5,2) ,\
-    lt_9  Float(5,2) ,\
-    lt_10  Float(5,2) ,\
-    fs  text\
-    );"   
+    sql = "ALTER TABLE %s   ADD COLUMN  zs Float(7,2) ,ADD COLUMN  fs text ;"   
     data = ('TB'+dm_list[i][0])
     cursor.execute(sql % data)
     connect.commit()
-    print(data+'创建成功')
+    print(data+'增加列成功')
     total=total+1
-print('成功创建', total, '张表')
+print('成功修改', total, '张表')
 
 # 关闭连接
 cursor.close()
