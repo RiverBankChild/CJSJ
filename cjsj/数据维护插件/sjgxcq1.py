@@ -470,7 +470,7 @@ for q in range(0, len(dm_update_list)):
     for u in range(0,len(date_insert_list)):
         fs = '';
         end_date = date_insert_list[u] + " 23:00:00"
-        dm = dm_update_list[q]
+        dm = dm_sh_list[q]
         df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
         df1.reset_index(inplace=True,drop=False)
         list=df1.values.tolist()
@@ -697,7 +697,7 @@ for q in range(0, len(dm_cq_list)):
     
     
     
-        #获取分时数据
+    #获取分时数据
     end_date = '';
     fs = '';
     dm = '';
@@ -705,7 +705,7 @@ for q in range(0, len(dm_cq_list)):
     for u in range(len(date_new_list)):
         fs = '';
         end_date = date_new_list[u] + " 23:00:00"
-        dm = dm_cq_list[q]
+        dm = dm_insert_sh_list[q]
         df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
         df1.reset_index(inplace=True,drop=False)
         list=df1.values.tolist()
