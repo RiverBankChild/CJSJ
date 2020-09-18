@@ -16,6 +16,7 @@ import datetime as dt
 
 #认证
 jq.auth('13401179853','king179853')
+#jq.auth('18818807170','123123Zjy')
 
 d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
 
@@ -276,32 +277,34 @@ for o in range(len(dm_delete_list)):
 for p in range(0, len(dm_insert_list)):
     sql = "create table IF NOT EXISTS %s (\
     id int primary key auto_increment,\
-    dm varchar(8)  default '未知代码',\
-    date varchar(16) unique default '未知日期',\
-    open Float(7,2) default  0.00,\
-    close Float(7,2) default  0.00,\
-    high Float(7,2) default  0.00,\
-    low Float(7,2) default  0.00,\
-    zdf  Float(5,2) default  0.00,\
-    cjl Float(14,2) default  0.00,\
-    ltsz   Float(14,2) default  0.00,\
-    syl    Float(10,2)  default  0.00,\
-    ys     Float(14,2) default  0.00,\
-    jlr    Float(14,2) default  0.00,\
-    cdd    Float(14,2) default  0.00,\
-    dd    Float(14,2) default  0.00,\
-    zd    Float(14,2) default  0.00,\
-    xd    Float(14,2) default  0.00,\
-    lt_1  Float(5,2) default  0.00,\
-    lt_2  Float(5,2) default  0.00,\
-    lt_3  Float(5,2) default  0.00,\
-    lt_4  Float(5,2) default  0.00,\
-    lt_5  Float(5,2) default  0.00,\
-    lt_6  Float(5,2) default  0.00,\
-    lt_7  Float(5,2) default  0.00,\
-    lt_8  Float(5,2) default  0.00,\
-    lt_9  Float(5,2) default  0.00,\
-    lt_10  Float(5,2) default  0.00\
+    dm varchar(8)  ,\
+    date varchar(16) unique ,\
+    zs Float(7,2),\
+    open Float(7,2) ,\
+    close Float(7,2) ,\
+    high Float(7,2) ,\
+    low Float(7,2) ,\
+    zdf  Float(6,2) ,\
+    cjl Float(14,2) ,\
+    ltsz   Float(14,2) ,\
+    syl    Float(10,2)  ,\
+    ys     Float(14,2) ,\
+    jlr    Float(14,2) ,\
+    cdd    Float(14,2) ,\
+    dd    Float(14,2) ,\
+    zd    Float(14,2) ,\
+    xd    Float(14,2) ,\
+    lt_1  Float(5,2) ,\
+    lt_2  Float(5,2) ,\
+    lt_3  Float(5,2) ,\
+    lt_4  Float(5,2) ,\
+    lt_5  Float(5,2) ,\
+    lt_6  Float(5,2) ,\
+    lt_7  Float(5,2) ,\
+    lt_8  Float(5,2) ,\
+    lt_9  Float(5,2) ,\
+    lt_10  Float(5,2) ,\
+    fs  text\
     );"       
     data = ('TB'+dm_insert_list[p][0])
     cursor.execute(sql % data)
@@ -331,6 +334,40 @@ for q in range(0, len(dm_insert_sh_list)):
         connect.commit()
     print('TB'+dm_insert_sh_list[q][:6],'收盘价数据获取完成')
      
+     
+        
+    #获取分时数据
+    end_date = '';
+    fs = '';
+    dm = '';
+    time = '';
+    for v in range(len(date_insert_list)):
+        fs = '';
+        end_date = date_insert_list[v] + " 23:00:00"
+        dm = dm_insert_sh_list[q]
+        df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
+        df1.reset_index(inplace=True,drop=False)
+        list=df1.values.tolist()
+        if(list[0][0].__str__()[11:]=='09:31:00' and len(list) == 240):
+            for j in range(len(list)):
+                time = ',' + list[j][0].__str__()[11:] + "-" + str(list[j][1]);
+                
+                if j == 0:  
+                    fs+=time[1:];
+                else:
+                    fs+=time
+            
+            sql = "update %s  set fs = '%s' where date = '%s'"
+            
+            data = ('TB'+dm[:6],fs,date_insert_list[v])
+            cursor.execute(sql % data)
+            connect.commit()  # 事务提交  
+        else:
+            pass
+    print('TB'+dm[:6],'分时数据获取完成')
+    
+    
+    
     #获取市值
     for u in range(len(date_new_list)):
         df_volandincome = jq.get_fundamentals(jq.query(
@@ -423,6 +460,43 @@ for q in range(0, len(dm_update_list)):
         else:
             connect.commit()  # 事务提交
      
+    
+    
+    #获取分时数据
+    end_date = '';
+    fs = '';
+    dm = '';
+    time = '';
+    for u in range(0,len(date_insert_list)):
+        fs = '';
+        end_date = date_insert_list[u] + " 23:00:00"
+        dm = dm_update_list[q]
+        df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
+        df1.reset_index(inplace=True,drop=False)
+        list=df1.values.tolist()
+        if(list[0][0].__str__()[11:]=='09:31:00' and len(list) == 240):
+            for j in range(len(list)):
+                time = ',' + list[j][0].__str__()[11:] + "-" + str(list[j][1]);
+                
+                if j == 0:  
+                    fs+=time[1:];
+                else:
+                    fs+=time
+            
+            sql = "update %s  set fs = '%s' where date = '%s'"
+            data = ('TB'+dm[:6],fs,date_insert_list[u])
+            cursor.execute(sql % data)
+            connect.commit()  # 事务提交  
+        else:
+            pass
+    
+    
+    
+    
+    
+    
+    
+    
     #更新市值
     for u in range(0,len(date_insert_list)):
         df_total_volandincome = jq.get_fundamentals(jq.query(
@@ -620,6 +694,38 @@ for q in range(0, len(dm_cq_list)):
         cursor.execute(sql % data)
         connect.commit()
     print('TB'+dm_insert_sh_list[q][:6],'收盘价数据获取完成')
+    
+    
+    
+        #获取分时数据
+    end_date = '';
+    fs = '';
+    dm = '';
+    time = '';
+    for u in range(len(date_new_list)):
+        fs = '';
+        end_date = date_new_list[u] + " 23:00:00"
+        dm = dm_cq_list[q]
+        df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
+        df1.reset_index(inplace=True,drop=False)
+        list=df1.values.tolist()
+        if(list[0][0].__str__()[11:]=='09:31:00' and len(list) == 240):
+            for j in range(len(list)):
+                time = ',' + list[j][0].__str__()[11:] + "-" + str(list[j][1]);
+                
+                if j == 0:  
+                    fs+=time[1:];
+                else:
+                    fs+=time
+            
+            sql = "update %s  set fs = '%s' where date = '%s'"
+            data = ('TB'+dm[:6],fs,date_new_list[u])
+            cursor.execute(sql % data)
+            connect.commit()  # 事务提交  
+        else:
+            pass
+    print('TB'+dm[:6],'分时数据获取完成')
+    
     
     #获取市值
     for u in range(len(date_new_list)):

@@ -61,14 +61,14 @@ rq_int_list_d=[20141231,
 print('今天是'+d)
 start_time = dt.datetime.strptime(str(dt.datetime.now().date())+'20:00', '%Y-%m-%d%H:%M')
 n_time = dt.datetime.now()
-# if chinese_calendar.is_holiday(n_time):
-#     pass
-# else:
-#     if n_time > start_time:
-#         pass
-#     else:
-#         print('当前时间段不允许更新数据')
-#         os._exit(0)
+if chinese_calendar.is_holiday(n_time):
+    pass
+else:
+    if n_time > start_time:
+        pass
+    else:
+        print('当前时间段不允许更新数据')
+        os._exit(0)
  
  
  
@@ -364,7 +364,7 @@ for q in range(0, len(dm_insert_sh_list)):
             connect.commit()  # 事务提交  
         else:
             pass
-    print(dm[:6]+'分时数据获取完成')
+    print('TB'+dm[:6],'分时数据获取完成')
     
     
     
@@ -724,7 +724,7 @@ for q in range(0, len(dm_cq_list)):
             connect.commit()  # 事务提交  
         else:
             pass
-    print(dm[:6]+'分时数据获取完成')
+    print('TB'+dm[:6],'分时数据获取完成')
     
     
     #获取市值
