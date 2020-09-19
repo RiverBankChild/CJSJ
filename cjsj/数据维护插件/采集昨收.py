@@ -4,15 +4,8 @@ Created on 2019年5月1日
 @author: Administrator
 '''
 import pymysql
-import jqdatasdk as jq
 import time
-from _datetime import datetime
- 
-#超参
-jzrq='2020-06-05'
- 
-#jqdata认证
-jq.auth('13401179853','king179853')
+
 
 #定义当前日期
 d=time.strftime('%Y-%m-%d',time.localtime(time.time())) 
