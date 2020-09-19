@@ -336,35 +336,6 @@ for q in range(0, len(dm_insert_sh_list)):
      
      
         
-    #获取分时数据
-    end_date = '';
-    fs = '';
-    dm = '';
-    time = '';
-    for v in range(len(date_insert_list)):
-        fs = '';
-        end_date = date_insert_list[v] + " 23:00:00"
-        dm = dm_insert_sh_list[q]
-        df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
-        df1.reset_index(inplace=True,drop=False)
-        list=df1.values.tolist()
-        if(list[0][0].__str__()[11:]=='09:31:00' and len(list) == 240):
-            for j in range(len(list)):
-                time = ',' + list[j][0].__str__()[11:] + "-" + str(list[j][1]);
-                
-                if j == 0:  
-                    fs+=time[1:];
-                else:
-                    fs+=time
-            
-            sql = "update %s  set fs = '%s' where date = '%s'"
-            
-            data = ('TB'+dm[:6],fs,date_insert_list[v])
-            cursor.execute(sql % data)
-            connect.commit()  # 事务提交  
-        else:
-            pass
-    print('TB'+dm[:6],'分时数据获取完成')
     
     
     
@@ -430,49 +401,17 @@ for q in range(0, len(dm_insert_sh_list)):
                     connect.rollback()  # 事务回滚
                 else:
                     connect.commit()  # 事务提交
-    print('TB'+dm_insert_sh_list[q][:6],'流通股东数据获取完成')  
-print('新表所有数据插入完毕....................................')   
- 
- 
-#更新老表数据
-print("开始向老表更新数据...................................")
-dm_sh_list=[]
-for at in range(len(dm_update_list)):
-    if dm_update_list[at][0].startswith('6'):
-        th=dm_update_list[at][0]+'.XSHG'
-    else:
-        th=dm_update_list[at][0]+'.XSHE'        
-    dm_sh_list.append(th)
-    
-#dm_sh_list=['000001.XSHE']
-for q in range(0, len(dm_sh_list)):
-    #更新收盘价
-    total_df=jq.get_price(dm_sh_list[q],start_date=date_insert_list[0] , end_date=date_insert_list[-1], frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
-    total_df.reset_index(inplace=True,drop=False)
-    total_list=total_df.values.tolist()
-    for s in range(0,len(total_list)):
-        sql = " INSERT INTO %s (date,open,close,high,low,cjl) VALUES ( '%s', %.2f ,%.2f ,%.2f ,%.2f,%.2f  )" 
-        try:
-            date = datetime.date(datetime.fromtimestamp(total_list[s][0].timestamp()))       
-            data = ('TB'+dm_update_list[q][0],date,total_list[s][1],total_list[s][2],total_list[s][3],total_list[s][4],total_list[s][5])
-            cursor.execute(sql % data) 
-        except Exception as e:
-            connect.rollback()  # 事务回滚
-            continue
-        else:
-            connect.commit()  # 事务提交
-     
-    
+    print('TB'+dm_insert_sh_list[q][:6],'流通股东数据获取完成')
     
     #获取分时数据
     end_date = '';
     fs = '';
     dm = '';
     time = '';
-    for u in range(0,len(date_insert_list)):
+    for v in range(len(date_insert_list)):
         fs = '';
-        end_date = date_insert_list[u] + " 23:00:00"
-        dm = dm_sh_list[q]
+        end_date = date_insert_list[v] + " 23:00:00"
+        dm = dm_insert_sh_list[q]
         df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
         df1.reset_index(inplace=True,drop=False)
         list=df1.values.tolist()
@@ -486,16 +425,87 @@ for q in range(0, len(dm_sh_list)):
                     fs+=time
             
             sql = "update %s  set fs = '%s' where date = '%s'"
-            data = ('TB'+dm[:6],fs,date_insert_list[u])
+            
+            data = ('TB'+dm[:6],fs,date_insert_list[v])
             cursor.execute(sql % data)
             connect.commit()  # 事务提交  
         else:
             pass
+    print('TB'+dm[:6],'分时数据获取完成')
     
     
     
     
+    #获取昨收
+    id_list = []
+    dm = dm_insert_sh_list[q]
+    sql2 = "SELECT id FROM %s order by id "
+    data = ('TB'+dm[:6])
+    cursor.execute(sql2 % data)
+    for row in cursor.fetchall():
+        r=row[0]      
+        id_list.append(r) 
     
+    for j in range(0,len(id_list)):
+        zs = 0.00
+        if j == 0 :
+            pass
+        else:
+            sql0 = "SELECT close FROM %s where id = %d  "
+            data = ('TB'+dm[:6],id_list[j-1])
+            cursor.execute(sql0 % data)
+            for row in cursor.fetchall():
+                zs=row[0]      
+
+
+        sql4 = "update %s set zs = %.2f where id = %d  "
+        data = ('TB'+dm[:6],zs,id_list[j])
+        cursor.execute(sql4 % data)
+        connect.commit()  # 事务提交
+    
+    print('TB'+dm[:6],'昨收数据获取完成')
+    
+      
+print('新表所有数据插入完毕....................................')   
+ 
+ 
+#更新老表数据
+print("开始向老表更新数据...................................")
+
+
+#dm_update_list=[['300370','安控科技']]
+
+
+dm_sh_list=[]
+for at in range(len(dm_update_list)):
+    if dm_update_list[at][0].startswith('6'):
+        th=dm_update_list[at][0]+'.XSHG'
+    else:
+        th=dm_update_list[at][0]+'.XSHE'        
+    dm_sh_list.append(th)
+    
+    
+    
+
+
+
+for q in range(0, len(dm_sh_list)):
+    #更新收盘价
+    total_df=jq.get_price(dm_sh_list[q],start_date=date_insert_list[0] , end_date=date_insert_list[-1], frequency='daily', fields=['open', 'close', 'high', 'low', 'volume'], skip_paused=True, fq='pre')
+    total_df.reset_index(inplace=True,drop=False)
+    total_list=total_df.values.tolist()
+    for s in range(0,len(total_list)):
+        sql = " INSERT INTO %s (date,open,close,high,low,cjl) VALUES ( '%s', %.2f ,%.2f ,%.2f ,%.2f,%.2f  )" 
+        try:
+            date = datetime.date(datetime.fromtimestamp(total_list[s][0].timestamp()))       
+            data = ('TB'+dm_update_list[q][0],date,total_list[s][1],total_list[s][2],total_list[s][3],total_list[s][4],total_list[s][5])
+            cursor.execute(sql % data) 
+        except Exception as e:
+            print(e)
+            connect.rollback()  # 事务回滚
+            continue
+        else:
+            connect.commit()  # 事务提交    
     
     
     
@@ -563,6 +573,54 @@ for q in range(0, len(dm_sh_list)):
                     connect.commit()  # 事务提交
             else:
                 pass
+            
+    
+    
+        
+    #获取分时数据
+    end_date = '';
+    fs = '';
+    dm = '';
+    time = '';
+    for u in range(0,len(date_insert_list)):
+        fs = '';
+        end_date = date_insert_list[u] + " 23:00:00"
+        dm = dm_sh_list[q]
+        df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
+        df1.reset_index(inplace=True,drop=False)
+        list=df1.values.tolist()
+        if(list[0][0].__str__()[11:]=='09:31:00' and len(list) == 240):
+            for j in range(len(list)):
+                time = ',' + list[j][0].__str__()[11:] + "-" + str(list[j][1]);
+                
+                if j == 0:  
+                    fs+=time[1:];
+                else:
+                    fs+=time
+            
+            sql = "update %s  set fs = '%s' where date = '%s'"
+            data = ('TB'+dm[:6],fs,date_insert_list[u])
+            cursor.execute(sql % data)
+            connect.commit()  # 事务提交  
+        else:
+            pass
+        
+    #获取昨收
+    dm = dm_sh_list[q]
+    for u in range(0,len(date_insert_list)):
+        zs = 0.00
+        sql0 = " select close from %s where id=(select id from %s where id < (select id from %s where date = '%s') order by id desc limit 0,1) "
+        data = ('TB'+dm[:6],'TB'+dm[:6],'TB'+dm[:6],date_insert_list[u])
+        cursor.execute(sql0 % data)
+        for row in cursor.fetchall():
+            zs=row[0]      
+
+        sql4 = "update %s set zs = %.2f where date = '%s'  "
+        data = ('TB'+dm[:6],zs,date_insert_list[u])
+        cursor.execute(sql4 % data)
+        connect.commit()  # 事务提交
+    
+    
     print('TB'+dm_sh_list[q][:6],'数据更新完成')  
 print('所有表所有数据更新完毕....................................') 
 
@@ -654,11 +712,11 @@ for x in range(0,len(dm_sh_list)):
  
 #dm_cq_list=['603861','603871','603877','603880','603887','603889','603893','603901','603928','603929','603963','603968','603979','603985','603989','603995','603998','688002','688006','688020','688021','688022','688030','688036','688080','688088','688098','688100','688101','688122','688128','688138','688166','688168','688181','688199','688268','688298','688310','688358','688365','688368','688369','688396']
  
+#dm_cq_list=[]
  
 print(dm_cq_list)        
 print("共需要更新",len(dm_cq_list),'张表')
 
-#dm_cq_list=['300089']
 
 #清空除权表
 print("开始清空除权表数据....................")
@@ -698,42 +756,6 @@ for q in range(0, len(dm_cq_list)):
     print('TB'+dm_insert_sh_list[q][:6],'收盘价数据获取完成')
     
     
-    
-    #获取分时数据
-    end_date = '';
-    fs = '';
-    dm = '';
-    time = '';
-    dm = dm_insert_sh_list[q] 
-    date_temp_list=[]
-    sql3 = "SELECT date FROM %s order by id "
-    data = ('TB'+dm[:6])
-    cursor.execute(sql3 % data)
-    for it in cursor.fetchall():
-        date_temp_list.append(it[0]) 
-        
-    for u in range(len(date_temp_list)):
-        fs = '';
-        end_date = date_temp_list[u] + " 23:00:00"
-        df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
-        df1.reset_index(inplace=True,drop=False)
-        list=df1.values.tolist()
-        if(list[0][0].__str__()[11:]=='09:31:00' and len(list) == 240):
-            for j in range(len(list)):
-                time = ',' + list[j][0].__str__()[11:] + "-" + str(list[j][1]);
-                
-                if j == 0:  
-                    fs+=time[1:];
-                else:
-                    fs+=time
-            
-            sql = "update %s  set fs = '%s' where date = '%s'"
-            data = ('TB'+dm[:6],fs,date_temp_list[u])
-            cursor.execute(sql % data)
-            connect.commit()  # 事务提交  
-        else:
-            pass
-    print('TB'+dm[:6],'分时数据获取完成')
     
     
     #获取市值
@@ -801,6 +823,69 @@ for q in range(0, len(dm_cq_list)):
                     connect.commit()  # 事务提交
     print('TB'+dm_insert_sh_list[q][:6],'流通股东数据获取完成')   
 
+     #获取分时数据
+    end_date = '';
+    fs = '';
+    dm = '';
+    time = '';
+    dm = dm_insert_sh_list[q] 
+    date_temp_list=[]
+    sql3 = "SELECT date FROM %s order by id "
+    data = ('TB'+dm[:6])
+    cursor.execute(sql3 % data)
+    for it in cursor.fetchall():
+        date_temp_list.append(it[0]) 
+        
+    for u in range(len(date_temp_list)):
+        fs = '';
+        end_date = date_temp_list[u] + " 23:00:00"
+        df1=jq.get_price(dm,  count = 240 ,end_date=end_date, frequency='minute', fields=['close'], skip_paused=True, fq='pre')
+        df1.reset_index(inplace=True,drop=False)
+        list=df1.values.tolist()
+        if(list[0][0].__str__()[11:]=='09:31:00' and len(list) == 240):
+            for j in range(len(list)):
+                time = ',' + list[j][0].__str__()[11:] + "-" + str(list[j][1]);
+                
+                if j == 0:  
+                    fs+=time[1:];
+                else:
+                    fs+=time
+            
+            sql = "update %s  set fs = '%s' where date = '%s'"
+            data = ('TB'+dm[:6],fs,date_temp_list[u])
+            cursor.execute(sql % data)
+            connect.commit()  # 事务提交  
+        else:
+            pass
+    print('TB'+dm[:6],'分时数据获取完成')  
+    
+    #获取昨收
+    id_list = []
+    dm = dm_insert_sh_list[q] 
+    sql2 = "SELECT id FROM %s order by id "
+    data = ('TB'+dm[:6])
+    cursor.execute(sql2 % data)
+    for row in cursor.fetchall():
+        r=row[0]      
+        id_list.append(r) 
+    
+    for j in range(0,len(id_list)):
+        zs = 0.00
+        if j == 0 :
+            pass
+        else:
+            sql0 = "SELECT close FROM %s where id = %d  "
+            data = ('TB'+dm[:6],id_list[j-1])
+            cursor.execute(sql0 % data)
+            for row in cursor.fetchall():
+                zs=row[0]      
+
+        sql4 = "update %s set zs = %.2f where id = %d  "
+        data = ('TB'+dm[:6],zs,id_list[j])
+        cursor.execute(sql4 % data)
+        connect.commit()  # 事务提交
+    
+    print('TB'+dm[:6],'昨收数据获取完成')
 
 #更新除权日期
 sql = "update cqrqb set cqrq = '%s' where id =1 "
